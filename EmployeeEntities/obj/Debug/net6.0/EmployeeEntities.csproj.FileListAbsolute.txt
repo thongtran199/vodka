@@ -1,0 +1,28 @@
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeEntities\bin\Debug\net6.0\EmployeeEntities.deps.json
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeEntities\bin\Debug\net6.0\EmployeeEntities.runtimeconfig.json
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeEntities\bin\Debug\net6.0\EmployeeEntities.dll
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeEntities\bin\Debug\net6.0\EmployeeEntities.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.csproj.AssemblyReference.cache
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.AssemblyInfoInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.AssemblyInfo.cs
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.dll
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeEntities\obj\Debug\net6.0\refint\EmployeeEntities.dll
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.genruntimeconfig.cache
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeEntities\obj\Debug\net6.0\ref\EmployeeEntities.dll
+F:\Employee\QuanLyNhanVien\EmployeeEntities\bin\Debug\net6.0\EmployeeEntities.deps.json
+F:\Employee\QuanLyNhanVien\EmployeeEntities\bin\Debug\net6.0\EmployeeEntities.runtimeconfig.json
+F:\Employee\QuanLyNhanVien\EmployeeEntities\bin\Debug\net6.0\EmployeeEntities.dll
+F:\Employee\QuanLyNhanVien\EmployeeEntities\bin\Debug\net6.0\EmployeeEntities.pdb
+F:\Employee\QuanLyNhanVien\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.csproj.AssemblyReference.cache
+F:\Employee\QuanLyNhanVien\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.GeneratedMSBuildEditorConfig.editorconfig
+F:\Employee\QuanLyNhanVien\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.AssemblyInfoInputs.cache
+F:\Employee\QuanLyNhanVien\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.AssemblyInfo.cs
+F:\Employee\QuanLyNhanVien\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.csproj.CoreCompileInputs.cache
+F:\Employee\QuanLyNhanVien\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.dll
+F:\Employee\QuanLyNhanVien\EmployeeEntities\obj\Debug\net6.0\refint\EmployeeEntities.dll
+F:\Employee\QuanLyNhanVien\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.pdb
+F:\Employee\QuanLyNhanVien\EmployeeEntities\obj\Debug\net6.0\EmployeeEntities.genruntimeconfig.cache
+F:\Employee\QuanLyNhanVien\EmployeeEntities\obj\Debug\net6.0\ref\EmployeeEntities.dll

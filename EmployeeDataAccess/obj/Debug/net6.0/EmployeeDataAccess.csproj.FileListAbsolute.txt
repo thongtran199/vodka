@@ -1,0 +1,34 @@
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\bin\Debug\net6.0\EmployeeDataAccess.deps.json
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\bin\Debug\net6.0\EmployeeDataAccess.runtimeconfig.json
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\bin\Debug\net6.0\EmployeeDataAccess.dll
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\bin\Debug\net6.0\EmployeeDataAccess.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\bin\Debug\net6.0\EmployeeEntities.dll
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\bin\Debug\net6.0\EmployeeEntities.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.csproj.AssemblyReference.cache
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.AssemblyInfoInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.AssemblyInfo.cs
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.csproj.CopyComplete
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.dll
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\obj\Debug\net6.0\refint\EmployeeDataAccess.dll
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.genruntimeconfig.cache
+C:\Users\ADMIN\OneDrive\Máy tính\EmployeeDCT1204\EmployeeDataAccess\obj\Debug\net6.0\ref\EmployeeDataAccess.dll
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\bin\Debug\net6.0\EmployeeDataAccess.deps.json
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\bin\Debug\net6.0\EmployeeDataAccess.runtimeconfig.json
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\bin\Debug\net6.0\EmployeeDataAccess.dll
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\bin\Debug\net6.0\EmployeeDataAccess.pdb
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\bin\Debug\net6.0\EmployeeEntities.dll
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\bin\Debug\net6.0\EmployeeEntities.pdb
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.csproj.AssemblyReference.cache
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.AssemblyInfoInputs.cache
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.AssemblyInfo.cs
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.csproj.CoreCompileInputs.cache
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.csproj.CopyComplete
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.dll
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\obj\Debug\net6.0\refint\EmployeeDataAccess.dll
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.pdb
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\obj\Debug\net6.0\EmployeeDataAccess.genruntimeconfig.cache
+F:\Employee\QuanLyNhanVien\EmployeeDataAccess\obj\Debug\net6.0\ref\EmployeeDataAccess.dll

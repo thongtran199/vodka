@@ -1,0 +1,18 @@
+﻿@model EmployeeDCT1204.Models.EmployeeDeleteViewModel
+@*@model EmployeeEntities.Employee*@
+<h2>Delete Employee</h2>
+
+<h3>Are you sure you want to delete the following employee?</h3>
+<div>
+    <h4>@Model.FullName</h4>
+    <p>Employee ID: @Model.Id</p>
+    <p>Employee Number: @Model.EmployeeNo</p>
+</div>
+
+<form asp-action="Delete">
+    <input asp-for="Id" hidden="true" />
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</form>

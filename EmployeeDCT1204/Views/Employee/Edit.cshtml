@@ -1,0 +1,25 @@
+﻿@model EmployeeDCT1204.Models.EmployeeEditViewModel
+@using EmployeeEntities
+@*@model EmployeeEntities.Employee*@
+<h2>Edit Employee</h2>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label asp-for="DOB"></label>
+        <input asp-for="DOB" class="form-control" />
+        <span asp-validation-for="DOB" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FullName"></label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PaymentMethod"></label>
+        <select asp-for="PaymentMethod" asp-items="Html.GetEnumSelectList<PaymentMethod>()">
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Edit</button>
+</form>

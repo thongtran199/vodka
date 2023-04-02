@@ -1,0 +1,14 @@
+﻿@model TaxYearCreateViewModel
+
+<h2>Create New Tax Year</h2>
+
+<form asp-action="Create" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label asp-for="YearOfTax"></label>
+        <input asp-for="YearOfTax" class="form-control" />
+        <span asp-validation-for="YearOfTax" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Tax Year</button>
+</form>

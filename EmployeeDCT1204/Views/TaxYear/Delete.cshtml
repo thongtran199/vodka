@@ -1,0 +1,17 @@
+﻿@model TaxYearDeleteViewModel
+
+<h2>Delete Tax Year</h2>
+
+<h3>Are you sure you want to delete the following TaxYear?</h3>
+<div>
+    <h4>Tax Year ID: @Model.Id</h4>
+    <p>Year Of Tax: @Model.YearOfTax</p>
+</div>
+
+<form asp-action="Delete" enctype="multipart/form-data">
+    <input asp-for="Id" hidden="true" />
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</form>
