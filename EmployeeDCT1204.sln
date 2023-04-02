@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeDCT1204", "EmployeeDCT1204\EmployeeDCT1204.csproj", "{46DDB036-7499-4131-A057-52FDBFA11CA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vodka", "EmployeeDCT1204\Vodka.csproj", "{46DDB036-7499-4131-A057-52FDBFA11CA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeEntities", "EmployeeEntities\EmployeeEntities.csproj", "{9A094650-AF91-48AC-A025-1E667577E3AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VodkaEntities", "EmployeeEntities\VodkaEntities.csproj", "{9A094650-AF91-48AC-A025-1E667577E3AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeDataAccess", "EmployeeDataAccess\EmployeeDataAccess.csproj", "{38AC9615-D1D9-450E-8104-64A8E29DAA30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VodkaDataAccess", "EmployeeDataAccess\VodkaDataAccess.csproj", "{38AC9615-D1D9-450E-8104-64A8E29DAA30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeServices", "EmployeeServices\EmployeeServices.csproj", "{2733D422-FE7C-460D-A68E-22BE580C206E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VodkaServices", "EmployeeServices\VodkaServices.csproj", "{2733D422-FE7C-460D-A68E-22BE580C206E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

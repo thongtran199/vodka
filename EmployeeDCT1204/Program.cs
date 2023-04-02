@@ -1,6 +1,6 @@
-using EmployeeDataAccess;
-using EmployeeServices;
-using EmployeeServices.Implementation;
+using VodkaDataAccess;
+using VodkaServices;
+using VodkaServices.Implementation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -15,12 +15,16 @@ builder.Services.AddControllers();
 //    (options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 //);
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnection"))
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnectionfreesqldb"))
+//);
+
+builder.Services.AddDbContext<VodkadatabaseContext>(options =>
+    options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnectiondb4free"))
 );
 
-builder.Services.AddScoped<IEmployeeService, EmployeeServices.Implementation.EmployeeServices>();
-builder.Services.AddScoped<ITaxYearService, TaxYearServices>();
+builder.Services.AddScoped<IProductService, ProductServices>();
+builder.Services.AddScoped<ICategoryService, CategoryServices>();
 
 builder.Services.AddSwaggerGen(c =>
 {

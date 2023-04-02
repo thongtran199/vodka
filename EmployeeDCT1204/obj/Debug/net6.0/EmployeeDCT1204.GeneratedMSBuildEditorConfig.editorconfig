@@ -8,77 +8,77 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EmployeeDCT1204
 build_property.RootNamespace = EmployeeDCT1204
-build_property.ProjectDir = F:\Employee\QuanLyNhanVien\EmployeeDCT1204\
+build_property.ProjectDir = F:\Employee\vodka\EmployeeDCT1204\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = F:\Employee\QuanLyNhanVien\EmployeeDCT1204
+build_property.MSBuildProjectDirectory = F:\Employee\vodka\EmployeeDCT1204
 build_property._RazorSourceGeneratorDebug = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/Employee/Create.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/Employee/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/Employee/Delete.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/Employee/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/Employee/Detail.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/Employee/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/Employee/Edit.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/Employee/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/Employee/Index.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/Employee/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/Home/Index.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/Home/Privacy.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/Shared/Error.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/Shared/_ValidationScriptsPartial.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/TaxYear/Create.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/TaxYear/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGF4WWVhclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/TaxYear/Delete.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/TaxYear/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGF4WWVhclxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/TaxYear/Detail.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/TaxYear/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGF4WWVhclxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/TaxYear/Edit.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/TaxYear/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGF4WWVhclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/TaxYear/Index.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/TaxYear/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGF4WWVhclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/_ViewImports.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/_ViewStart.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Employee/QuanLyNhanVien/EmployeeDCT1204/Views/Shared/_Layout.cshtml]
+[F:/Employee/vodka/EmployeeDCT1204/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-f9u9q1wnbn

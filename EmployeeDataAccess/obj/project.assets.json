@@ -1311,7 +1311,7 @@
           }
         }
       },
-      "EmployeeEntities/1.0.0": {
+      "VodkaEntities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -1319,10 +1319,10 @@
           "MySql.Data": "8.0.32.1"
         },
         "compile": {
-          "bin/placeholder/EmployeeEntities.dll": {}
+          "bin/placeholder/VodkaEntities.dll": {}
         },
         "runtime": {
-          "bin/placeholder/EmployeeEntities.dll": {}
+          "bin/placeholder/VodkaEntities.dll": {}
         }
       }
     }
@@ -3842,20 +3842,21 @@
         "version.txt"
       ]
     },
-    "EmployeeEntities/1.0.0": {
+    "VodkaEntities/1.0.0": {
       "type": "project",
-      "path": "../EmployeeEntities/EmployeeEntities.csproj",
-      "msbuildProject": "../EmployeeEntities/EmployeeEntities.csproj"
+      "path": "../EmployeeEntities/VodkaEntities.csproj",
+      "msbuildProject": "../EmployeeEntities/VodkaEntities.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "EmployeeEntities >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.4",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.4",
-      "MySql.EntityFrameworkCore >= 7.0.0"
+      "MySql.Data >= 8.0.32.1",
+      "MySql.EntityFrameworkCore >= 7.0.0",
+      "VodkaEntities >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3864,11 +3865,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Employee\\QuanLyNhanVien\\EmployeeDataAccess\\EmployeeDataAccess.csproj",
-      "projectName": "EmployeeDataAccess",
-      "projectPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeDataAccess\\EmployeeDataAccess.csproj",
+      "projectUniqueName": "F:\\Employee\\vodka\\EmployeeDataAccess\\VodkaDataAccess.csproj",
+      "projectName": "VodkaDataAccess",
+      "projectPath": "F:\\Employee\\vodka\\EmployeeDataAccess\\VodkaDataAccess.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeDataAccess\\obj\\",
+      "outputPath": "F:\\Employee\\vodka\\EmployeeDataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3885,8 +3886,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj": {
-              "projectPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj"
+            "F:\\Employee\\vodka\\EmployeeEntities\\VodkaEntities.csproj": {
+              "projectPath": "F:\\Employee\\vodka\\EmployeeEntities\\VodkaEntities.csproj"
             }
           }
         }
@@ -3920,6 +3921,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[7.0.4, )"
+          },
+          "MySql.Data": {
+            "target": "Package",
+            "version": "[8.0.32.1, )"
           },
           "MySql.EntityFrameworkCore": {
             "target": "Package",

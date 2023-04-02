@@ -1311,23 +1311,24 @@
           }
         }
       },
-      "EmployeeDataAccess/1.0.0": {
+      "VodkaDataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "EmployeeEntities": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4",
-          "MySql.EntityFrameworkCore": "7.0.0"
+          "MySql.Data": "8.0.32.1",
+          "MySql.EntityFrameworkCore": "7.0.0",
+          "VodkaEntities": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/EmployeeDataAccess.dll": {}
+          "bin/placeholder/VodkaDataAccess.dll": {}
         },
         "runtime": {
-          "bin/placeholder/EmployeeDataAccess.dll": {}
+          "bin/placeholder/VodkaDataAccess.dll": {}
         }
       },
-      "EmployeeEntities/1.0.0": {
+      "VodkaEntities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -1335,10 +1336,10 @@
           "MySql.Data": "8.0.32.1"
         },
         "compile": {
-          "bin/placeholder/EmployeeEntities.dll": {}
+          "bin/placeholder/VodkaEntities.dll": {}
         },
         "runtime": {
-          "bin/placeholder/EmployeeEntities.dll": {}
+          "bin/placeholder/VodkaEntities.dll": {}
         }
       }
     }
@@ -3858,25 +3859,25 @@
         "version.txt"
       ]
     },
-    "EmployeeDataAccess/1.0.0": {
+    "VodkaDataAccess/1.0.0": {
       "type": "project",
-      "path": "../EmployeeDataAccess/EmployeeDataAccess.csproj",
-      "msbuildProject": "../EmployeeDataAccess/EmployeeDataAccess.csproj"
+      "path": "../EmployeeDataAccess/VodkaDataAccess.csproj",
+      "msbuildProject": "../EmployeeDataAccess/VodkaDataAccess.csproj"
     },
-    "EmployeeEntities/1.0.0": {
+    "VodkaEntities/1.0.0": {
       "type": "project",
-      "path": "../EmployeeEntities/EmployeeEntities.csproj",
-      "msbuildProject": "../EmployeeEntities/EmployeeEntities.csproj"
+      "path": "../EmployeeEntities/VodkaEntities.csproj",
+      "msbuildProject": "../EmployeeEntities/VodkaEntities.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "EmployeeDataAccess >= 1.0.0",
-      "EmployeeEntities >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.4",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.4",
-      "Microsoft.EntityFrameworkCore.Tools >= 7.0.4"
+      "Microsoft.EntityFrameworkCore.Tools >= 7.0.4",
+      "VodkaDataAccess >= 1.0.0",
+      "VodkaEntities >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3885,11 +3886,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Employee\\QuanLyNhanVien\\EmployeeServices\\EmployeeServices.csproj",
-      "projectName": "EmployeeServices",
-      "projectPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeServices\\EmployeeServices.csproj",
+      "projectUniqueName": "F:\\Employee\\vodka\\EmployeeServices\\VodkaServices.csproj",
+      "projectName": "VodkaServices",
+      "projectPath": "F:\\Employee\\vodka\\EmployeeServices\\VodkaServices.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeServices\\obj\\",
+      "outputPath": "F:\\Employee\\vodka\\EmployeeServices\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3906,11 +3907,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "F:\\Employee\\QuanLyNhanVien\\EmployeeDataAccess\\EmployeeDataAccess.csproj": {
-              "projectPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeDataAccess\\EmployeeDataAccess.csproj"
+            "F:\\Employee\\vodka\\EmployeeDataAccess\\VodkaDataAccess.csproj": {
+              "projectPath": "F:\\Employee\\vodka\\EmployeeDataAccess\\VodkaDataAccess.csproj"
             },
-            "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj": {
-              "projectPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj"
+            "F:\\Employee\\vodka\\EmployeeEntities\\VodkaEntities.csproj": {
+              "projectPath": "F:\\Employee\\vodka\\EmployeeEntities\\VodkaEntities.csproj"
             }
           }
         }

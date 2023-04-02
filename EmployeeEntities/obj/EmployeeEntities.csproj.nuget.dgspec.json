@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj": {}
+    "F:\\Employee\\vodka\\EmployeeEntities\\EmployeeEntities.csproj": {}
   },
   "projects": {
-    "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj": {
+    "F:\\Employee\\vodka\\EmployeeEntities\\EmployeeEntities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj",
+        "projectUniqueName": "F:\\Employee\\vodka\\EmployeeEntities\\EmployeeEntities.csproj",
         "projectName": "EmployeeEntities",
-        "projectPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj",
+        "projectPath": "F:\\Employee\\vodka\\EmployeeEntities\\EmployeeEntities.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\obj\\",
+        "outputPath": "F:\\Employee\\vodka\\EmployeeEntities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

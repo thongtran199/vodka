@@ -1,0 +1,17 @@
+F:\Employee\vodka\EmployeeDataAccess\bin\Debug\net6.0\VodkaDataAccess.deps.json
+F:\Employee\vodka\EmployeeDataAccess\bin\Debug\net6.0\VodkaDataAccess.runtimeconfig.json
+F:\Employee\vodka\EmployeeDataAccess\bin\Debug\net6.0\VodkaDataAccess.dll
+F:\Employee\vodka\EmployeeDataAccess\bin\Debug\net6.0\VodkaDataAccess.pdb
+F:\Employee\vodka\EmployeeDataAccess\bin\Debug\net6.0\VodkaEntities.dll
+F:\Employee\vodka\EmployeeDataAccess\bin\Debug\net6.0\VodkaEntities.pdb
+F:\Employee\vodka\EmployeeDataAccess\obj\Debug\net6.0\VodkaDataAccess.csproj.AssemblyReference.cache
+F:\Employee\vodka\EmployeeDataAccess\obj\Debug\net6.0\VodkaDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+F:\Employee\vodka\EmployeeDataAccess\obj\Debug\net6.0\VodkaDataAccess.AssemblyInfoInputs.cache
+F:\Employee\vodka\EmployeeDataAccess\obj\Debug\net6.0\VodkaDataAccess.AssemblyInfo.cs
+F:\Employee\vodka\EmployeeDataAccess\obj\Debug\net6.0\VodkaDataAccess.csproj.CoreCompileInputs.cache
+F:\Employee\vodka\EmployeeDataAccess\obj\Debug\net6.0\VodkaDataAccess.csproj.CopyComplete
+F:\Employee\vodka\EmployeeDataAccess\obj\Debug\net6.0\VodkaDataAccess.dll
+F:\Employee\vodka\EmployeeDataAccess\obj\Debug\net6.0\refint\VodkaDataAccess.dll
+F:\Employee\vodka\EmployeeDataAccess\obj\Debug\net6.0\VodkaDataAccess.pdb
+F:\Employee\vodka\EmployeeDataAccess\obj\Debug\net6.0\VodkaDataAccess.genruntimeconfig.cache
+F:\Employee\vodka\EmployeeDataAccess\obj\Debug\net6.0\ref\VodkaDataAccess.dll

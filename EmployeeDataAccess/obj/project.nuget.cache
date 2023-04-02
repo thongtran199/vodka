@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "D1cfVmAzeuJAaR3GIsxyJ3WqaVIo0nOE4KvFQECSHCsj0VBW3rkqPDFd1W5HZSOYnoDNrJVPagc+AzbcNKbWzA==",
+  "dgSpecHash": "JDMjshSNx0Y3WJmGgrl9X3SsAS2kCggepbe772dcyDWHT6y3/Hy8GZhj8E00HP9giY8Eetqa2yXJxDUchHaQCQ==",
   "success": true,
-  "projectFilePath": "F:\\Employee\\QuanLyNhanVien\\EmployeeDataAccess\\EmployeeDataAccess.csproj",
+  "projectFilePath": "F:\\Employee\\vodka\\EmployeeDataAccess\\VodkaDataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

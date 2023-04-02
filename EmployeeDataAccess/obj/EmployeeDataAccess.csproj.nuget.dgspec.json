@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Employee\\QuanLyNhanVien\\EmployeeDataAccess\\EmployeeDataAccess.csproj": {}
+    "F:\\Employee\\vodka\\EmployeeDataAccess\\EmployeeDataAccess.csproj": {}
   },
   "projects": {
-    "F:\\Employee\\QuanLyNhanVien\\EmployeeDataAccess\\EmployeeDataAccess.csproj": {
+    "F:\\Employee\\vodka\\EmployeeDataAccess\\EmployeeDataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Employee\\QuanLyNhanVien\\EmployeeDataAccess\\EmployeeDataAccess.csproj",
+        "projectUniqueName": "F:\\Employee\\vodka\\EmployeeDataAccess\\EmployeeDataAccess.csproj",
         "projectName": "EmployeeDataAccess",
-        "projectPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeDataAccess\\EmployeeDataAccess.csproj",
+        "projectPath": "F:\\Employee\\vodka\\EmployeeDataAccess\\EmployeeDataAccess.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeDataAccess\\obj\\",
+        "outputPath": "F:\\Employee\\vodka\\EmployeeDataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj": {
-                "projectPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj"
+              "F:\\Employee\\vodka\\EmployeeEntities\\EmployeeEntities.csproj": {
+                "projectPath": "F:\\Employee\\vodka\\EmployeeEntities\\EmployeeEntities.csproj"
               }
             }
           }
@@ -89,14 +89,14 @@
         }
       }
     },
-    "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj": {
+    "F:\\Employee\\vodka\\EmployeeEntities\\EmployeeEntities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj",
+        "projectUniqueName": "F:\\Employee\\vodka\\EmployeeEntities\\EmployeeEntities.csproj",
         "projectName": "EmployeeEntities",
-        "projectPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj",
+        "projectPath": "F:\\Employee\\vodka\\EmployeeEntities\\EmployeeEntities.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\obj\\",
+        "outputPath": "F:\\Employee\\vodka\\EmployeeEntities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

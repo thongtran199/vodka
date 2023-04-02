@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "h6uAFK4Mo7IykvuQ5Kle79r0AdX0uAJk7tHEtv67huy42Zj9Hxis7xfpP+9rZgosVUNeoDda/gu5UiTZCSV0kA==",
+  "dgSpecHash": "KJGSaZv2voKsfkuN5wO2HuxBXM8fkpFIrAoDBGbe5hXZ1mrwe151JzEwDv6oO82k0Y3ccZ3NExc9fUyPMwC1Iw==",
   "success": true,
-  "projectFilePath": "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj",
+  "projectFilePath": "F:\\Employee\\vodka\\EmployeeEntities\\VodkaEntities.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

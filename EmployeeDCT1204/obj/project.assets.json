@@ -4038,23 +4038,24 @@
           "lib/net40/WebActivatorEx.dll": {}
         }
       },
-      "EmployeeDataAccess/1.0.0": {
+      "VodkaDataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "EmployeeEntities": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4",
-          "MySql.EntityFrameworkCore": "7.0.0"
+          "MySql.Data": "8.0.32.1",
+          "MySql.EntityFrameworkCore": "7.0.0",
+          "VodkaEntities": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/EmployeeDataAccess.dll": {}
+          "bin/placeholder/VodkaDataAccess.dll": {}
         },
         "runtime": {
-          "bin/placeholder/EmployeeDataAccess.dll": {}
+          "bin/placeholder/VodkaDataAccess.dll": {}
         }
       },
-      "EmployeeEntities/1.0.0": {
+      "VodkaEntities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -4062,26 +4063,26 @@
           "MySql.Data": "8.0.32.1"
         },
         "compile": {
-          "bin/placeholder/EmployeeEntities.dll": {}
+          "bin/placeholder/VodkaEntities.dll": {}
         },
         "runtime": {
-          "bin/placeholder/EmployeeEntities.dll": {}
+          "bin/placeholder/VodkaEntities.dll": {}
         }
       },
-      "EmployeeServices/1.0.0": {
+      "VodkaServices/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "EmployeeDataAccess": "1.0.0",
-          "EmployeeEntities": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.4",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4"
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4",
+          "VodkaDataAccess": "1.0.0",
+          "VodkaEntities": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/EmployeeServices.dll": {}
+          "bin/placeholder/VodkaServices.dll": {}
         },
         "runtime": {
-          "bin/placeholder/EmployeeServices.dll": {}
+          "bin/placeholder/VodkaServices.dll": {}
         }
       }
     }
@@ -11500,36 +11501,37 @@
         "webactivatorex.nuspec"
       ]
     },
-    "EmployeeDataAccess/1.0.0": {
+    "VodkaDataAccess/1.0.0": {
       "type": "project",
-      "path": "../EmployeeDataAccess/EmployeeDataAccess.csproj",
-      "msbuildProject": "../EmployeeDataAccess/EmployeeDataAccess.csproj"
+      "path": "../EmployeeDataAccess/VodkaDataAccess.csproj",
+      "msbuildProject": "../EmployeeDataAccess/VodkaDataAccess.csproj"
     },
-    "EmployeeEntities/1.0.0": {
+    "VodkaEntities/1.0.0": {
       "type": "project",
-      "path": "../EmployeeEntities/EmployeeEntities.csproj",
-      "msbuildProject": "../EmployeeEntities/EmployeeEntities.csproj"
+      "path": "../EmployeeEntities/VodkaEntities.csproj",
+      "msbuildProject": "../EmployeeEntities/VodkaEntities.csproj"
     },
-    "EmployeeServices/1.0.0": {
+    "VodkaServices/1.0.0": {
       "type": "project",
-      "path": "../EmployeeServices/EmployeeServices.csproj",
-      "msbuildProject": "../EmployeeServices/EmployeeServices.csproj"
+      "path": "../EmployeeServices/VodkaServices.csproj",
+      "msbuildProject": "../EmployeeServices/VodkaServices.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "EmployeeDataAccess >= 1.0.0",
-      "EmployeeEntities >= 1.0.0",
-      "EmployeeServices >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.4",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.4",
       "Microsoft.OpenApi >= 1.6.3",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.13",
+      "MySql.Data >= 8.0.32.1",
       "MySql.EntityFrameworkCore >= 7.0.0",
       "Swashbuckle >= 5.6.0",
-      "Swashbuckle.AspNetCore >= 6.5.0"
+      "Swashbuckle.AspNetCore >= 6.5.0",
+      "VodkaDataAccess >= 1.0.0",
+      "VodkaEntities >= 1.0.0",
+      "VodkaServices >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -11538,11 +11540,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Employee\\QuanLyNhanVien\\EmployeeDCT1204\\EmployeeDCT1204.csproj",
-      "projectName": "EmployeeDCT1204",
-      "projectPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeDCT1204\\EmployeeDCT1204.csproj",
+      "projectUniqueName": "F:\\Employee\\vodka\\EmployeeDCT1204\\Vodka.csproj",
+      "projectName": "Vodka",
+      "projectPath": "F:\\Employee\\vodka\\EmployeeDCT1204\\Vodka.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeDCT1204\\obj\\",
+      "outputPath": "F:\\Employee\\vodka\\EmployeeDCT1204\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -11559,14 +11561,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "F:\\Employee\\QuanLyNhanVien\\EmployeeDataAccess\\EmployeeDataAccess.csproj": {
-              "projectPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeDataAccess\\EmployeeDataAccess.csproj"
+            "F:\\Employee\\vodka\\EmployeeDataAccess\\VodkaDataAccess.csproj": {
+              "projectPath": "F:\\Employee\\vodka\\EmployeeDataAccess\\VodkaDataAccess.csproj"
             },
-            "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj": {
-              "projectPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj"
+            "F:\\Employee\\vodka\\EmployeeEntities\\VodkaEntities.csproj": {
+              "projectPath": "F:\\Employee\\vodka\\EmployeeEntities\\VodkaEntities.csproj"
             },
-            "F:\\Employee\\QuanLyNhanVien\\EmployeeServices\\EmployeeServices.csproj": {
-              "projectPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeServices\\EmployeeServices.csproj"
+            "F:\\Employee\\vodka\\EmployeeServices\\VodkaServices.csproj": {
+              "projectPath": "F:\\Employee\\vodka\\EmployeeServices\\VodkaServices.csproj"
             }
           }
         }
@@ -11608,6 +11610,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[6.0.13, )"
+          },
+          "MySql.Data": {
+            "target": "Package",
+            "version": "[8.0.32.1, )"
           },
           "MySql.EntityFrameworkCore": {
             "target": "Package",

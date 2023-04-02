@@ -3810,11 +3810,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj",
-      "projectName": "EmployeeEntities",
-      "projectPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\EmployeeEntities.csproj",
+      "projectUniqueName": "F:\\Employee\\vodka\\EmployeeEntities\\VodkaEntities.csproj",
+      "projectName": "VodkaEntities",
+      "projectPath": "F:\\Employee\\vodka\\EmployeeEntities\\VodkaEntities.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "F:\\Employee\\QuanLyNhanVien\\EmployeeEntities\\obj\\",
+      "outputPath": "F:\\Employee\\vodka\\EmployeeEntities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

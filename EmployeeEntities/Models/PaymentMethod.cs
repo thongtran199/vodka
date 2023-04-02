@@ -1,10 +1,13 @@
-﻿
-namespace EmployeeEntities
+﻿using System;
+using System.Collections.Generic;
+
+namespace VodkaEntities;
+
+public class Paymentmethod
 {
-    public enum PaymentMethod
-    {
-        Bank,
-        Cash,
-        Check
-    }
+    public string? PaymentId { get; set; }
+
+    public string? PaymentName { get; set; }
+
+    public string? Descript { get; set; }
 }

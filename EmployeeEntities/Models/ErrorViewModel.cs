@@ -1,4 +1,4 @@
-namespace EmployeeEntities
+namespace VodkaEntities
 {
     public class ErrorViewModel
     {
