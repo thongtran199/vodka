@@ -20,7 +20,6 @@ namespace VodkaServices.Implementation
         {
             var product = GetById(id);
             product.IsActive = "0";
-            //Console.WriteLine(product.ProductNum + " " + product.IsActive);
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
         }
@@ -28,12 +27,12 @@ namespace VodkaServices.Implementation
 
         public IEnumerable<Product> GetAll()
         {
-            return _context.Products.Where(x => x.IsActive.Equals("1")).ToList();
+            return _context.Products.Where(x => x.IsActive.Trim().Equals("1")).ToList();
         }
 
         public Product GetById(string id)
         {
-            return _context.Products.Where(x => x.ProductNum.Equals(id) && x.IsActive.Equals("1"))
+            return _context.Products.Where(x => x.ProductNum.Equals(id) && x.IsActive.Trim().Equals("1"))
                                     .FirstOrDefault();
         }
 

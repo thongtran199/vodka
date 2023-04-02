@@ -23,12 +23,12 @@ namespace VodkaServices.Implementation
 
         public IEnumerable<Category> GetAll()
         {
-            return _context.Categories.Where(x => x.IsActive.Equals("1")).ToList();
+            return _context.Categories.Where(x => x.IsActive.Trim().Equals("1")).ToList();
         }
 
         public Category GetById(string id)
         {
-            return _context.Categories.Where(x => x.CatId.Equals(id) && x.IsActive.Equals("1"))
+            return _context.Categories.Where(x => x.CatId.Equals(id) && x.IsActive.Trim().Equals("1"))
                                       .FirstOrDefault();
         }
 
