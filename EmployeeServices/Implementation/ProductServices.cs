@@ -5,8 +5,8 @@ namespace VodkaServices.Implementation
 {
     public class ProductServices : IProductService
     {
-        private VodkadatabaseContext _context;
-        public ProductServices(VodkadatabaseContext context)
+        private ApplicationDbContext _context;
+        public ProductServices(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -20,8 +20,8 @@ namespace VodkaServices.Implementation
         {
             var product = GetById(id);
             product.IsActive = "0";
-            //_context.Remove(product);
-            await UpdateAsSync(product);
+            //Console.WriteLine(product.ProductNum + " " + product.IsActive);
+            _context.Products.Update(product);
             await _context.SaveChangesAsync();
         }
 
@@ -33,7 +33,8 @@ namespace VodkaServices.Implementation
 
         public Product GetById(string id)
         {
-            return _context.Products.Where(x => x.ProductNum.Equals(id)).FirstOrDefault();
+            return _context.Products.Where(x => x.ProductNum.Equals(id) && x.IsActive.Equals("1"))
+                                    .FirstOrDefault();
         }
 
         public async Task UpdateAsSync(Product newProduct)

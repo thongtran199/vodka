@@ -10,8 +10,8 @@ namespace VodkaServices.Implementation
 {
     public class CategoryServices : ICategoryService
     {
-        private VodkadatabaseContext _context;
-        public CategoryServices(VodkadatabaseContext context){
+        private ApplicationDbContext _context;
+        public CategoryServices(ApplicationDbContext context){
             _context = context;
         }
 
@@ -28,7 +28,8 @@ namespace VodkaServices.Implementation
 
         public Category GetById(string id)
         {
-            return _context.Categories.Where(x => x.CatId.Equals(id)).FirstOrDefault();
+            return _context.Categories.Where(x => x.CatId.Equals(id) && x.IsActive.Equals("1"))
+                                      .FirstOrDefault();
         }
 
 
@@ -47,8 +48,7 @@ namespace VodkaServices.Implementation
         {
             var category = GetById(id);
             category.IsActive = "0";
-            await UpdateAsSync(category);
-            //_context.Categories.Remove(category);
+            _context.Categories.Update(category);
             await _context.SaveChangesAsync();
         }
 

@@ -1,22 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VodkaEntities;
 public class Useraccount
 {
-    public string UserId { get; set; } = null!;
+    [Key]
+    public string? UserId { get; set; }
 
-    public string UserName { get; set; } = null!;
+    public string UserName { get; set; }
 
-    public string UserPassword { get; set; } = null!;
+    public string UserPassword { get; set; }
 
     public int AccessLevel { get; set; }
 
-    public int TotalCash { get; set; }
+    public string? TotalCash { get; set; }
 
-    public string IsActive { get; set; } = null!;
+    public string IsActive { get; set; }
 
-    public string Email { get; set; } = null!;
+    public string Email { get; set; }
 
-    public string Address { get; set; } = null!;
+    public string Address { get; set; }
 }

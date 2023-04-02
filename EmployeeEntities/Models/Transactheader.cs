@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.ComponentModel.DataAnnotations;
 namespace VodkaEntities;
 
 public class Transactheader
 {
+    [Key]
     public string? TransactId { get; set; }
 
     public string? Net { get; set; }
@@ -22,4 +23,6 @@ public class Transactheader
     public string? WhoPay { get; set; }
 
     public string? Status { get; set; }
+
+    public ICollection<Transactdetail>? Transactdetail { get; set; }
 }

@@ -19,7 +19,7 @@ builder.Services.AddControllers();
 //    options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnectionfreesqldb"))
 //);
 
-builder.Services.AddDbContext<VodkadatabaseContext>(options =>
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnectiondb4free"))
 );
 

@@ -43,9 +43,9 @@ namespace Vodka.Controllers.Api
 
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteProduct(string id)
+        public async Task<IActionResult> DeleteProduct(string id)
         {
-            _productService.DeleteById(id);
+            await _productService.DeleteById(id);
             return NoContent();
         }
 
