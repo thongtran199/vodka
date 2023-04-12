@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Vodka.Models.Product;
 using VodkaServices;
@@ -7,14 +8,16 @@ namespace Vodka.Controllers.Api
 
     [ApiController]
     [Route("api/[controller]")]
+    
     public class ProductController : ControllerBase{
         private IProductService _productService;
         public ProductController(IProductService productService)
         {
             _productService = productService;
         }
-
+        
         [HttpGet]
+        [Authorize]
         public IActionResult GetAllProducts()
         {
             var model = _productService.GetAll().Select(product => new ProductIndexViewModel

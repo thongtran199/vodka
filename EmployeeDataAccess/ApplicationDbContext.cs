@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using VodkaEntities;
 namespace VodkaDataAccess;
 
-public partial class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext<Useraccount>
 {
-    public ApplicationDbContext(DbContextOptions options) : base(options)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
 
@@ -22,7 +23,7 @@ public partial class ApplicationDbContext : DbContext
 
     public DbSet<Transactheader> Transactheaders { get; set; }
 
-    public DbSet<Useraccount> Useraccounts { get; set; }
+    //public DbSet<Useraccount> Useraccounts { get; set; }
     protected override void OnModelCreating(ModelBuilder model)
     {
         base.OnModelCreating(model);
