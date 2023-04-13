@@ -3,7 +3,9 @@ using VodkaServices;
 using VodkaServices.Implementation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,13 +25,34 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnectiondb4free"))
 );
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = "MyIssuer",
+        ValidAudience = "MyAudience",
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("@VanthongSGU19092002"))
+    };
+});
+
 builder.Services.AddScoped<IProductService, ProductServices>();
 builder.Services.AddScoped<ICategoryService, CategoryServices>();
+builder.Services.AddScoped<ITaiKhoanService, TaiKhoanService>();
 
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
 });
+
+
 
 var app = builder.Build();
 
@@ -46,6 +69,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

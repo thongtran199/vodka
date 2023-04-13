@@ -11,8 +11,8 @@ using VodkaDataAccess;
 namespace VodkaDataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230402152735_Lan2")]
-    partial class Lan2
+    [Migration("20230413153411_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -202,26 +202,21 @@ namespace VodkaDataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("IsActive")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("TotalCash")
                         .HasColumnType("longtext");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("UserPassword")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("UserId");

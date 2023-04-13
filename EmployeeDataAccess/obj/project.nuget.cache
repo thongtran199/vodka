@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JDMjshSNx0Y3WJmGgrl9X3SsAS2kCggepbe772dcyDWHT6y3/Hy8GZhj8E00HP9giY8Eetqa2yXJxDUchHaQCQ==",
+  "dgSpecHash": "WFEnqHOYXsd2kxVU6Q4I+d5rj4z7yFFcTWNOtBUWVj0sOIo9nDLBbut7z2iPmlD7f7/4o9iZRa8/G5Ai+hlETg==",
   "success": true,
   "projectFilePath": "F:\\Employee\\vodka\\EmployeeDataAccess\\VodkaDataAccess.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\ADMIN\\.nuget\\packages\\k4os.compression.lz4\\1.2.6\\k4os.compression.lz4.1.2.6.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\k4os.compression.lz4.streams\\1.2.6\\k4os.compression.lz4.streams.1.2.6.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\k4os.hash.xxhash\\1.0.6\\k4os.hash.xxhash.1.0.6.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.8\\microsoft.aspnetcore.authentication.jwtbearer.6.0.8.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",

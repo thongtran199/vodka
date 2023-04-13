@@ -311,3 +311,4 @@ F:\Employee\vodka\EmployeeDCT1204\obj\Debug\net6.0\refint\Vodka.dll
 F:\Employee\vodka\EmployeeDCT1204\obj\Debug\net6.0\Vodka.pdb
 F:\Employee\vodka\EmployeeDCT1204\obj\Debug\net6.0\Vodka.genruntimeconfig.cache
 F:\Employee\vodka\EmployeeDCT1204\obj\Debug\net6.0\ref\Vodka.dll
+F:\Employee\vodka\EmployeeDCT1204\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace VodkaDataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class KhoiTao : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -82,13 +82,13 @@ namespace VodkaDataAccess.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false),
-                    UserName = table.Column<string>(type: "longtext", nullable: false),
-                    UserPassword = table.Column<string>(type: "longtext", nullable: false),
+                    UserName = table.Column<string>(type: "longtext", nullable: true),
+                    UserPassword = table.Column<string>(type: "longtext", nullable: true),
                     AccessLevel = table.Column<int>(type: "int", nullable: false),
                     TotalCash = table.Column<string>(type: "longtext", nullable: true),
-                    IsActive = table.Column<string>(type: "longtext", nullable: false),
-                    Email = table.Column<string>(type: "longtext", nullable: false),
-                    Address = table.Column<string>(type: "longtext", nullable: false)
+                    IsActive = table.Column<string>(type: "longtext", nullable: true),
+                    Email = table.Column<string>(type: "longtext", nullable: true),
+                    Address = table.Column<string>(type: "longtext", nullable: true)
                 },
                 constraints: table =>
                 {

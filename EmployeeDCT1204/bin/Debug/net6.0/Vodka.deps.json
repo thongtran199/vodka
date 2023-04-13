@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Vodka/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.8",
           "Microsoft.EntityFrameworkCore": "7.0.4",
           "Microsoft.EntityFrameworkCore.Design": "7.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4",
@@ -168,6 +169,17 @@
           "lib/net40/System.Web.Http.WebHost.dll": {
             "assemblyVersion": "4.0.0.0",
             "fileVersion": "4.0.20710.0"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.8": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.21.0"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "assemblyVersion": "6.0.8.0",
+            "fileVersion": "6.0.822.36316"
           }
         }
       },
@@ -2667,6 +2679,7 @@
       },
       "VodkaDataAccess/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.8",
           "Microsoft.EntityFrameworkCore": "7.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4",
           "MySql.Data": "8.0.32.1",
@@ -2679,6 +2692,7 @@
       },
       "VodkaEntities/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4",
           "MySql.Data": "8.0.32.1"
         },
@@ -2688,6 +2702,7 @@
       },
       "VodkaServices/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.8",
           "Microsoft.EntityFrameworkCore": "7.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4",
           "VodkaDataAccess": "1.0.0",
@@ -2795,6 +2810,13 @@
       "sha512": "sha512-Pqje5F4BJvnN6z2eSIuyCCZNJbIPap/4bYfvvHYy/kiYPj7+cFK+tgcSKWgITwk+6K8v+Bf3Et16DXQQuK+wEg==",
       "path": "microsoft.aspnet.webapi.webhost/4.0.20710",
       "hashPath": "microsoft.aspnet.webapi.webhost.4.0.20710.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ktmldryRkyAMRQpluCZaltRvlcOrlE9SQDmnMOh+XTbck6Vi296UjvwdJb4ULU6PgvZh5j00KAp7uhjpcWQopA==",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/6.0.8",
+      "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.6.0.8.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor.Language/6.0.0": {
       "type": "package",
