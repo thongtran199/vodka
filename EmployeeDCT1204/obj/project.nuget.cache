@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2SUiIkTQVdccHuppeaF4eJERhivBjzMtAyB6x6T50BDFkzWZq6gHU3ybzG0JY8fzEwHZUDdX+qCJNk02S3aCLA==",
+  "dgSpecHash": "Baq3PC8JbkSf+bcNHQ0CXR9QLFuefL6Yk/AofY7pC1lPzE2+BKIWxoeDw/NKNCZfK2lAhfEsK+xu+OUWAQjATA==",
   "success": true,
   "projectFilePath": "F:\\Employee\\vodka\\EmployeeDCT1204\\Vodka.csproj",
   "expectedPackageFiles": [
@@ -17,6 +17,7 @@
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnet.webapi.client\\4.0.20710\\microsoft.aspnet.webapi.client.4.0.20710.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnet.webapi.core\\4.0.20710\\microsoft.aspnet.webapi.core.4.0.20710.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnet.webapi.webhost\\4.0.20710\\microsoft.aspnet.webapi.webhost.4.0.20710.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.8\\microsoft.aspnetcore.authentication.jwtbearer.6.0.8.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.0\\microsoft.aspnetcore.razor.language.6.0.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.build\\17.3.2\\microsoft.build.17.3.2.nupkg.sha512",

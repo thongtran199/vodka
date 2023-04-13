@@ -199,26 +199,21 @@ namespace VodkaDataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("IsActive")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("TotalCash")
                         .HasColumnType("longtext");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("UserPassword")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("UserId");
