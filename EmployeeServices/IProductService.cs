@@ -11,6 +11,9 @@ namespace VodkaServices
         Product GetById(string id);
         IEnumerable<Product> GetAll();
 
+        int GetLastId();
+
+        IEnumerable<Product> GetProductsByCategoryId(string id);
         //IEnumerable<SelectListItem> GetAllProductsForPayroll();
     }
 }

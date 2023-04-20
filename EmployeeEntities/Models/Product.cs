@@ -31,5 +31,5 @@ public class Product
 
     [ForeignKey("CatId")]
     public string? CatId { get; set; }
-    public Category? Category { get; set; }
+    public VodkaEntities.Category? Category { get; set; }
 }

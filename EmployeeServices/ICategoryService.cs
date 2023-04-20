@@ -17,5 +17,6 @@ namespace VodkaServices
         Category GetById(string id);
 
         IEnumerable<Category> GetAll();
+        int GetLastId();
     }
 }

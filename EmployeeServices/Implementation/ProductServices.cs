@@ -1,5 +1,7 @@
 ﻿using VodkaEntities;
 using VodkaDataAccess;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace VodkaServices.Implementation
 {
@@ -27,13 +29,22 @@ namespace VodkaServices.Implementation
 
         public IEnumerable<Product> GetAll()
         {
-            return _context.Products.Where(x => x.IsActive.Trim().Equals("1")).ToList();
+            return (IEnumerable<Product>)_context.Products
+                .Where(x => x.IsActive.Trim().Equals("1"))
+                .ToList();
         }
 
-        public Product GetById(string id)
+        public Product? GetById(string id)
         {
             return _context.Products.Where(x => x.ProductNum.Equals(id) && x.IsActive.Trim().Equals("1"))
+                                    .Include(x => x.Transactdetail)
                                     .FirstOrDefault();
+        }
+
+        public int GetLastId()
+        {
+            var p =  _context.Products.OrderByDescending(i => i.ProductNum).FirstOrDefault();
+            return int.Parse(p.ProductNum.Replace("P",""));
         }
 
         public async Task UpdateAsSync(Product newProduct)
@@ -50,6 +61,10 @@ namespace VodkaServices.Implementation
                 _context.Products.Update(product);
                 await _context.SaveChangesAsync();
             }
+        }
+        public IEnumerable<Product> GetProductsByCategoryId(string CatId)
+        {
+            return _context.Products.Where(p => p.CatId.Equals(CatId)).ToList();
         }
     }
 }

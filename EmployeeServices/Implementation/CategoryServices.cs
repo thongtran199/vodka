@@ -23,12 +23,12 @@ namespace VodkaServices.Implementation
 
         public IEnumerable<Category> GetAll()
         {
-            return _context.Categories.Where(x => x.IsActive.Trim().Equals("1")).ToList();
+            return _context.Categories.ToList();
         }
 
         public Category GetById(string id)
         {
-            return _context.Categories.Where(x => x.CatId.Equals(id) && x.IsActive.Trim().Equals("1"))
+            return _context.Categories.Where(x => x.CatId.Equals(id))
                                       .FirstOrDefault();
         }
 
@@ -57,5 +57,12 @@ namespace VodkaServices.Implementation
             _context.Categories.Update(category);
             await _context.SaveChangesAsync();
         }
+        public int GetLastId()
+        {
+            var p = _context.Categories.OrderByDescending(i => i.CatId).FirstOrDefault();
+            return int.Parse(p.CatId.Replace("C", ""));
+        }
+
+
     }
 }

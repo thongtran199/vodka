@@ -10,5 +10,7 @@ namespace Vodka.Models.Category
 
         public string? Descript { get; set; }
 
+        public string? IsActive { get; set; }
+
     }
 }

@@ -46,6 +46,11 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddScoped<IProductService, ProductServices>();
 builder.Services.AddScoped<ICategoryService, CategoryServices>();
 builder.Services.AddScoped<ITaiKhoanService, TaiKhoanService>();
+builder.Services.AddScoped<IPaymentmethodService, PaymentmethodServices>();
+builder.Services.AddScoped<ITransactheaderService, TransactheaderServices>();
+builder.Services.AddScoped<ITransactdetailService, TransactdetailServices>();
+builder.Services.AddScoped<ITaxinfoService, TaxinfoServices>();
+builder.Services.AddScoped<IUseraccountService, UseraccountServices>();
 
 builder.Services.AddSwaggerGen(c =>
 {
