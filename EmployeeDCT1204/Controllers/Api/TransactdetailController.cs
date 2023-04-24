@@ -12,13 +12,13 @@ namespace Vodka.Controllers.Api
         private ITransactdetailService _transactdetailService;
         private ITransactheaderService _transactheaderService;
         private IProductService _productService;
-        private IUseraccountService _useraccountService;
-        public TransactdetailController(ITransactdetailService transactdetailService, ITransactheaderService transactheaderService, IProductService productService, IUseraccountService useraccountService)
+        private ITaxinfoService _taxinfoService;
+        public TransactdetailController(ITaxinfoService taxinfoService, ITransactdetailService transactdetailService, ITransactheaderService transactheaderService, IProductService productService)
         {
             _transactdetailService = transactdetailService;
             _transactheaderService = transactheaderService;
             _productService = productService;
-            _useraccountService = useraccountService;
+            _taxinfoService = taxinfoService;
         }
 
         [HttpGet("GetAllTransactdetails")]
@@ -65,13 +65,33 @@ namespace Vodka.Controllers.Api
         {
             try
             {
+                var transactdetail = _transactdetailService.GetById(id);
+                var transactheader = _transactheaderService.GetById(transactdetail.TransactId);
+                var total = transactdetail.Total;
                 await _transactdetailService.DeleteById(id);
+
+                transactheader.Net = (float.Parse(transactheader.Net) - float.Parse(total)).ToString();
+
+                float totalRate = 0;
+
+                var tax1 = _taxinfoService.GetById("T01");
+                var tax2 = _taxinfoService.GetById("T02");
+                var tax3 = _taxinfoService.GetById("T03");
+                if (tax1 != null && transactheader.Tax1.Equals("1"))
+                    totalRate += float.Parse(tax1.TaxRate);
+                if (tax2 != null && transactheader.Tax2.Equals("1"))
+                    totalRate += float.Parse(tax2.TaxRate);
+                if (tax3 != null && transactheader.Tax3.Equals("1"))
+                    totalRate += float.Parse(tax3.TaxRate);
+
+                _transactheaderService.UpdateTotalCash(transactheader, totalRate);
+
             }
             catch (Exception ex)
             {
-                return BadRequest("Id danh muc khong hop le");
+                return BadRequest("Transactdetail ID không hợp lệ !");
             }
-            return NoContent();
+            return Ok();
 
         }
         [HttpPut("UpdateAsSync")]
@@ -90,9 +110,27 @@ namespace Vodka.Controllers.Api
             transactdetail.Tax1 = model.Tax1;
             transactdetail.Tax2 = model.Tax2;
             transactdetail.Tax3 = model.Tax3;
+
+            var transactheader = _transactheaderService.GetById(transactdetail.TransactId);
+            transactheader.Net = (float.Parse(transactheader.Net) - float.Parse(transactdetail.Total)).ToString();
             transactdetail.Total = model.Total;
+            transactheader.Net = (float.Parse(transactheader.Net) + float.Parse(transactdetail.Total)).ToString();
             transactdetail.Quan = model.Quan;
             transactdetail.Status = model.Status;
+
+            float totalRate = 0;
+
+            var tax1 = _taxinfoService.GetById("T01");
+            var tax2 = _taxinfoService.GetById("T02");
+            var tax3 = _taxinfoService.GetById("T03");
+            if (tax1 != null && transactheader.Tax1.Equals("1"))
+                totalRate += float.Parse(tax1.TaxRate);
+            if (tax2 != null && transactheader.Tax2.Equals("1"))
+                totalRate += float.Parse(tax2.TaxRate);
+            if (tax3 != null && transactheader.Tax3.Equals("1"))
+                totalRate += float.Parse(tax3.TaxRate);
+
+            _transactheaderService.UpdateTotalCash(transactheader, totalRate);
 
             await _transactdetailService.UpdateAsSync(transactdetail);
             return Ok();
@@ -135,12 +173,22 @@ namespace Vodka.Controllers.Api
                 ProductNum = model.ProductNum
             };
 
-            product.Quan = (int.Parse(product.Quan) - model.Quan).ToString();
-            transactheader.Total = (float.Parse(transactheader.Total) + float.Parse(model.Total)).ToString();
-            transactheader.Net = transactheader.Total;
+            transactheader.Net = (float.Parse(transactheader.Total) + float.Parse(model.Total)).ToString();
 
-            var user = _useraccountService.GetById(transactheader.WhoPay);
-            user.TotalCash = (float.Parse(user.TotalCash) + float.Parse(model.Total)).ToString();
+
+            float totalRate = 0;
+
+            var tax1 = _taxinfoService.GetById("T01");
+            var tax2 = _taxinfoService.GetById("T02");
+            var tax3 = _taxinfoService.GetById("T03");
+            if (tax1 != null && transactheader.Tax1.Equals("1"))
+                totalRate += float.Parse(tax1.TaxRate);
+            if (tax2 != null && transactheader.Tax2.Equals("1"))
+                totalRate += float.Parse(tax2.TaxRate);
+            if (tax3 != null && transactheader.Tax3.Equals("1"))
+                totalRate += float.Parse(tax3.TaxRate);
+
+            _transactheaderService.UpdateTotalCash(transactheader, totalRate);
 
             await _transactdetailService.CreateAsSync(transactdetail);
             return Ok();

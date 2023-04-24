@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing.Constraints;
 using Vodka.Models.Transactheader;
 using VodkaEntities;
 using VodkaServices;
@@ -9,12 +10,16 @@ namespace Vodka.Controllers.Api
     [Route("api/[controller]")]
     public class TransactheaderController : ControllerBase
     {
+        private ITransactdetailService _transactdetailService;
         private ITransactheaderService _transactheaderService;
         private IUseraccountService _useraccountService;
-        public TransactheaderController(ITransactheaderService transactheaderService, IUseraccountService useraccountService)
+        private IProductService _productService;
+        public TransactheaderController(ITransactdetailService transactdetailService, ITransactheaderService transactheaderService, IUseraccountService useraccountService, IProductService productService)
         {
             _transactheaderService = transactheaderService;
             _useraccountService = useraccountService;
+            _productService = productService;
+            _transactdetailService = transactdetailService;
         }
 
         [HttpGet("GetAllTransactheaders")]
@@ -30,7 +35,7 @@ namespace Vodka.Controllers.Api
                 Total = x.Total,
                 TimePayment = x.TimePayment,
                 WhoPay = x.WhoPay,
-                Status  =x.Status
+                Status = x.Status
             }).ToList();
             return Ok(transactheaderList);
         }
@@ -63,9 +68,9 @@ namespace Vodka.Controllers.Api
             }
             catch (Exception ex)
             {
-                return BadRequest("Id danh muc khong hop le");
+                return BadRequest("Transactheader ID không hợp lệ");
             }
-            return NoContent();
+            return Ok();
 
         }
         [HttpPut("UpdateAsSync")]
@@ -118,11 +123,57 @@ namespace Vodka.Controllers.Api
                 Total = model.Total,
                 TimePayment = model.TimePayment,
                 WhoPay = model.WhoPay,
-                Status = model.Status
+                Status = "0"
             };
 
             await _transactheaderService.CreateAsSync(transactheader);
             return Ok();
         }
+        [HttpGet("XacNhanMuaHang/{id}")]
+        public async Task<IActionResult> XacNhanMuaHang(string id)
+        {
+            var transactheader = _transactheaderService.GetById(id);
+            if (transactheader != null && transactheader.Status.Equals("0"))
+            {
+                transactheader.Status = "1";
+                await _transactheaderService.UpdateAsSync(transactheader);
+                return Ok();
+            }
+            return BadRequest("Don hang khong tim thay hoặc Status != 0 !");
+        }
+
+        [HttpGet("BanGiaoShipper/{id}")]
+        public async Task<IActionResult> BanGiaoShipper(string id)
+        {
+            var transactheader = _transactheaderService.GetById(id);
+            if (transactheader != null && transactheader.Status.Equals("1"))
+            {
+                var transactdetails = _transactdetailService.GetTransactdetailsByTransactheaderId(transactheader.TransactId);
+                if (transactdetails != null)
+                {
+                    foreach (Transactdetail detail in transactdetails)
+                    {
+                        var product = _productService.GetById(detail.ProductNum);
+                        Console.WriteLine("PRODUCT NUM: "+ detail.ProductNum);
+                        var sl_conlai = int.Parse(product.Quan) - detail.Quan;
+                        if (sl_conlai >= 0)
+                        {
+                            product.Quan = sl_conlai.ToString();
+                        }
+                        else
+                            return BadRequest("Số lượng sản phẩm " + product.ProductNum + " không đủ");
+                        await _productService.UpdateAsSync(product);
+                    }
+                }
+                var user = _useraccountService.GetById(transactheader.WhoPay);
+                user.TotalCash = (float.Parse(user.TotalCash) + float.Parse(transactheader.Total)).ToString();
+
+                transactheader.Status = "2";
+                await _transactheaderService.UpdateAsSync(transactheader);
+                return Ok();
+            }
+            return BadRequest("Đơn hàng không tìm thấy hoặc chưa xác nhận mua hoặc đã giao cho shipper hoặc đã bị xóa !");
+        }
+
     }
 }

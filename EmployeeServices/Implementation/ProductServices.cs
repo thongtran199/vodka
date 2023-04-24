@@ -47,9 +47,9 @@ namespace VodkaServices.Implementation
             return int.Parse(p.ProductNum.Replace("P",""));
         }
 
-        public async Task UpdateAsSync(Product newProduct)
+        public async Task UpdateAsSync(Product product)
         {
-            _context.Products.Update(newProduct);
+            _context.Products.Update(product);
             await _context.SaveChangesAsync();
         }
 

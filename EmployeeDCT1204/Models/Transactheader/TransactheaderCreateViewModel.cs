@@ -16,6 +16,5 @@
 
         public string? WhoPay { get; set; }
 
-        public string? Status { get; set; }
     }
 }

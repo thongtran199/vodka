@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
 namespace VodkaServices.Implementation
 {
@@ -47,8 +48,12 @@ namespace VodkaServices.Implementation
         public async Task DeleteById(string id)
         {
             var transactheader = GetById(id);
-            _context.Transactheaders.Update(transactheader);
-            await _context.SaveChangesAsync();
+            if (transactheader != null)
+            {
+                transactheader.Status = "3";
+                _context.Transactheaders.Update(transactheader);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task UpdateAsSync(Transactheader transactheader)
@@ -60,6 +65,12 @@ namespace VodkaServices.Implementation
         {
             var th = _context.Transactheaders.OrderByDescending(i => i.TransactId).FirstOrDefault();
             return int.Parse(th.TransactId.Replace("TS", ""));
+        }
+        public async Task UpdateTotalCash(Transactheader transactheader, float totalRate)
+        {
+            var totalCash = float.Parse(transactheader.Net) + (float.Parse(transactheader.Net) * (totalRate / 100));
+            transactheader.Total = ((int)Math.Round(totalCash, 0)).ToString();
+            await _context.SaveChangesAsync();
         }
     }
 }

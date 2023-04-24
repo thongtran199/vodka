@@ -25,6 +25,10 @@ namespace VodkaServices.Implementation
         {
             return _context.Transactdetails.ToList();
         }
+        public IEnumerable<Transactdetail> GetTransactdetailsByTransactheaderId(string id)
+        {
+            return _context.Transactdetails.Where(x => x.TransactId.Equals(id)).ToList();
+        }
 
         public Transactdetail GetById(string id)
         {
@@ -47,6 +51,7 @@ namespace VodkaServices.Implementation
         public async Task DeleteById(string id)
         {
             var transactdetail = GetById(id);
+            transactdetail.Status = "3";
             _context.Transactdetails.Update(transactdetail);
             await _context.SaveChangesAsync();
         }
@@ -61,5 +66,6 @@ namespace VodkaServices.Implementation
             var td = _context.Transactdetails.OrderByDescending(i => i.TransactDetailId).FirstOrDefault();
             return int.Parse(td.TransactDetailId.Replace("TD", ""));
         }
+        
     }
 }
