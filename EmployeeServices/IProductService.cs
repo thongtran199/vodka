@@ -14,6 +14,8 @@ namespace VodkaServices
         int GetLastId();
 
         IEnumerable<Product> GetProductsByCategoryId(string id);
+
+        IEnumerable<Product> FilterProductByPrice(float minPrice, float maxPrice);
         //IEnumerable<SelectListItem> GetAllProductsForPayroll();
     }
 }

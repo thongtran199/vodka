@@ -2,6 +2,8 @@
 using VodkaDataAccess;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Vodka.Models.Product;
+using System;
 
 namespace VodkaServices.Implementation
 {
@@ -65,6 +67,38 @@ namespace VodkaServices.Implementation
         public IEnumerable<Product> GetProductsByCategoryId(string CatId)
         {
             return _context.Products.Where(p => p.CatId.Equals(CatId)).ToList();
+        }
+
+        public IEnumerable<Product> FilterProductByPrice(float minPrice, float maxPrice)
+        {
+            var products = GetAll();
+            var filterProducts = new List<Product>();
+
+            if ( maxPrice == 0)
+            {
+                foreach (var p in products)
+                {
+                    if (float.Parse(p.Price) >= minPrice)
+                    {
+                        filterProducts.Add(p);
+                    }
+                }
+            }
+
+            else
+            {
+                foreach (var p in products)
+                {
+                    if (float.Parse(p.Price) >= minPrice && float.Parse(p.Price) <= maxPrice)
+                    {
+                        filterProducts.Add(p);
+                    }
+                }
+            }
+            return filterProducts;
+
+
+
         }
     }
 }

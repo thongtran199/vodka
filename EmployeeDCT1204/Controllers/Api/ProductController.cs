@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using NuGet.Versioning;
 using System.Collections.Generic;
 using Vodka.Models.Product;
 using VodkaEntities;
@@ -68,6 +69,51 @@ namespace Vodka.Controllers.Api
                 Transactdetail = null
             };
             return Ok(model);
+        }
+
+        [HttpGet("FilterProductByPrice")]
+        public IActionResult FilterProductByPrice([FromQuery] ProductFilterViewModel model)
+        {
+            if (model.minPrice == null && model.maxPrice == null) return NotFound("Khong co tham so truyen vao!");
+            float minPrice = 0, maxPrice = 0;
+            try
+            {
+                if(model.minPrice ==null)
+                    minPrice = 0;
+                else
+                    minPrice = float.Parse(model.minPrice.Trim());
+
+                if (model.maxPrice == null)
+                    maxPrice = 0;
+                else
+                    maxPrice = float.Parse(model.maxPrice.Trim());
+
+            }
+            catch (Exception ex)
+            {
+                return NotFound("Tham so truyen vao khong phai so");
+            }
+            if ((minPrice > maxPrice && maxPrice != 0) || maxPrice < 0)
+            {
+                return NotFound("minPrice khong the > maxPrice, maxPrice phai > 0 !");
+            }
+            var products = _productService.FilterProductByPrice(minPrice, maxPrice).Select( product => new ProductIndexViewModel
+            {
+                ProductNum = product.ProductNum,
+                ProductName = product.ProductName,
+                Descript = product.Descript,
+                Price = product.Price,
+                Tax1 = product.Tax1,
+                Tax2 = product.Tax2,
+                Tax3 = product.Tax3,
+                Quan = product.Quan,
+                IsActive = product.IsActive,
+                ImageSource = product.ImageSource,
+                CatId = product.CatId,
+                Category = null,
+                Transactdetail = null
+            }).ToList();
+            return Ok(products);
         }
 
         [HttpGet("GetProductsByCategoryId")]
