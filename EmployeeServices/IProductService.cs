@@ -9,13 +9,18 @@ namespace VodkaServices
         Task UpdateAsSync(Product newProduct);
         Task DeleteById(string id);
         Product GetById(string id);
+        Product GetProductByName(string name);
+        IEnumerable<Product> FilterProductByName(string str);
+        IEnumerable<Product> FilterProductByPrice(float minPrice, float maxPrice);
+        IEnumerable<Product> GetProductsByCategoryId(string id);
+        IEnumerable<Product> GetProductFromMToN(int m, int n);
         IEnumerable<Product> GetAll();
 
         int GetLastId();
 
-        IEnumerable<Product> GetProductsByCategoryId(string id);
+        
 
-        IEnumerable<Product> FilterProductByPrice(float minPrice, float maxPrice);
+        
         //IEnumerable<SelectListItem> GetAllProductsForPayroll();
     }
 }

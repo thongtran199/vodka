@@ -59,6 +59,25 @@ namespace Vodka.Controllers.Api
             };
             return Ok(model);
         }
+
+        [HttpGet("GetTransactheadersByUserId/{userId}")]
+        public IActionResult GetTransactheadersByUserId(string userId)
+        {
+            var transactheaders = _transactheaderService.GetTransactheadersByUserId(userId)
+                                    .Select(x => new TransactheaderIndexViewModel
+                                    {
+                                        TransactId = x.TransactId,
+                                        Net = x.Net,
+                                        Tax1 = x.Tax1,
+                                        Tax2 = x.Tax2,
+                                        Tax3 = x.Tax3,
+                                        Total = x.Total,
+                                        TimePayment = x.TimePayment,
+                                        WhoPay = x.WhoPay,
+                                        Status = x.Status
+                                    }).ToList();
+            return Ok(transactheaders); 
+        }
         [HttpDelete("DeleteTransactheaderById")]
         public async Task<IActionResult> DeleteTransactheaderById(string id)
         {

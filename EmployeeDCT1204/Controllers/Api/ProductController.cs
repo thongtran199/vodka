@@ -116,6 +116,52 @@ namespace Vodka.Controllers.Api
             return Ok(products);
         }
 
+        [HttpGet("FilterProductByName/{str}")]
+        public IActionResult FilterProductByName(string str)
+        {
+            var model = _productService.FilterProductByName(str).Select(product => new ProductIndexViewModel
+            {
+                ProductNum = product.ProductNum,
+                ProductName = product.ProductName,
+                Descript = product.Descript,
+                Price = product.Price,
+                Tax1 = product.Tax1,
+                Tax2 = product.Tax2,
+                Tax3 = product.Tax3,
+                Quan = product.Quan,
+                IsActive = product.IsActive,
+                ImageSource = product.ImageSource,
+                CatId = product.CatId,
+                Category = null,
+                Transactdetail = null
+            }).ToList();
+            return Ok(model);
+        }
+
+        [HttpGet("GetProductByName/{name}")]
+        public IActionResult GetProductByName(string name)
+        {
+            var product = _productService.GetProductByName(name);
+            if (product == null) return NotFound();
+            var model = new ProductDetailViewModel
+            {
+                ProductNum = product.ProductNum,
+                ProductName = product.ProductName,
+                Descript = product.Descript,
+                Price = product.Price,
+                Tax1 = product.Tax1,
+                Tax2 = product.Tax2,
+                Tax3 = product.Tax3,
+                Quan = product.Quan,
+                IsActive = product.IsActive,
+                ImageSource = product.ImageSource,
+                CatId = product.CatId,
+                Category = null,
+                Transactdetail = null
+            };
+            return Ok(model);
+        }
+
         [HttpGet("GetProductsByCategoryId")]
         public IActionResult GetProductsByCategoryId(string id)
         {
@@ -140,6 +186,33 @@ namespace Vodka.Controllers.Api
             return Ok(products);
         }
 
+        [HttpGet("GetProductFromMToN")]
+        public IActionResult GetProductFromMToN(int m, int n)
+        {
+            if (m <= 0 || n <= 0)
+                return NotFound("m hoac n khong duoc nho hon hoac bang 0");
+            if (m > n)
+                return NotFound("m khong duoc lon hon n");
+            var model = _productService.GetProductFromMToN(m, n).Select(product => new ProductDetailViewModel
+            {
+                ProductNum = product.ProductNum,
+                ProductName = product.ProductName,
+                Descript = product.Descript,
+                Price = product.Price,
+                Tax1 = product.Tax1,
+                Tax2 = product.Tax2,
+                Tax3 = product.Tax3,
+                Quan = product.Quan,
+                IsActive = product.IsActive,
+                ImageSource = product.ImageSource,
+                CatId = product.CatId,
+                Category = null,
+                Transactdetail = null
+            }).ToList();
+
+            return Ok(model);
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(string id)
         {
@@ -147,19 +220,19 @@ namespace Vodka.Controllers.Api
             return NoContent();
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(string id, [FromBody] ProductEditViewModel model)
+        [HttpPut("UpdateProduct")]
+        public async Task<IActionResult> UpdateProduct([FromBody] ProductEditViewModel model)
         {
-            if (model == null || !id.Equals(model.ProductNum) || int.Parse(model.Quan) < 0)
+            if (model == null || model.ProductNum == null || model.CatId == null)
             {
-                return BadRequest();
+                return BadRequest("Khong chua ProductNum");
             }
-
-            var existingProduct = _productService.GetById(id);
+            
+            var existingProduct = _productService.GetById(model.ProductNum);
 
             if (existingProduct == null)
-            {
-                return NotFound();
+            { 
+                return NotFound("Khong tim thay product muon cap nhat !");
             }
 
             var category = _categoryService.GetById(model.CatId);
@@ -167,14 +240,14 @@ namespace Vodka.Controllers.Api
             {
                 return BadRequest("Category id khong hop le !");
             }
-            existingProduct.ProductName = model.ProductName;
-            existingProduct.Descript = model.Descript;
-            existingProduct.Price = model.Price;
-            existingProduct.Tax1 = model.Tax1;
-            existingProduct.Tax2 = model.Tax2;
-            existingProduct.Tax3 = model.Tax3;
-            existingProduct.Quan = model.Quan;
-            existingProduct.ImageSource = model.ImageSource;
+            existingProduct.ProductName = model.ProductName != null && !model.ProductName.Trim().Equals("") ? model.ProductName : existingProduct.ProductName;
+            existingProduct.Descript = model.Descript != null && !model.Descript.Trim().Equals("") ? model.Descript : existingProduct.Descript;
+            existingProduct.Price = model.Price != null && !model.Price.Trim().Equals("") ? model.Price : existingProduct.Price;
+            existingProduct.Tax1 = model.Tax1 != null && !model.Tax1.Trim().Equals("") ? model.Tax1 : existingProduct.Tax1;
+            existingProduct.Tax2 = model.Tax2 != null && !model.Tax2.Trim().Equals("") ? model.Tax2 : existingProduct.Tax2;
+            existingProduct.Tax3 = model.Tax3 != null && !model.Tax3.Trim().Equals("") ? model.Tax3 : existingProduct.Tax3;
+            existingProduct.Quan = model.Quan != null && !model.Quan.Trim().Equals("") && float.Parse(model.Quan) >= 0 ? model.Quan : existingProduct.Quan;
+            existingProduct.ImageSource = model.ImageSource != null && !model.ImageSource.Trim().Equals("") ? model.ImageSource : existingProduct.ImageSource;
             existingProduct.CatId = model.CatId;
             existingProduct.Category = category;
 
@@ -183,7 +256,7 @@ namespace Vodka.Controllers.Api
             return NoContent();
         }
 
-        [HttpPost]
+        [HttpPost("CreateProduct")]
         public async Task<IActionResult> CreateProduct([FromBody]ProductCreateViewModel model)
         {
             if (model == null)

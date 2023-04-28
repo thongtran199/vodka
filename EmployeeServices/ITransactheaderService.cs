@@ -11,6 +11,7 @@ namespace VodkaServices
     {
         public IEnumerable<Transactheader> GetAll();
         public Transactheader GetById(string id);
+        public IEnumerable<Transactheader> GetTransactheadersByUserId(string userId);
         public Task DeleteById(string id);
         public Task UpdateAsSync(Transactheader transactheader);
         public Task UpdateById(string id);

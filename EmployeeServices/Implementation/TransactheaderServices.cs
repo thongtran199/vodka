@@ -72,5 +72,10 @@ namespace VodkaServices.Implementation
             transactheader.Total = ((int)Math.Round(totalCash, 0)).ToString();
             await _context.SaveChangesAsync();
         }
+
+        public IEnumerable<Transactheader> GetTransactheadersByUserId(string userId)
+        {
+            return _context.Transactheaders.Where(x => x.WhoPay.Equals(userId)).ToList();
+        }
     }
 }

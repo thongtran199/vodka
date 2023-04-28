@@ -16,6 +16,7 @@ namespace VodkaServices
         Task DeleteById(string id);
         Task UpdateAsSync(Transactdetail transactdetail);
         int GetLastId();
+
         IEnumerable<Transactdetail> GetTransactdetailsByTransactheaderId(string id);
     }
 }

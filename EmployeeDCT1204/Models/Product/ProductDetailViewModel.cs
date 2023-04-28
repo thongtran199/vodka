@@ -1,5 +1,6 @@
 ﻿
 using VodkaEntities;
+
 namespace Vodka.Models.Product
 {
     public class ProductDetailViewModel

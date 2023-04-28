@@ -2,7 +2,6 @@
 using VodkaDataAccess;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using Vodka.Models.Product;
 using System;
 
 namespace VodkaServices.Implementation
@@ -99,6 +98,26 @@ namespace VodkaServices.Implementation
 
 
 
+        }
+
+        public Product GetProductByName(string name)
+        {
+            return _context.Products
+                .Where(x => x.ProductName.ToUpper().Equals(name.ToUpper()) && x.IsActive.Trim().Equals("1"))
+                .FirstOrDefault();
+        }
+
+        public IEnumerable<Product> FilterProductByName(string str)
+        {
+            return _context.Products.Where(x => x.IsActive.Trim().Equals("1") && x.ProductName.ToUpper().Contains(str.ToUpper())).ToList();
+        }
+
+        public IEnumerable<Product> GetProductFromMToN(int m, int n)
+        {
+            return _context.Products.OrderBy(p => p.ProductNum)
+                .Skip(m - 1)
+                .Take(n - m + 1)
+                .ToList();
         }
     }
 }
