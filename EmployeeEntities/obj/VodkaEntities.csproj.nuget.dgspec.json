@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Employee\\vodka\\EmployeeEntities\\VodkaEntities.csproj": {}
+    "D:\\Learning\\MVC\\Test\\EmployeeEntities\\VodkaEntities.csproj": {}
   },
   "projects": {
-    "F:\\Employee\\vodka\\EmployeeEntities\\VodkaEntities.csproj": {
+    "D:\\Learning\\MVC\\Test\\EmployeeEntities\\VodkaEntities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Employee\\vodka\\EmployeeEntities\\VodkaEntities.csproj",
+        "projectUniqueName": "D:\\Learning\\MVC\\Test\\EmployeeEntities\\VodkaEntities.csproj",
         "projectName": "VodkaEntities",
-        "projectPath": "F:\\Employee\\vodka\\EmployeeEntities\\VodkaEntities.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "F:\\Employee\\vodka\\EmployeeEntities\\obj\\",
+        "projectPath": "D:\\Learning\\MVC\\Test\\EmployeeEntities\\VodkaEntities.csproj",
+        "packagesPath": "C:\\Users\\WIN 10\\.nuget\\packages\\",
+        "outputPath": "D:\\Learning\\MVC\\Test\\EmployeeEntities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\WIN 10\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

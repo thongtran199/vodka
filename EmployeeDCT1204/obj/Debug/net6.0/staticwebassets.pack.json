@@ -1,0 +1,373 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Vodka.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Vodka.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\Paycompute2.gif",
+      "PackagePath": "staticwebassets\\images\\Paycompute2.gif"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\2301428221ed3da87711043.5dc0b3f75e82d.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\2301428221ed3da87711043.5dc0b3f75e82d.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\2302564011ed3da87711043.5dc0b3f75e82d.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\2302564011ed3da87711043.5dc0b3f75e82d.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\2304285551ed3da87711043.5dc0b3f75e82d.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\2304285551ed3da87711043.5dc0b3f75e82d.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\2308009821ed3da87711043.5dc0b3f75e82d.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\2308009821ed3da87711043.5dc0b3f75e82d.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\230816964Ảnh thẻ.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\230816964Ảnh thẻ.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\2308377651ed3da87711043.5dc0b3f75e82d.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\2308377651ed3da87711043.5dc0b3f75e82d.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\2312430541ed3da87711043.5dc0b3f75e82d.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\2312430541ed3da87711043.5dc0b3f75e82d.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\231311877Ảnh thẻ.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\231311877Ảnh thẻ.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\231648635Ảnh thẻ.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\231648635Ảnh thẻ.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\2321091741ed3da87711043.5dc0b3f75e82d.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\2321091741ed3da87711043.5dc0b3f75e82d.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\2321263811ed3da87711043.5dc0b3f75e82d.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\2321263811ed3da87711043.5dc0b3f75e82d.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\232243064Ảnh thẻ.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\232243064Ảnh thẻ.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\2323186131ed3da87711043.5dc0b3f75e82d.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\2323186131ed3da87711043.5dc0b3f75e82d.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\2327112211ed3da87711043.5dc0b3f75e82d.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\2327112211ed3da87711043.5dc0b3f75e82d.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\2330431661ed3da87711043.5dc0b3f75e82d.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\2330431661ed3da87711043.5dc0b3f75e82d.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\233651176CMND mặt trước.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\233651176CMND mặt trước.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\2337220471ed3da87711043.5dc0b3f75e82d.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\2337220471ed3da87711043.5dc0b3f75e82d.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\2345588731ed3da87711043.5dc0b3f75e82d.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\2345588731ed3da87711043.5dc0b3f75e82d.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\234759629Ảnh thẻ.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\234759629Ảnh thẻ.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\2351173031ed3da87711043.5dc0b3f75e82d.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\2351173031ed3da87711043.5dc0b3f75e82d.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\235122144Ảnh thẻ.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\235122144Ảnh thẻ.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\235433862Ảnh thẻ.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\235433862Ảnh thẻ.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\235824289Ảnh thẻ.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\235824289Ảnh thẻ.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\235852265Ảnh thẻ.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\235852265Ảnh thẻ.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\images\\employees\\235900744Ảnh thẻ.jpg",
+      "PackagePath": "staticwebassets\\images\\employees\\235900744Ảnh thẻ.jpg"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Learning\\MVC\\Test\\EmployeeDCT1204\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Vodka.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Vodka.props",
+      "PackagePath": "build\\Vodka.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Vodka.props",
+      "PackagePath": "buildMultiTargeting\\Vodka.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Vodka.props",
+      "PackagePath": "buildTransitive\\Vodka.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

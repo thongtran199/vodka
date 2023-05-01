@@ -1,4 +1,5 @@
-﻿using VodkaEntities;
+﻿using Org.BouncyCastle.Crypto.Parameters;
+using VodkaEntities;
 
 namespace Vodka.Models.Product
 {
@@ -8,5 +9,6 @@ namespace Vodka.Models.Product
 
         public string? maxPrice { get; set; }
 
+        public string? CatId { get; set; }
     }
 }

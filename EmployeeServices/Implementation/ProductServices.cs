@@ -95,23 +95,29 @@ namespace VodkaServices.Implementation
                 }
             }
             return filterProducts;
-
-
-
         }
 
-        public Product GetProductByName(string name)
-        {
-            return _context.Products
-                .Where(x => x.ProductName.ToUpper().Equals(name.ToUpper()) && x.IsActive.Trim().Equals("1"))
-                .FirstOrDefault();
-        }
+        public Product GetProductByName(string name) => _context.Products.Where(x => x.ProductName.ToUpper().Equals(name.ToUpper(), StringComparison.Ordinal) && x.IsActive.Trim().Equals("1", StringComparison.Ordinal)).FirstOrDefault();
 
         public IEnumerable<Product> FilterProductByName(string str)
         {
             return _context.Products.Where(x => x.IsActive.Trim().Equals("1") && x.ProductName.ToUpper().Contains(str.ToUpper())).ToList();
         }
 
+        public IEnumerable<Product> FilterProductPriceIncrease()
+        {
+           var products = GetAll();
+            var sortedProducts = products.OrderBy(p => p.Price);
+
+            return sortedProducts;
+        }
+        public IEnumerable<Product> FilterProductPriceDecrease()
+        { var products = GetAll();
+            var sortedProducts = products.OrderByDescending(p => p.Price);
+
+            return sortedProducts;
+            
+        }
         public IEnumerable<Product> GetProductFromMToN(int m, int n)
         {
             return _context.Products.OrderBy(p => p.ProductNum)
@@ -119,5 +125,7 @@ namespace VodkaServices.Implementation
                 .Take(n - m + 1)
                 .ToList();
         }
+
+       
     }
 }

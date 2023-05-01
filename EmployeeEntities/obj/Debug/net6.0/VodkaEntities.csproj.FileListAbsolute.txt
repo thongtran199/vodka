@@ -12,3 +12,17 @@ F:\Employee\vodka\EmployeeEntities\obj\Debug\net6.0\refint\VodkaEntities.dll
 F:\Employee\vodka\EmployeeEntities\obj\Debug\net6.0\VodkaEntities.pdb
 F:\Employee\vodka\EmployeeEntities\obj\Debug\net6.0\VodkaEntities.genruntimeconfig.cache
 F:\Employee\vodka\EmployeeEntities\obj\Debug\net6.0\ref\VodkaEntities.dll
+D:\Learning\MVC\Test\EmployeeEntities\bin\Debug\net6.0\VodkaEntities.deps.json
+D:\Learning\MVC\Test\EmployeeEntities\bin\Debug\net6.0\VodkaEntities.runtimeconfig.json
+D:\Learning\MVC\Test\EmployeeEntities\bin\Debug\net6.0\VodkaEntities.dll
+D:\Learning\MVC\Test\EmployeeEntities\bin\Debug\net6.0\VodkaEntities.pdb
+D:\Learning\MVC\Test\EmployeeEntities\obj\Debug\net6.0\VodkaEntities.csproj.AssemblyReference.cache
+D:\Learning\MVC\Test\EmployeeEntities\obj\Debug\net6.0\VodkaEntities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Learning\MVC\Test\EmployeeEntities\obj\Debug\net6.0\VodkaEntities.AssemblyInfoInputs.cache
+D:\Learning\MVC\Test\EmployeeEntities\obj\Debug\net6.0\VodkaEntities.AssemblyInfo.cs
+D:\Learning\MVC\Test\EmployeeEntities\obj\Debug\net6.0\VodkaEntities.csproj.CoreCompileInputs.cache
+D:\Learning\MVC\Test\EmployeeEntities\obj\Debug\net6.0\VodkaEntities.dll
+D:\Learning\MVC\Test\EmployeeEntities\obj\Debug\net6.0\refint\VodkaEntities.dll
+D:\Learning\MVC\Test\EmployeeEntities\obj\Debug\net6.0\VodkaEntities.pdb
+D:\Learning\MVC\Test\EmployeeEntities\obj\Debug\net6.0\VodkaEntities.genruntimeconfig.cache
+D:\Learning\MVC\Test\EmployeeEntities\obj\Debug\net6.0\ref\VodkaEntities.dll

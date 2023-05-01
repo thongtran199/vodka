@@ -71,6 +71,48 @@ namespace Vodka.Controllers.Api
             return Ok(model);
         }
 
+        [HttpGet("FilterProductPriceIncrease")]
+        public IActionResult FilterProductPriceIncrease()
+        {
+            var products = _productService.FilterProductPriceIncrease().Select(product => new ProductIndexViewModel
+            {
+                ProductNum = product.ProductNum,
+                ProductName = product.ProductName,
+                Descript = product.Descript,
+                Price = product.Price,
+                Tax1 = product.Tax1,
+                Tax2 = product.Tax2,
+                Tax3 = product.Tax3,
+                Quan = product.Quan,
+                IsActive = product.IsActive,
+                ImageSource = product.ImageSource,
+                CatId = product.CatId,
+                Category = null,
+                Transactdetail = null
+            }).ToList();
+            return Ok(products);
+        }
+        [HttpGet("FilterProductPriceDecrease")]
+        public IActionResult FilterProductPriceDecrease()
+        {
+            var products = _productService.FilterProductPriceDecrease().Select(product => new ProductIndexViewModel
+            {
+                ProductNum = product.ProductNum,
+                ProductName = product.ProductName,
+                Descript = product.Descript,
+                Price = product.Price,
+                Tax1 = product.Tax1,
+                Tax2 = product.Tax2,
+                Tax3 = product.Tax3,
+                Quan = product.Quan,
+                IsActive = product.IsActive,
+                ImageSource = product.ImageSource,
+                CatId = product.CatId,
+                Category = null,
+                Transactdetail = null
+            }).ToList();
+            return Ok(products);
+        }
         [HttpGet("FilterProductByPrice")]
         public IActionResult FilterProductByPrice([FromQuery] ProductFilterViewModel model)
         {
@@ -134,6 +176,7 @@ namespace Vodka.Controllers.Api
                 CatId = product.CatId,
                 Category = null,
                 Transactdetail = null
+
             }).ToList();
             return Ok(model);
         }
