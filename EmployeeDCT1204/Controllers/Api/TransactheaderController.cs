@@ -27,14 +27,14 @@ namespace Vodka.Controllers.Api
         {
             var transactheaderList = _transactheaderService.GetAll().Select(x => new TransactheaderIndexViewModel
             {
-                TransactId = x.TransactId,
+                TransactHeaderId = x.TransactHeaderId,
                 Net = x.Net,
                 Tax1 = x.Tax1,
                 Tax2 = x.Tax2,
                 Tax3 = x.Tax3,
                 Total = x.Total,
                 TimePayment = x.TimePayment,
-                WhoPay = x.WhoPay,
+                UserId = x.UserId,
                 Status = x.Status
             }).ToList();
             return Ok(transactheaderList);
@@ -47,14 +47,14 @@ namespace Vodka.Controllers.Api
                 return NotFound();
             var model = new TransactheaderDetailViewModel
             {
-                TransactId = transactheader.TransactId,
+                TransactHeaderId = transactheader.TransactHeaderId,
                 Net = transactheader.Net,
                 Tax1 = transactheader.Tax1,
                 Tax2 = transactheader.Tax2,
                 Tax3 = transactheader.Tax3,
                 Total = transactheader.Total,
                 TimePayment = transactheader.TimePayment,
-                WhoPay = transactheader.WhoPay,
+                UserId = transactheader.UserId,
                 Status = transactheader.Status
             };
             return Ok(model);
@@ -66,14 +66,14 @@ namespace Vodka.Controllers.Api
             var transactheaders = _transactheaderService.GetTransactheadersByUserId(userId)
                                     .Select(x => new TransactheaderIndexViewModel
                                     {
-                                        TransactId = x.TransactId,
+                                        TransactHeaderId = x.TransactHeaderId,
                                         Net = x.Net,
                                         Tax1 = x.Tax1,
                                         Tax2 = x.Tax2,
                                         Tax3 = x.Tax3,
                                         Total = x.Total,
                                         TimePayment = x.TimePayment,
-                                        WhoPay = x.WhoPay,
+                                        UserId = x.UserId,
                                         Status = x.Status
                                     }).ToList();
             return Ok(transactheaders); 
@@ -97,7 +97,7 @@ namespace Vodka.Controllers.Api
         {
             if (model == null)
                 return BadRequest();
-            var transactheader = _transactheaderService.GetById(model.TransactId);
+            var transactheader = _transactheaderService.GetById(model.TransactHeaderId);
             if (transactheader == null)
                 return NotFound();
             transactheader.Net = model.Net;
@@ -116,11 +116,11 @@ namespace Vodka.Controllers.Api
         {
             if (model == null)
                 return BadRequest();
-            if (float.Parse(model.Total) < 0)
+            if (model.Total < 0)
                 return BadRequest();
 
-            var whoPay = _useraccountService.GetById(model.WhoPay);
-            if (whoPay == null)
+            var UserId = _useraccountService.GetById(model.UserId);
+            if (UserId == null)
                 return NotFound();
 
             string new_str_id = "";
@@ -134,15 +134,15 @@ namespace Vodka.Controllers.Api
 
             var transactheader = new Transactheader
             {
-                TransactId = new_str_id,
+                TransactHeaderId = new_str_id,
                 Net = model.Net,
                 Tax1 = model.Tax1,
                 Tax2 = model.Tax2,
                 Tax3 = model.Tax3,
                 Total = model.Total,
                 TimePayment = model.TimePayment,
-                WhoPay = model.WhoPay,
-                Status = "0"
+                UserId = model.UserId,
+                Status = 0
             };
 
             await _transactheaderService.CreateAsSync(transactheader);
@@ -154,7 +154,7 @@ namespace Vodka.Controllers.Api
             var transactheader = _transactheaderService.GetById(id);
             if (transactheader != null && transactheader.Status.Equals("0"))
             {
-                transactheader.Status = "1";
+                transactheader.Status = 1;
                 await _transactheaderService.UpdateAsSync(transactheader);
                 return Ok();
             }
@@ -167,27 +167,26 @@ namespace Vodka.Controllers.Api
             var transactheader = _transactheaderService.GetById(id);
             if (transactheader != null && transactheader.Status.Equals("1"))
             {
-                var transactdetails = _transactdetailService.GetTransactdetailsByTransactheaderId(transactheader.TransactId);
+                var transactdetails = _transactdetailService.GetTransactdetailsByTransactheaderId(transactheader.TransactHeaderId);
                 if (transactdetails != null)
                 {
                     foreach (Transactdetail detail in transactdetails)
                     {
-                        var product = _productService.GetById(detail.ProductNum);
-                        Console.WriteLine("PRODUCT NUM: "+ detail.ProductNum);
-                        var sl_conlai = int.Parse(product.Quan) - detail.Quan;
+                        var product = _productService.GetById(detail.ProductId);
+                        var sl_conlai = product.Quan - detail.Quan;
                         if (sl_conlai >= 0)
                         {
-                            product.Quan = sl_conlai.ToString();
+                            product.Quan = sl_conlai;
                         }
                         else
-                            return BadRequest("Số lượng sản phẩm " + product.ProductNum + " không đủ");
+                            return BadRequest("Số lượng sản phẩm " + product.ProductId + " không đủ");
                         await _productService.UpdateAsSync(product);
                     }
                 }
-                var user = _useraccountService.GetById(transactheader.WhoPay);
-                user.TotalCash = (float.Parse(user.TotalCash) + float.Parse(transactheader.Total)).ToString();
+                var user = _useraccountService.GetById(transactheader.UserId);
+                user.TotalCash = user.TotalCash + transactheader.Total;
 
-                transactheader.Status = "2";
+                transactheader.Status = 2;
                 await _transactheaderService.UpdateAsSync(transactheader);
                 return Ok();
             }

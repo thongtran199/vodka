@@ -26,19 +26,16 @@ namespace Vodka.Controllers.Api
         {
             var model = _productService.GetAll().Select(product => new ProductIndexViewModel
             {
-                ProductNum = product.ProductNum,
-                ProductName = product.ProductName,
+                ProductId = product.ProductId,
+                Name = product.Name,
                 Descript = product.Descript,
                 Price = product.Price,
-                Tax1 = product.Tax1,
-                Tax2 = product.Tax2,
-                Tax3 = product.Tax3,
                 Quan = product.Quan,
                 IsActive = product.IsActive,
                 ImageSource = product.ImageSource,
-                CatId = product.CatId,
+                CategoryId = product.CategoryId,
                 Category = null,
-                Transactdetail = null
+                TransactDetails = null
             }).ToList();
             return Ok(model);
         }
@@ -54,19 +51,16 @@ namespace Vodka.Controllers.Api
             }
             var model = new ProductDetailViewModel
             {
-                ProductNum = product.ProductNum,
-                ProductName = product.ProductName,
+                ProductId = product.ProductId,
+                Name = product.Name,
                 Descript = product.Descript,
                 Price = product.Price,
-                Tax1 = product.Tax1,
-                Tax2 = product.Tax2,
-                Tax3 = product.Tax3,
                 Quan = product.Quan,
                 IsActive = product.IsActive,
                 ImageSource = product.ImageSource,
-                CatId = product.CatId,
+                CategoryId = product.CategoryId,
                 Category = null,
-                Transactdetail = null
+                TransactDetails = null
             };
             return Ok(model);
         }
@@ -75,18 +69,18 @@ namespace Vodka.Controllers.Api
         public IActionResult FilterProductByPrice([FromQuery] ProductFilterViewModel model)
         {
             if (model.minPrice == null && model.maxPrice == null) return NotFound("Khong co tham so truyen vao!");
-            float minPrice = 0, maxPrice = 0;
+            decimal minPrice = 0, maxPrice = 0;
             try
             {
-                if(model.minPrice ==null)
+                if(model.minPrice == null)
                     minPrice = 0;
                 else
-                    minPrice = float.Parse(model.minPrice.Trim());
+                    minPrice = model.minPrice;
 
                 if (model.maxPrice == null)
                     maxPrice = 0;
                 else
-                    maxPrice = float.Parse(model.maxPrice.Trim());
+                    maxPrice = model.maxPrice;
 
             }
             catch (Exception ex)
@@ -99,19 +93,16 @@ namespace Vodka.Controllers.Api
             }
             var products = _productService.FilterProductByPrice(minPrice, maxPrice).Select( product => new ProductIndexViewModel
             {
-                ProductNum = product.ProductNum,
-                ProductName = product.ProductName,
+                ProductId = product.ProductId,
+                Name = product.Name,
                 Descript = product.Descript,
                 Price = product.Price,
-                Tax1 = product.Tax1,
-                Tax2 = product.Tax2,
-                Tax3 = product.Tax3,
                 Quan = product.Quan,
                 IsActive = product.IsActive,
                 ImageSource = product.ImageSource,
-                CatId = product.CatId,
+                CategoryId = product.CategoryId,
                 Category = null,
-                Transactdetail = null
+                TransactDetails = null
             }).ToList();
             return Ok(products);
         }
@@ -121,19 +112,16 @@ namespace Vodka.Controllers.Api
         {
             var model = _productService.FilterProductByName(str).Select(product => new ProductIndexViewModel
             {
-                ProductNum = product.ProductNum,
-                ProductName = product.ProductName,
+                ProductId = product.ProductId,
+                Name = product.Name,
                 Descript = product.Descript,
                 Price = product.Price,
-                Tax1 = product.Tax1,
-                Tax2 = product.Tax2,
-                Tax3 = product.Tax3,
                 Quan = product.Quan,
                 IsActive = product.IsActive,
                 ImageSource = product.ImageSource,
-                CatId = product.CatId,
+                CategoryId = product.CategoryId,
                 Category = null,
-                Transactdetail = null
+                TransactDetails = null
             }).ToList();
             return Ok(model);
         }
@@ -145,19 +133,16 @@ namespace Vodka.Controllers.Api
             if (product == null) return NotFound();
             var model = new ProductDetailViewModel
             {
-                ProductNum = product.ProductNum,
-                ProductName = product.ProductName,
+                ProductId = product.ProductId,
+                Name = product.Name,
                 Descript = product.Descript,
                 Price = product.Price,
-                Tax1 = product.Tax1,
-                Tax2 = product.Tax2,
-                Tax3 = product.Tax3,
                 Quan = product.Quan,
                 IsActive = product.IsActive,
                 ImageSource = product.ImageSource,
-                CatId = product.CatId,
+                CategoryId = product.CategoryId,
                 Category = null,
-                Transactdetail = null
+                TransactDetails = null
             };
             return Ok(model);
         }
@@ -167,19 +152,16 @@ namespace Vodka.Controllers.Api
         {
             var products = _productService.GetProductsByCategoryId(id).Select(product => new ProductDetailViewModel
             {
-                ProductNum = product.ProductNum,
-                ProductName = product.ProductName,
+                ProductId = product.ProductId,
+                Name = product.Name,
                 Descript = product.Descript,
                 Price = product.Price,
-                Tax1 = product.Tax1,
-                Tax2 = product.Tax2,
-                Tax3 = product.Tax3,
                 Quan = product.Quan,
                 IsActive = product.IsActive,
                 ImageSource = product.ImageSource,
-                CatId = product.CatId,
+                CategoryId = product.CategoryId,
                 Category = null,
-                Transactdetail = null
+                TransactDetails = null
             }).ToList();
             if (products == null)
                 return NotFound();
@@ -195,19 +177,16 @@ namespace Vodka.Controllers.Api
                 return NotFound("m khong duoc lon hon n");
             var model = _productService.GetProductFromMToN(m, n).Select(product => new ProductDetailViewModel
             {
-                ProductNum = product.ProductNum,
-                ProductName = product.ProductName,
+                ProductId = product.ProductId,
+                Name = product.Name,
                 Descript = product.Descript,
                 Price = product.Price,
-                Tax1 = product.Tax1,
-                Tax2 = product.Tax2,
-                Tax3 = product.Tax3,
                 Quan = product.Quan,
                 IsActive = product.IsActive,
                 ImageSource = product.ImageSource,
-                CatId = product.CatId,
+                CategoryId = product.CategoryId,
                 Category = null,
-                Transactdetail = null
+                TransactDetails = null
             }).ToList();
 
             return Ok(model);
@@ -223,32 +202,29 @@ namespace Vodka.Controllers.Api
         [HttpPut("UpdateProduct")]
         public async Task<IActionResult> UpdateProduct([FromBody] ProductEditViewModel model)
         {
-            if (model == null || model.ProductNum == null || model.CatId == null)
+            if (model == null || model.ProductId == null || model.CategoryId == null)
             {
-                return BadRequest("Khong chua ProductNum");
+                return BadRequest("Khong chua ProductId");
             }
             
-            var existingProduct = _productService.GetById(model.ProductNum);
+            var existingProduct = _productService.GetById(model.ProductId);
 
             if (existingProduct == null)
             { 
                 return NotFound("Khong tim thay product muon cap nhat !");
             }
 
-            var category = _categoryService.GetById(model.CatId);
+            var category = _categoryService.GetById(model.CategoryId);
             if (category == null)
             {
                 return BadRequest("Category id khong hop le !");
             }
-            existingProduct.ProductName = model.ProductName != null && !model.ProductName.Trim().Equals("") ? model.ProductName : existingProduct.ProductName;
+            existingProduct.Name = model.Name != null && !model.Name.Trim().Equals("") ? model.Name : existingProduct.Name;
             existingProduct.Descript = model.Descript != null && !model.Descript.Trim().Equals("") ? model.Descript : existingProduct.Descript;
-            existingProduct.Price = model.Price != null && !model.Price.Trim().Equals("") ? model.Price : existingProduct.Price;
-            existingProduct.Tax1 = model.Tax1 != null && !model.Tax1.Trim().Equals("") ? model.Tax1 : existingProduct.Tax1;
-            existingProduct.Tax2 = model.Tax2 != null && !model.Tax2.Trim().Equals("") ? model.Tax2 : existingProduct.Tax2;
-            existingProduct.Tax3 = model.Tax3 != null && !model.Tax3.Trim().Equals("") ? model.Tax3 : existingProduct.Tax3;
-            existingProduct.Quan = model.Quan != null && !model.Quan.Trim().Equals("") && float.Parse(model.Quan) >= 0 ? model.Quan : existingProduct.Quan;
+            existingProduct.Price = model.Price != null && model.Price > 0 ? model.Price : existingProduct.Price;
+            existingProduct.Quan = model.Quan != null && model.Quan >= 0 ? model.Quan : existingProduct.Quan;
             existingProduct.ImageSource = model.ImageSource != null && !model.ImageSource.Trim().Equals("") ? model.ImageSource : existingProduct.ImageSource;
-            existingProduct.CatId = model.CatId;
+            existingProduct.CategoryId = model.CategoryId;
             existingProduct.Category = category;
 
             await _productService.UpdateAsSync(existingProduct);
@@ -263,8 +239,8 @@ namespace Vodka.Controllers.Api
             {
                 return BadRequest();
             }
-            //Kiểm tra catId có hợp lệ hay không
-            var category = _categoryService.GetById(model.CatId);
+            //Kiểm tra CategoryId có hợp lệ hay không
+            var category = _categoryService.GetById(model.CategoryId);
             if(category == null)
             {
                 return BadRequest("Category id khong hop le !");
@@ -280,18 +256,15 @@ namespace Vodka.Controllers.Api
 
             var newProduct = new Product
             {
-                ProductNum = new_str_id,
-                ProductName = model.ProductName,
+                ProductId = new_str_id,
+                Name = model.Name,
                 Descript = model.Descript,
                 Price = model.Price,
-                Tax1 = model.Tax1,
-                Tax2 = model.Tax2,
-                Tax3 = model.Tax3,
                 Quan = model.Quan,
-                IsActive = "1",
+                IsActive = 1,
                 ImageSource = model.ImageSource,
-                Transactdetail = null,
-                CatId = model.CatId,
+                TransactDetails = null,
+                CategoryId = model.CategoryId,
                 Category = category
             };
             try

@@ -19,7 +19,7 @@ namespace VodkaServices.Implementation
             var result = _context.Useraccounts.Where(x => x.UserName == user.UserName).FirstOrDefault();
             if (result == null)
             {
-                user.UserId = user.UserName + user.UserPassword;
+                user.UserId = user.UserName + user.Password;
                 _context.Useraccounts.Add(user);
                 await _context.SaveChangesAsync();
                 return true;

@@ -18,6 +18,6 @@ namespace VodkaServices
         public Task CreateAsSync(Transactheader transactheader);
 
         int GetLastId();
-        Task UpdateTotalCash(Transactheader transactheader, float totalRate);
+        Task UpdateTotalCash(Transactheader transactheader, decimal totalRate);
     }
 }

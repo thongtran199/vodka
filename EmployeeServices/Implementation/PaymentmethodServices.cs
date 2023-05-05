@@ -23,7 +23,7 @@ namespace VodkaServices.Implementation
 
         public Paymentmethod GetById(string id)
         {
-            return _context.Paymentmethods.Where(x => x.PaymentId.Equals(id)).FirstOrDefault();
+            return _context.Paymentmethods.Where(x => x.PaymentMethodId.Equals(id)).FirstOrDefault();
         }
 
 
@@ -52,8 +52,8 @@ namespace VodkaServices.Implementation
         }
         public int GetLastId()
         {
-            var p = _context.Paymentmethods.OrderByDescending(i => i.PaymentId).FirstOrDefault();
-            return int.Parse(p.PaymentId.Replace("P", ""));
+            var p = _context.Paymentmethods.OrderByDescending(i => i.PaymentMethodId).FirstOrDefault();
+            return int.Parse(p.PaymentMethodId.Replace("P", ""));
         }
 
     }

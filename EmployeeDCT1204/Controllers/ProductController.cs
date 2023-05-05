@@ -22,8 +22,8 @@ namespace ProductDCT1204.Controllers
         {
             var model = _productService.GetAll().Select(product => new ProductIndexViewModel
             {
-                ProductNum = product.ProductNum,
-                ProductName = product.ProductName,
+                ProductId = product.ProductId,
+                Name = product.Name,
                 Descript = product.Descript,
                 Price = product.Price,
                 ImageSource = product.ImageSource

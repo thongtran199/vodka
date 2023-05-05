@@ -26,7 +26,7 @@ namespace Vodka.Controllers.Api
                 var user = new Useraccount()
                 {
                     UserName = model.UserName,
-                    UserPassword = model.UserPassword,
+                    Password = model.Password,
                     AccessLevel = model.AccessLevel,
                     TotalCash = model.TotalCash,
                     IsActive = model.IsActive,
@@ -49,7 +49,7 @@ namespace Vodka.Controllers.Api
                 var user = new Useraccount
                 {
                     UserName = model.UserName,
-                    UserPassword = model.UserPassword
+                    Password = model.Password
                 };
                 var result = await _taikhoanService.DangNhap(user);
                 if (result!="")

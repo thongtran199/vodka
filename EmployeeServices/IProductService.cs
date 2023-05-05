@@ -11,7 +11,7 @@ namespace VodkaServices
         Product GetById(string id);
         Product GetProductByName(string name);
         IEnumerable<Product> FilterProductByName(string str);
-        IEnumerable<Product> FilterProductByPrice(float minPrice, float maxPrice);
+        IEnumerable<Product> FilterProductByPrice(decimal minPrice, decimal maxPrice);
         IEnumerable<Product> GetProductsByCategoryId(string id);
         IEnumerable<Product> GetProductFromMToN(int m, int n);
         IEnumerable<Product> GetAll();

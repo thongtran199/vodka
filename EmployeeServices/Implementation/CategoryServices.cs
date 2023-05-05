@@ -28,7 +28,7 @@ namespace VodkaServices.Implementation
 
         public Category GetById(string id)
         {
-            return _context.Categories.Where(x => x.CatId.Equals(id))
+            return _context.Categories.Where(x => x.CategoryId.Equals(id))
                                       .FirstOrDefault();
         }
 
@@ -47,7 +47,7 @@ namespace VodkaServices.Implementation
         public async Task DeleteById(string id)
         {
             var category = GetById(id);
-            category.IsActive = "0";
+            category.IsActive = 0;
             _context.Categories.Update(category);
             await _context.SaveChangesAsync();
         }
@@ -59,8 +59,8 @@ namespace VodkaServices.Implementation
         }
         public int GetLastId()
         {
-            var p = _context.Categories.OrderByDescending(i => i.CatId).FirstOrDefault();
-            return int.Parse(p.CatId.Replace("C", ""));
+            var p = _context.Categories.OrderByDescending(i => i.CategoryId).FirstOrDefault();
+            return int.Parse(p.CategoryId.Replace("C", ""));
         }
 
 

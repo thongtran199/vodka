@@ -19,12 +19,12 @@ namespace VodkaServices.Implementation
 
         public IEnumerable<Useraccount> GetAll()
         {
-            return _context.Useraccounts.Where(x => x.IsActive.Trim().Equals("1")).ToList();
+            return _context.Useraccounts.Where(x => x.IsActive == 1).ToList();
         }
 
         public Useraccount GetById(string id)
         {
-            return _context.Useraccounts.Where(x => x.UserId.Equals(id) && x.IsActive.Trim().Equals("1"))
+            return _context.Useraccounts.Where(x => x.UserId.Equals(id) && x.IsActive == 1)
                                       .FirstOrDefault();
         }
 
@@ -43,7 +43,7 @@ namespace VodkaServices.Implementation
         public async Task DeleteById(string id)
         {
             var useraccount = GetById(id);
-            useraccount.IsActive = "0";
+            useraccount.IsActive = 0;
             _context.Useraccounts.Update(useraccount);
             await _context.SaveChangesAsync();
         }

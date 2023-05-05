@@ -6,23 +6,23 @@ namespace VodkaEntities;
 public class Transactheader
 {
     [Key]
-    public string? TransactId { get; set; }
+    public string? TransactHeaderId { get; set; }
 
-    public string? Net { get; set; }
+    public decimal? Net { get; set; }
 
-    public string? Tax1 { get; set; }
+    public int? Tax1 { get; set; }
 
-    public string? Tax2 { get; set; }
+    public int? Tax2 { get; set; }
 
-    public string? Tax3 { get; set; }
+    public int? Tax3 { get; set; }
 
-    public string? Total { get; set; }
+    public decimal? Total { get; set; }
 
     public DateTime? TimePayment { get; set; }
 
-    public string? WhoPay { get; set; }
+    public string? UserId { get; set; }
 
-    public string? Status { get; set; }
+    public int? Status { get; set; }
 
-    public ICollection<Transactdetail>? Transactdetail { get; set; }
+    public ICollection<Transactdetail>? TransactDetails { get; set; }
 }

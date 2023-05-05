@@ -18,8 +18,8 @@ namespace EmployeeDCT1204.Controllers
         {
             var model = _categoryService.GetAll().Select(category => new CategoryIndexViewModel
             {
-                CatId = category.CatId,
-                CatName = category.CatName,
+                CategoryId = category.CategoryId,
+                Name = category.Name,
                 Descript = category.Descript,
             }).ToList();
             return View(model);

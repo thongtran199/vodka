@@ -4,9 +4,9 @@ namespace Vodka.Models.Category
 {
     public class CategoryEditViewModel
     {
-        public string? CatId { get; set; }
+        public string? CategoryId { get; set; }
 
-        public string? CatName { get; set; }
+        public string? Name { get; set; }
 
         public string? Descript { get; set; }
 

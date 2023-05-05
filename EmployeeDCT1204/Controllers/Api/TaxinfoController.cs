@@ -21,8 +21,8 @@ namespace Vodka.Controllers.Api
             var taxinfoList = _taxinfoService.GetAll().Select(x => new TaxinfoIndexViewModel
             {
                 TaxId = x.TaxId,
-                TaxDes = x.TaxDes,
-                TaxRate = x.TaxRate
+                Descript = x.Descript,
+                Rate = x.Rate
             }).ToList();
             return Ok(taxinfoList);
         }
@@ -35,8 +35,8 @@ namespace Vodka.Controllers.Api
             var model = new TaxinfoDetailViewModel
             {
                 TaxId = taxinfo.TaxId,
-                TaxDes = taxinfo.TaxDes,
-                TaxRate = taxinfo.TaxRate
+                Descript = taxinfo.Descript,
+                Rate = taxinfo.Rate
             };
             return Ok(model);
         }
@@ -59,14 +59,14 @@ namespace Vodka.Controllers.Api
         {
             if (model == null)
                 return BadRequest();
-            if (float.Parse(model.TaxRate) < 0)
+            if (model.Rate < 0)
                 return BadRequest();
 
             var taxinfo = _taxinfoService.GetById(model.TaxId);
             if (taxinfo == null)
                 return NotFound();
-            taxinfo.TaxDes = model.TaxDes;
-            taxinfo.TaxRate = model.TaxRate;
+            taxinfo.Descript = model.Descript;
+            taxinfo.Rate = model.Rate;
 
             await _taxinfoService.UpdateAsSync(taxinfo);
             return Ok();
@@ -76,7 +76,7 @@ namespace Vodka.Controllers.Api
         {
             if (model == null)
                 return BadRequest();
-            if (float.Parse(model.TaxRate) < 0)
+            if (model.Rate < 0)
                 return BadRequest();
 
             string new_str_id = "";
@@ -91,8 +91,8 @@ namespace Vodka.Controllers.Api
             var taxinfo = new Taxinfo
             {
                 TaxId = new_str_id,
-                TaxDes = model.TaxDes,
-                TaxRate = model.TaxRate
+                Descript = model.Descript,
+                Rate = model.Rate
             };
 
             await _taxinfoService.CreateAsSync(taxinfo);

@@ -22,7 +22,7 @@ namespace Vodka.Controllers.Api
             {
                 UserId = x.UserId,
                 UserName = x.UserName,
-                UserPassword = x.UserPassword,
+                Password = x.Password,
                 AccessLevel = x.AccessLevel,
                 TotalCash = x.TotalCash,
                 IsActive = x.IsActive,
@@ -41,7 +41,7 @@ namespace Vodka.Controllers.Api
             {
                 UserId = useraccount.UserId,
                 UserName = useraccount.UserName,
-                UserPassword = useraccount.UserPassword,
+                Password = useraccount.Password,
                 AccessLevel = useraccount.AccessLevel,
                 TotalCash = useraccount.TotalCash,
                 IsActive = useraccount.IsActive,
@@ -69,13 +69,13 @@ namespace Vodka.Controllers.Api
         {
             if (model == null)
                 return BadRequest();
-            if (float.Parse(model.TotalCash) < 0 || model.UserPassword.Trim().Equals(""))
+            if (model.TotalCash < 0 || model.Password.Trim().Equals(""))
                 return BadRequest();
 
             var useraccount = _useraccountService.GetById(model.UserId);
             if (useraccount == null)
                 return NotFound();
-            useraccount.UserPassword = model.UserPassword;
+            useraccount.Password = model.Password;
             useraccount.AccessLevel = model.AccessLevel;
             useraccount.TotalCash = model.TotalCash;
             useraccount.Address = model.Address;
@@ -88,7 +88,7 @@ namespace Vodka.Controllers.Api
         {
             if (model == null)
                 return BadRequest();
-            if (float.Parse(model.TotalCash) < 0 || model.UserPassword.Trim().Equals(""))
+            if (model.TotalCash < 0 || model.Password.Trim().Equals(""))
                 return BadRequest();
 
             string new_str_id = "";
@@ -104,7 +104,7 @@ namespace Vodka.Controllers.Api
             {
                 UserId = new_str_id,
                 UserName = model.UserName,
-                UserPassword = model.UserPassword,
+                Password = model.Password,
                 AccessLevel = model.AccessLevel,
                 TotalCash = model.TotalCash,
                 Email = model.Email,

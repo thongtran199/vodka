@@ -18,11 +18,11 @@ builder.Services.AddControllers();
 //);
 
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//    options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnectionfreesqldb"))
+//    options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnectiondb4free2"))
 //);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnectiondb4free"))
+    options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnectiondb4free2"))
 );
 
 builder.Services.AddAuthentication(options =>

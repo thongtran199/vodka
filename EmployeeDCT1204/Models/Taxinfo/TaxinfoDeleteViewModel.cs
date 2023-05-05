@@ -3,9 +3,8 @@
     public class TaxinfoDeleteViewModel
     {
         public string? TaxId { get; set; }
+        public string? Descript { get; set; }
 
-        public string? TaxDes { get; set; }
-
-        public string? TaxRate { get; set; }
+        public decimal Rate { get; set; }
     }
 }

@@ -2,9 +2,9 @@
 {
     public class PaymentmethodDetailViewModel
     {
-        public string? PaymentId { get; set; }
+        public string? PaymentMethodId { get; set; }
 
-        public string? PaymentName { get; set; }
+        public string? Name { get; set; }
 
         public string? Descript { get; set; }
     }

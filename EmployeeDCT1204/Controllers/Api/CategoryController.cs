@@ -22,8 +22,8 @@ namespace Vodka.Controllers.Api
         {
             var categoryList = _categoryService.GetAll().Select(x => new CategoryIndexViewModel
             {
-                CatId = x.CatId,
-                CatName = x.CatName,
+                CategoryId = x.CategoryId,
+                Name = x.Name,
                 Descript = x.Descript,
                 IsActive = x.IsActive
             }).ToList();
@@ -37,8 +37,8 @@ namespace Vodka.Controllers.Api
                 return NotFound();
             var model = new CategoryDetailViewModel
             {
-                CatId = category.CatId,
-                CatName = category.CatName,
+                CategoryId = category.CategoryId,
+                Name = category.Name,
                 Descript = category.Descript,
                 IsActive = category.IsActive
             };
@@ -63,10 +63,10 @@ namespace Vodka.Controllers.Api
         {
             if (model == null)
                 return BadRequest();
-            var category = _categoryService.GetById(model.CatId);
+            var category = _categoryService.GetById(model.CategoryId);
             if (category == null)
                 return NotFound();
-            category.CatName = model.CatName;
+            category.Name = model.Name;
             category.Descript = model.Descript;
 
             await _categoryService.UpdateAsSync(category);
@@ -89,11 +89,11 @@ namespace Vodka.Controllers.Api
 
             var category = new Category
             {
-                CatId = new_str_id,
-                CatName = model.CatName,
+                CategoryId = new_str_id,
+                Name = model.Name,
                 Descript = model.Descript,
-                IsActive = "1",
-                Product = null
+                IsActive = 1,
+                Products = null
             };
 
             await _categoryService.CreateAsSync(category);

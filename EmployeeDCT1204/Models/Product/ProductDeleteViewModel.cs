@@ -2,9 +2,9 @@
 {
     public class ProductDeleteViewModel
     {
-        public string? ProductNum { get; set; }
+        public string? ProductId { get; set; }
 
-        public string? ProductName { get; set; }
+        public string? Name { get; set; }
 
         public string? Descript { get; set; }
 

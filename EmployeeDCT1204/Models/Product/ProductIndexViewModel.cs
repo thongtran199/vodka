@@ -4,26 +4,21 @@ namespace Vodka.Models.Product
 {
     public class ProductIndexViewModel
     {
-        public string? ProductNum { get; set; }
+        public string? ProductId { get; set; }
 
-        public string? ProductName { get; set; }
+        public string? Name { get; set; }
 
         public string? Descript { get; set; }
 
-        public string? Price { get; set; }
-        public string? Tax1 { get; set; }
+        public decimal? Price { get; set; }
 
-        public string? Tax2 { get; set; }
+        public int? Quan { get; set; }
 
-        public string? Tax3 { get; set; }
-
-        public string? Quan { get; set; }
-
-        public string? IsActive { get; set; }
+        public int? IsActive { get; set; }
 
         public string? ImageSource { get; set; }
-        public string? CatId { get; set; }
+        public string? CategoryId { get; set; }
         public VodkaEntities.Category? Category { get; set; }
-        public ICollection<VodkaEntities.Transactdetail>? Transactdetail { get; set; }
+        public ICollection<VodkaEntities.Transactdetail>? TransactDetails { get; set; }
     }
 }

@@ -21,48 +21,45 @@ namespace VodkaDataAccess.Migrations
 
             modelBuilder.Entity("VodkaEntities.Category", b =>
                 {
-                    b.Property<string>("CatId")
+                    b.Property<string>("CategoryId")
                         .HasColumnType("varchar(255)");
-
-                    b.Property<string>("CatName")
-                        .HasColumnType("longtext");
 
                     b.Property<string>("Descript")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("IsActive")
+                    b.Property<int?>("IsActive")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
                         .HasColumnType("longtext");
 
-                    b.HasKey("CatId");
+                    b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("VodkaEntities.Paymentmethod", b =>
                 {
-                    b.Property<string>("PaymentId")
+                    b.Property<string>("PaymentMethodId")
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("Descript")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("PaymentName")
+                    b.Property<string>("Name")
                         .HasColumnType("longtext");
 
-                    b.HasKey("PaymentId");
+                    b.HasKey("PaymentMethodId");
 
                     b.ToTable("Paymentmethods");
                 });
 
             modelBuilder.Entity("VodkaEntities.Product", b =>
                 {
-                    b.Property<string>("ProductNum")
+                    b.Property<string>("ProductId")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("CatId")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("CategoryCatId")
+                    b.Property<string>("CategoryId")
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("Descript")
@@ -71,30 +68,21 @@ namespace VodkaDataAccess.Migrations
                     b.Property<string>("ImageSource")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("IsActive")
+                    b.Property<int?>("IsActive")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Price")
-                        .HasColumnType("longtext");
+                    b.Property<decimal?>("Price")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("ProductName")
-                        .HasColumnType("longtext");
+                    b.Property<int?>("Quan")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Quan")
-                        .HasColumnType("longtext");
+                    b.HasKey("ProductId");
 
-                    b.Property<string>("Tax1")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Tax2")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Tax3")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("ProductNum");
-
-                    b.HasIndex("CategoryCatId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
                 });
@@ -104,11 +92,11 @@ namespace VodkaDataAccess.Migrations
                     b.Property<string>("TaxId")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("TaxDes")
+                    b.Property<string>("Descript")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("TaxRate")
-                        .HasColumnType("longtext");
+                    b.Property<decimal>("Rate")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("TaxId");
 
@@ -120,72 +108,60 @@ namespace VodkaDataAccess.Migrations
                     b.Property<string>("TransactDetailId")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("CostEach")
-                        .HasColumnType("longtext");
+                    b.Property<decimal?>("CostEach")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("ProductNum")
+                    b.Property<string>("ProductId")
                         .HasColumnType("varchar(255)");
 
                     b.Property<int?>("Quan")
                         .HasColumnType("int");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("longtext");
+                    b.Property<decimal?>("Total")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Tax1")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Tax2")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Tax3")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Total")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("TransactId")
+                    b.Property<string>("TransactHeaderId")
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("TransactDetailId");
 
-                    b.HasIndex("ProductNum");
+                    b.HasIndex("ProductId");
 
-                    b.HasIndex("TransactId");
+                    b.HasIndex("TransactHeaderId");
 
                     b.ToTable("Transactdetails");
                 });
 
             modelBuilder.Entity("VodkaEntities.Transactheader", b =>
                 {
-                    b.Property<string>("TransactId")
+                    b.Property<string>("TransactHeaderId")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("Net")
-                        .HasColumnType("longtext");
+                    b.Property<decimal?>("Net")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("longtext");
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Tax1")
-                        .HasColumnType("longtext");
+                    b.Property<int?>("Tax1")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Tax2")
-                        .HasColumnType("longtext");
+                    b.Property<int?>("Tax2")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Tax3")
-                        .HasColumnType("longtext");
+                    b.Property<int?>("Tax3")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("TimePayment")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Total")
+                    b.Property<decimal?>("Total")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UserId")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("WhoPay")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("TransactId");
+                    b.HasKey("TransactHeaderId");
 
                     b.ToTable("Transactheaders");
                 });
@@ -204,16 +180,16 @@ namespace VodkaDataAccess.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("IsActive")
+                    b.Property<int?>("IsActive")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Password")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("TotalCash")
-                        .HasColumnType("longtext");
+                    b.Property<decimal?>("TotalCash")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("UserPassword")
                         .HasColumnType("longtext");
 
                     b.HasKey("UserId");
@@ -224,8 +200,8 @@ namespace VodkaDataAccess.Migrations
             modelBuilder.Entity("VodkaEntities.Product", b =>
                 {
                     b.HasOne("VodkaEntities.Category", "Category")
-                        .WithMany("Product")
-                        .HasForeignKey("CategoryCatId");
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
                 });
@@ -233,31 +209,31 @@ namespace VodkaDataAccess.Migrations
             modelBuilder.Entity("VodkaEntities.Transactdetail", b =>
                 {
                     b.HasOne("VodkaEntities.Product", "Product")
-                        .WithMany("Transactdetail")
-                        .HasForeignKey("ProductNum");
+                        .WithMany("TransactDetails")
+                        .HasForeignKey("ProductId");
 
-                    b.HasOne("VodkaEntities.Transactheader", "Transactheader")
-                        .WithMany("Transactdetail")
-                        .HasForeignKey("TransactId");
+                    b.HasOne("VodkaEntities.Transactheader", "TransactHeader")
+                        .WithMany("TransactDetails")
+                        .HasForeignKey("TransactHeaderId");
 
                     b.Navigation("Product");
 
-                    b.Navigation("Transactheader");
+                    b.Navigation("TransactHeader");
                 });
 
             modelBuilder.Entity("VodkaEntities.Category", b =>
                 {
-                    b.Navigation("Product");
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("VodkaEntities.Product", b =>
                 {
-                    b.Navigation("Transactdetail");
+                    b.Navigation("TransactDetails");
                 });
 
             modelBuilder.Entity("VodkaEntities.Transactheader", b =>
                 {
-                    b.Navigation("Transactdetail");
+                    b.Navigation("TransactDetails");
                 });
 #pragma warning restore 612, 618
         }

@@ -29,7 +29,7 @@ namespace VodkaServices.Implementation
 
         public Transactheader GetById(string id)
         {
-            return _context.Transactheaders.Where(x => x.TransactId.Equals(id))
+            return _context.Transactheaders.Where(x => x.TransactHeaderId.Equals(id))
                                       .FirstOrDefault();
         }
 
@@ -50,7 +50,7 @@ namespace VodkaServices.Implementation
             var transactheader = GetById(id);
             if (transactheader != null)
             {
-                transactheader.Status = "3";
+                transactheader.Status = 3;
                 _context.Transactheaders.Update(transactheader);
                 await _context.SaveChangesAsync();
             }
@@ -63,19 +63,19 @@ namespace VodkaServices.Implementation
         }
         public int GetLastId()
         {
-            var th = _context.Transactheaders.OrderByDescending(i => i.TransactId).FirstOrDefault();
-            return int.Parse(th.TransactId.Replace("TS", ""));
+            var th = _context.Transactheaders.OrderByDescending(i => i.TransactHeaderId).FirstOrDefault();
+            return int.Parse(th.TransactHeaderId.Replace("TS", ""));
         }
-        public async Task UpdateTotalCash(Transactheader transactheader, float totalRate)
+        public async Task UpdateTotalCash(Transactheader transactheader, decimal totalRate)
         {
-            var totalCash = float.Parse(transactheader.Net) + (float.Parse(transactheader.Net) * (totalRate / 100));
-            transactheader.Total = ((int)Math.Round(totalCash, 0)).ToString();
+            var totalCash = (transactheader.Net + transactheader.Net) * (totalRate / 100);
+            transactheader.Total = totalCash;
             await _context.SaveChangesAsync();
         }
 
         public IEnumerable<Transactheader> GetTransactheadersByUserId(string userId)
         {
-            return _context.Transactheaders.Where(x => x.WhoPay.Equals(userId)).ToList();
+            return _context.Transactheaders.Where(x => x.UserId.Equals(userId)).ToList();
         }
     }
 }

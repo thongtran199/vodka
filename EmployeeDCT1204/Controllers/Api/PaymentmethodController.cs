@@ -20,8 +20,8 @@ namespace Vodka.Controllers.Api
         {
             var paymentmethodList = _paymentmethodService.GetAll().Select(x => new PaymentmethodIndexViewModel
             {
-                PaymentId = x.PaymentId,
-                PaymentName = x.PaymentName,
+                PaymentMethodId = x.PaymentMethodId,
+                Name = x.Name,
                 Descript = x.Descript
             }).ToList();
             return Ok(paymentmethodList);
@@ -34,8 +34,8 @@ namespace Vodka.Controllers.Api
                 return NotFound();
             var model = new PaymentmethodDetailViewModel
             {
-                PaymentId = paymentmethod.PaymentId,
-                PaymentName = paymentmethod.PaymentName,
+                PaymentMethodId = paymentmethod.PaymentMethodId,
+                Name = paymentmethod.Name,
                 Descript = paymentmethod.Descript
             };
             return Ok(model);
@@ -59,10 +59,10 @@ namespace Vodka.Controllers.Api
         {
             if (model == null)
                 return BadRequest();
-            var paymentmethod = _paymentmethodService.GetById(model.PaymentId);
+            var paymentmethod = _paymentmethodService.GetById(model.PaymentMethodId);
             if (paymentmethod == null)
                 return NotFound();
-            paymentmethod.PaymentName = model.PaymentName;
+            paymentmethod.Name = model.Name;
             paymentmethod.Descript = model.Descript;
 
             await _paymentmethodService.UpdateAsSync(paymentmethod);
@@ -85,8 +85,8 @@ namespace Vodka.Controllers.Api
 
             var paymentmethod = new Paymentmethod
             {
-                PaymentId = new_str_id,
-                PaymentName = model.PaymentName,
+                PaymentMethodId = new_str_id,
+                Name = model.Name,
                 Descript = model.Descript
             };
 
