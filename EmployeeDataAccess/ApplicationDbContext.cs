@@ -40,6 +40,9 @@ public partial class ApplicationDbContext : IdentityDbContext
         model.Entity<VodkaUser>()
             .Property(u => u.TotalCash)
             .HasColumnType("decimal(18,2)");
+        //model.Entity<VodkaUser>()
+        //    .Property(u => u.Salt)
+        //    .HasColumnType("longtext");
 
 
         model.Entity<IdentityUserRole<string>>().HasKey(ur => new { ur.UserId, ur.RoleId });
@@ -58,9 +61,9 @@ public partial class ApplicationDbContext : IdentityDbContext
             }
         );
 
-        var hasher = new PasswordHasher<IdentityUser>();
-        model.Entity<IdentityUser>().HasData(
-            new IdentityUser
+        var hasher = new PasswordHasher<VodkaUser>();
+        model.Entity<VodkaUser>().HasData(
+            new VodkaUser
             {
                 Id = "f139186b-6419-4cb1-8c80-32755a3f7c01",
                 UserName = "thongtran",

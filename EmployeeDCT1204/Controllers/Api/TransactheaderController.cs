@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing.Constraints;
+using System.Web.Http.Filters;
 using Vodka.Models.Transactheader;
 using VodkaEntities;
 using VodkaServices;
@@ -12,14 +15,16 @@ namespace Vodka.Controllers.Api
     {
         private ITransactdetailService _transactdetailService;
         private ITransactheaderService _transactheaderService;
-        //private IUseraccountService _useraccountService;
+        private IVodkaUserService _vodkaUserService;
         private IProductService _productService;
-        public TransactheaderController(ITransactdetailService transactdetailService, ITransactheaderService transactheaderService, IProductService productService)
+
+        private UserManager<VodkaUser> _userManager;
+        public TransactheaderController(ITransactdetailService transactdetailService, ITransactheaderService transactheaderService, IProductService productService, IVodkaUserService vodkaUserService)
         {
             _transactheaderService = transactheaderService;
-            //_useraccountService = useraccountService;
             _productService = productService;
             _transactdetailService = transactdetailService;
+            _vodkaUserService = vodkaUserService;
         }
 
         [HttpGet("GetAllTransactheaders")]
@@ -119,9 +124,9 @@ namespace Vodka.Controllers.Api
             if (model.Total < 0)
                 return BadRequest();
 
-            //var UserId = _useraccountService.GetById(model.UserId);
-            //if (UserId == null)
-            //    return NotFound();
+            var user = await _userManager.FindByIdAsync(model.UserId);
+            if (user == null)
+                return NotFound();
 
             string new_str_id = "";
             int new_int_id = _transactheaderService.GetLastId() + 1;
@@ -149,6 +154,7 @@ namespace Vodka.Controllers.Api
             return Ok();
         }
         [HttpGet("XacNhanMuaHang/{id}")]
+        [Authorize]
         public async Task<IActionResult> XacNhanMuaHang(string id)
         {
             var transactheader = _transactheaderService.GetById(id);
@@ -183,8 +189,10 @@ namespace Vodka.Controllers.Api
                         await _productService.UpdateAsSync(product);
                     }
                 }
-                //var user = _useraccountService.GetById(transactheader.UserId);
-                //user.TotalCash = user.TotalCash + transactheader.Total;
+                var user = await _userManager.FindByIdAsync(transactheader.UserId);
+                user.TotalCash = user.TotalCash + transactheader.Total;
+
+                await _userManager.UpdateAsync(user);
 
                 transactheader.Status = 2;
                 await _transactheaderService.UpdateAsSync(transactheader);

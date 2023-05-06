@@ -10,6 +10,6 @@ namespace VodkaServices
         Task<VodkaUser> GetUserByJwt(string jwtString);
 
         Task<IdentityResult> RegisterAsync(VodkaUser user, string password);
-        Task<string> SignInAsync(VodkaUser user, string password);
+        Task<string> SignInAsync(string userName, string password);
     }
 }

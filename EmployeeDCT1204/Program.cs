@@ -49,6 +49,23 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // Set password requirements if needed
+    options.Password.RequiredLength = 8;
+    options.Password.RequireDigit = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireDigit = false;
+    
+
+    // Disable email confirmation requirement
+    options.SignIn.RequireConfirmedEmail = false;
+});
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAnyOrigin",
@@ -62,12 +79,11 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<IProductService, ProductServices>();
 builder.Services.AddScoped<ICategoryService, CategoryServices>();
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IVodkaUserService, VodkaUserService>();
 builder.Services.AddScoped<IPaymentmethodService, PaymentmethodServices>();
 builder.Services.AddScoped<ITransactheaderService, TransactheaderServices>();
 builder.Services.AddScoped<ITransactdetailService, TransactdetailServices>();
 builder.Services.AddScoped<ITaxinfoService, TaxinfoServices>();
-//builder.Services.AddScoped<IUseraccountService, UseraccountServices>();
 
 builder.Services.AddSwaggerGen(c =>
 {
