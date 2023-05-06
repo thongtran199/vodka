@@ -12,12 +12,12 @@ namespace Vodka.Controllers.Api
     {
         private ITransactdetailService _transactdetailService;
         private ITransactheaderService _transactheaderService;
-        private IUseraccountService _useraccountService;
+        //private IUseraccountService _useraccountService;
         private IProductService _productService;
-        public TransactheaderController(ITransactdetailService transactdetailService, ITransactheaderService transactheaderService, IUseraccountService useraccountService, IProductService productService)
+        public TransactheaderController(ITransactdetailService transactdetailService, ITransactheaderService transactheaderService, IProductService productService)
         {
             _transactheaderService = transactheaderService;
-            _useraccountService = useraccountService;
+            //_useraccountService = useraccountService;
             _productService = productService;
             _transactdetailService = transactdetailService;
         }
@@ -119,9 +119,9 @@ namespace Vodka.Controllers.Api
             if (model.Total < 0)
                 return BadRequest();
 
-            var UserId = _useraccountService.GetById(model.UserId);
-            if (UserId == null)
-                return NotFound();
+            //var UserId = _useraccountService.GetById(model.UserId);
+            //if (UserId == null)
+            //    return NotFound();
 
             string new_str_id = "";
             int new_int_id = _transactheaderService.GetLastId() + 1;
@@ -183,8 +183,8 @@ namespace Vodka.Controllers.Api
                         await _productService.UpdateAsSync(product);
                     }
                 }
-                var user = _useraccountService.GetById(transactheader.UserId);
-                user.TotalCash = user.TotalCash + transactheader.Total;
+                //var user = _useraccountService.GetById(transactheader.UserId);
+                //user.TotalCash = user.TotalCash + transactheader.Total;
 
                 transactheader.Status = 2;
                 await _transactheaderService.UpdateAsSync(transactheader);

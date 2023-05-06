@@ -11,8 +11,8 @@ using VodkaDataAccess;
 namespace VodkaDataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230506071437_AddDataUser")]
-    partial class AddDataUser
+    [Migration("20230506082657_SeedData")]
+    partial class SeedData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,22 +46,6 @@ namespace VodkaDataAccess.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "133f85fc-3e0c-4bd0-a820-d379c0bf9dc5",
-                            ConcurrencyStamp = "6cc97249-bbc9-45e5-b088-71f5bc6e0c4f",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "13ae282b-4fbc-49e6-8deb-4a5e4e8bb130",
-                            ConcurrencyStamp = "bf35ee4c-4f7e-4a50-af71-2e18b279139a",
-                            Name = "Manager",
-                            NormalizedName = "MANAGER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -149,24 +133,6 @@ namespace VodkaDataAccess.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "f139186b-6419-4cb1-8c80-32755a3f7c01",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "e90196eb-3a07-49fe-81d0-32210a7dddf0",
-                            Email = "vumvp@.hcmue.edu.vn",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "VUMVP@HCMUE.EDU.VN",
-                            NormalizedUserName = "VUMVP",
-                            PasswordHash = "AQAAAAEAACcQAAAAEB7r4zW0dlhxRn8M3FZ4806kKYm66tKrl1Zcsab1rj7gh36UnIy4ErYuKYxjya2i7A==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "0356322a-82e0-415c-815f-1938ff8133f6",
-                            TwoFactorEnabled = false,
-                            UserName = "vumvp"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -227,18 +193,6 @@ namespace VodkaDataAccess.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "f139186b-6419-4cb1-8c80-32755a3f7c01",
-                            RoleId = "133f85fc-3e0c-4bd0-a820-d379c0bf9dc5"
-                        },
-                        new
-                        {
-                            UserId = "f139186b-6419-4cb1-8c80-32755a3f7c01",
-                            RoleId = "13ae282b-4fbc-49e6-8deb-4a5e4e8bb130"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -405,37 +359,6 @@ namespace VodkaDataAccess.Migrations
                     b.HasKey("TransactHeaderId");
 
                     b.ToTable("Transactheaders");
-                });
-
-            modelBuilder.Entity("VodkaEntities.Useraccount", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<int>("AccessLevel")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Address")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("longtext");
-
-                    b.Property<int?>("IsActive")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("longtext");
-
-                    b.Property<decimal?>("TotalCash")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("Useraccounts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -120,25 +120,6 @@ namespace VodkaDataAccess.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Useraccounts",
-                columns: table => new
-                {
-                    UserId = table.Column<string>(type: "varchar(255)", nullable: false),
-                    UserName = table.Column<string>(type: "longtext", nullable: true),
-                    Password = table.Column<string>(type: "longtext", nullable: true),
-                    AccessLevel = table.Column<int>(type: "int", nullable: false),
-                    TotalCash = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    IsActive = table.Column<int>(type: "int", nullable: true),
-                    Email = table.Column<string>(type: "longtext", nullable: true),
-                    Address = table.Column<string>(type: "longtext", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Useraccounts", x => x.UserId);
-                })
-                .Annotation("MySQL:Charset", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -351,6 +332,9 @@ namespace VodkaDataAccess.Migrations
                 name: "IX_Transactdetails_TransactHeaderId",
                 table: "Transactdetails",
                 column: "TransactHeaderId");
+
+
+
         }
 
         /// <inheritdoc />
@@ -379,9 +363,6 @@ namespace VodkaDataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Transactdetails");
-
-            migrationBuilder.DropTable(
-                name: "Useraccounts");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

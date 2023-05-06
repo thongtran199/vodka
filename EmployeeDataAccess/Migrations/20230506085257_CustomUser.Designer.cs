@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VodkaDataAccess;
 
@@ -10,9 +11,11 @@ using VodkaDataAccess;
 namespace VodkaDataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230506085257_CustomUser")]
+    partial class CustomUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,22 +46,6 @@ namespace VodkaDataAccess.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "133f85fc-3e0c-4bd0-a820-d379c0bf9dc5",
-                            ConcurrencyStamp = "5f50e260-2e04-4320-bc75-95be97eec70a",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "13ae282b-4fbc-49e6-8deb-4a5e4e8bb130",
-                            ConcurrencyStamp = "dc6b8266-4040-4464-ad86-71b27439607b",
-                            Name = "Manager",
-                            NormalizedName = "MANAGER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -154,24 +141,6 @@ namespace VodkaDataAccess.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
 
                     b.UseTphMappingStrategy();
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "f139186b-6419-4cb1-8c80-32755a3f7c01",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "5aeea19b-3b87-4c58-b200-361d0b0b8a56",
-                            Email = "thongtran@gmail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "THONGTRAN@GMAIL.COM",
-                            NormalizedUserName = "THONGTRAN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIrmdLGm2P50X/oWAwx59jllRdxHodqJlZ638WMIQZejIgJLmRJ0WyUiHBKUKoeZrw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "469c64fa-8ef2-4c2a-8ae2-6cabcd985476",
-                            TwoFactorEnabled = false,
-                            UserName = "thongtran"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -232,18 +201,6 @@ namespace VodkaDataAccess.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "f139186b-6419-4cb1-8c80-32755a3f7c01",
-                            RoleId = "133f85fc-3e0c-4bd0-a820-d379c0bf9dc5"
-                        },
-                        new
-                        {
-                            UserId = "f139186b-6419-4cb1-8c80-32755a3f7c01",
-                            RoleId = "13ae282b-4fbc-49e6-8deb-4a5e4e8bb130"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

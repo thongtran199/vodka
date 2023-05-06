@@ -25,12 +25,25 @@ public partial class ApplicationDbContext : IdentityDbContext
 
     public DbSet<Transactheader> Transactheaders { get; set; }
 
-    public DbSet<Useraccount> Useraccounts { get; set; }
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder model)
     {
-        base.OnModelCreating(modelBuilder);
-        var hasher = new PasswordHasher<IdentityUser>();
-        modelBuilder.Entity<IdentityRole>().HasData(
+        base.OnModelCreating(model);
+
+        model.Entity<VodkaUser>()
+            .Property(u => u.Address)
+            .HasColumnType("longtext");
+
+        model.Entity<VodkaUser>()
+            .Property(u => u.AccessLevel)
+            .HasColumnType("int");
+
+        model.Entity<VodkaUser>()
+            .Property(u => u.TotalCash)
+            .HasColumnType("decimal(18,2)");
+
+
+        model.Entity<IdentityUserRole<string>>().HasKey(ur => new { ur.UserId, ur.RoleId });
+        model.Entity<IdentityRole>().HasData(
             new IdentityRole
             {
                 Id = "133f85fc-3e0c-4bd0-a820-d379c0bf9dc5",
@@ -44,18 +57,21 @@ public partial class ApplicationDbContext : IdentityDbContext
                 NormalizedName = "MANAGER".ToUpper()
             }
         );
-        modelBuilder.Entity<IdentityUser>().HasData(
+
+        var hasher = new PasswordHasher<IdentityUser>();
+        model.Entity<IdentityUser>().HasData(
             new IdentityUser
             {
                 Id = "f139186b-6419-4cb1-8c80-32755a3f7c01",
                 UserName = "thongtran",
                 Email = "thongtran@gmail.com",
-                NormalizedUserName = "THONGTRAN".ToUpper(),
-                NormalizedEmail = "THONGTRAN@GMAIL.COM".ToUpper(),
+                NormalizedUserName = "thongtran".ToUpper(),
+                NormalizedEmail = "thongtran@gmail.com".ToUpper(),
                 PasswordHash = hasher.HashPassword(null, "Admin@123")
             }
         );
-        modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+        model.Entity<IdentityUserRole<string>>().HasData
+        (
             new IdentityUserRole<string>
             {
                 UserId = "f139186b-6419-4cb1-8c80-32755a3f7c01",

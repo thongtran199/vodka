@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
+using VodkaEntities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +27,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnectiondb4free2"))
 );
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<VodkaUser, IdentityRole>()
          .AddEntityFrameworkStores<ApplicationDbContext>()
          .AddDefaultTokenProviders();
 
@@ -61,12 +62,12 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<IProductService, ProductServices>();
 builder.Services.AddScoped<ICategoryService, CategoryServices>();
-builder.Services.AddScoped<ITaiKhoanService, TaiKhoanService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPaymentmethodService, PaymentmethodServices>();
 builder.Services.AddScoped<ITransactheaderService, TransactheaderServices>();
 builder.Services.AddScoped<ITransactdetailService, TransactdetailServices>();
 builder.Services.AddScoped<ITaxinfoService, TaxinfoServices>();
-builder.Services.AddScoped<IUseraccountService, UseraccountServices>();
+//builder.Services.AddScoped<IUseraccountService, UseraccountServices>();
 
 builder.Services.AddSwaggerGen(c =>
 {
