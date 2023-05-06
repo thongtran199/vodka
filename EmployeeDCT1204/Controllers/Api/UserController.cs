@@ -11,7 +11,7 @@ namespace Vodka.Controllers.Api
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserService _taikhoanService;
+        private readonly IVodkaUserService _taikhoanService;
         //public UserController(IUserService taiKhoanService)
         //{
         //    _taikhoanService = taiKhoanService;
