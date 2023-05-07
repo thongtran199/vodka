@@ -68,7 +68,7 @@ namespace VodkaServices.Implementation
         }
         public async Task UpdateTotalCash(Transactheader transactheader, decimal totalRate)
         {
-            var totalCash = (transactheader.Net + transactheader.Net) * (totalRate / 100);
+            var totalCash = transactheader.Net + (transactheader.Net * (totalRate / 100));
             transactheader.Total = totalCash;
             await _context.SaveChangesAsync();
         }
@@ -76,6 +76,71 @@ namespace VodkaServices.Implementation
         public IEnumerable<Transactheader> GetTransactheadersByUserId(string userId)
         {
             return _context.Transactheaders.Where(x => x.UserId.Equals(userId)).ToList();
+        }
+
+        public IEnumerable<Transactheader> GetTransactheadersByTimePayment(DateTime start, DateTime end)
+        {
+            throw new NotImplementedException();
+        }
+
+        public decimal? GetTotalRevenueByTimePayment(DateTime start, DateTime end)
+        {
+           return _context.Transactheaders
+                        .Where(ts => ts.TimePayment >= start && ts.TimePayment <= end)
+                        .ToList()
+                        .Sum(ts => ts.Total);
+            
+        }
+
+        public decimal? GetTotalRevenueLastMonth()
+        {
+            DateTime now = DateTime.Now;
+            DateTime start = new DateTime(now.Year, now.Month, 1);
+            DateTime end = now;
+
+            return _context.Transactheaders
+                .Where(ts => ts.TimePayment >= start && ts.TimePayment <= end)
+                .Sum(ts => ts.Total);
+        }
+
+        public decimal? GetTotalRevenueLastYear()
+        {
+            DateTime now = DateTime.Now;
+            DateTime start = new DateTime(now.Year, 1, 1);
+            DateTime end = now;
+
+            // Filter the transaction headers for the previous year and calculate the total
+            return _context.Transactheaders
+                .Where(ts => ts.TimePayment >= start && ts.TimePayment <= end)
+                .Sum(ts => ts.Total);
+        }
+
+        public decimal? GetTotalRevenueLastWeek()
+        {
+            DateTime now = DateTime.Now;
+            DateTime start = now.Date.AddDays(-(int)now.DayOfWeek - 6);
+            DateTime end = start.AddDays(6);
+
+            // Filter the transaction headers for the previous week and calculate the total
+            return _context.Transactheaders
+                .Where(ts => ts.TimePayment >= start && ts.TimePayment <= end)
+                .Sum(ts => ts.Total);
+        }
+        public Transactheader GetGioHangHienTaiByUserId(string userid)
+        {
+            var giohang =  _context.Transactheaders
+                .Where(ts => ts.Status == 0 && ts.UserId == userid)
+                .FirstOrDefault();
+            return giohang;
+        }
+        public async Task XacNhanMuaHang(string id)
+        {
+            var transactheader = GetById(id);
+            if (transactheader != null && transactheader.Status == 0)
+            {
+                transactheader.Status = 1;
+                await UpdateAsSync(transactheader);
+            }
         }
     }
 }

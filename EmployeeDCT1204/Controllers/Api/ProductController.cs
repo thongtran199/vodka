@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Razor.Language.Extensions;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using NuGet.Versioning;
 using System.Collections.Generic;
@@ -126,26 +127,60 @@ namespace Vodka.Controllers.Api
             return Ok(model);
         }
 
-        [HttpGet("GetProductByName/{name}")]
-        public IActionResult GetProductByName(string name)
+        //[HttpGet("GetProductByName/{name}")]
+        //public IActionResult GetProductByName(string name)
+        //{
+        //    var product = _productService.GetProductByName(name);
+        //    if (product == null) return NotFound();
+        //    var model = new ProductDetailViewModel
+        //    {
+        //        ProductId = product.ProductId,
+        //        Name = product.Name,
+        //        Descript = product.Descript,
+        //        Price = product.Price,
+        //        Quan = product.Quan,
+        //        IsActive = product.IsActive,
+        //        ImageSource = product.ImageSource,
+        //        CategoryId = product.CategoryId,
+        //        Category = null,
+        //        TransactDetails = null
+        //    };
+        //    return Ok(model);
+        //}
+
+        [HttpGet("TotalFilterProductByName/{str}")]
+        public IActionResult TotalFilterProductByName(string str)
         {
-            var product = _productService.GetProductByName(name);
-            if (product == null) return NotFound();
-            var model = new ProductDetailViewModel
-            {
-                ProductId = product.ProductId,
-                Name = product.Name,
-                Descript = product.Descript,
-                Price = product.Price,
-                Quan = product.Quan,
-                IsActive = product.IsActive,
-                ImageSource = product.ImageSource,
-                CategoryId = product.CategoryId,
-                Category = null,
-                TransactDetails = null
-            };
-            return Ok(model);
+            var num = _productService.TotalFilterProductByName(str);
+            if (num == null) return NotFound();
+            return Ok(num);
         }
+
+        [HttpGet("TotalProductFilterByPrice")]
+        public IActionResult TotalFilterProductByPrice([FromQuery] ProductFilterViewModel model)
+        {
+            var num = _productService.TotalProductFilterByPrice(model.minPrice, model.maxPrice);
+            if (num == null) return NotFound();
+            return Ok(num);
+        }
+
+        [HttpGet("TotalProductByCategoryId")]
+        public IActionResult TotalProductByCategoryId(string id)
+        {
+            var num = _productService.TotalProductByCategoryId(id);
+            if (num == null) return NotFound();
+            return Ok(num);
+        }
+
+        [HttpGet("TotalNumberOfProduct")]
+        public IActionResult TotalGetAll()
+        {
+            var num = _productService.TotalProduct();
+            if (num == null) return NotFound();
+            return Ok(num);
+        }
+
+
 
         [HttpGet("GetProductsByCategoryId")]
         public IActionResult GetProductsByCategoryId(string id)
@@ -168,14 +203,34 @@ namespace Vodka.Controllers.Api
             return Ok(products);
         }
 
-        [HttpGet("GetProductFromMToN")]
-        public IActionResult GetProductFromMToN(int m, int n)
+        //[HttpGet("GetProductFromMToN")]
+        //public IActionResult GetProductFromMToN(int m, int n)
+        //{
+        //    if (m <= 0 || n <= 0)
+        //        return NotFound("m hoac n khong duoc nho hon hoac bang 0");
+        //    if (m > n)
+        //        return NotFound("m khong duoc lon hon n");
+        //    var model = _productService.GetProductFromMToN(m, n).Select(product => new ProductDetailViewModel
+        //    {
+        //        ProductId = product.ProductId,
+        //        Name = product.Name,
+        //        Descript = product.Descript,
+        //        Price = product.Price,
+        //        Quan = product.Quan,
+        //        IsActive = product.IsActive,
+        //        ImageSource = product.ImageSource,
+        //        CategoryId = product.CategoryId,
+        //        Category = null,
+        //        TransactDetails = null
+        //    }).ToList();
+
+        //    return Ok(model);
+        //}
+
+        [HttpGet("GetProductByPage")]
+        public IActionResult GetProductByPage(int page)
         {
-            if (m <= 0 || n <= 0)
-                return NotFound("m hoac n khong duoc nho hon hoac bang 0");
-            if (m > n)
-                return NotFound("m khong duoc lon hon n");
-            var model = _productService.GetProductFromMToN(m, n).Select(product => new ProductDetailViewModel
+            var model = _productService.GetProductByPage(page).Select(product => new ProductDetailViewModel
             {
                 ProductId = product.ProductId,
                 Name = product.Name,
@@ -278,6 +333,16 @@ namespace Vodka.Controllers.Api
             return Ok("Them san pham thanh cong");
         }
 
+
+
+        [HttpGet("GetTotalPage")]
+        public IActionResult GetTotalPage()
+        {
+            var model = _productService.GetAll().Count();
+            return Ok(model/12);
+        }
+
+
     }
-    }
+}
 

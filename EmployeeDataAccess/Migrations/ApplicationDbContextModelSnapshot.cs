@@ -43,22 +43,6 @@ namespace VodkaDataAccess.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "133f85fc-3e0c-4bd0-a820-d379c0bf9dc5",
-                            ConcurrencyStamp = "d4e57c9c-9ae6-49b5-acd1-021486ee03d5",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "13ae282b-4fbc-49e6-8deb-4a5e4e8bb130",
-                            ConcurrencyStamp = "87f6fbc1-1d20-459a-a091-c62aa1e9f077",
-                            Name = "Manager",
-                            NormalizedName = "MANAGER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -215,17 +199,6 @@ namespace VodkaDataAccess.Migrations
 
                     b.ToTable("AspNetUserRoles", (string)null);
 
-                    b.HasData(
-                        new
-                        {
-                            UserId = "f139186b-6419-4cb1-8c80-32755a3f7c01",
-                            RoleId = "133f85fc-3e0c-4bd0-a820-d379c0bf9dc5"
-                        },
-                        new
-                        {
-                            UserId = "f139186b-6419-4cb1-8c80-32755a3f7c01",
-                            RoleId = "13ae282b-4fbc-49e6-8deb-4a5e4e8bb130"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -409,23 +382,6 @@ namespace VodkaDataAccess.Migrations
 
                     b.HasDiscriminator().HasValue("VodkaUser");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = "f139186b-6419-4cb1-8c80-32755a3f7c01",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "6791c60f-8ab9-4ae1-a88d-3443aa3e3eb6",
-                            Email = "thongtran@gmail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "THONGTRAN@GMAIL.COM",
-                            NormalizedUserName = "THONGTRAN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBpG2XKTommxblRerdoQ9hbsBCDsIFtNs/ltYf8zsRXQn69Rd26/hta9ONScDI5Xow==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "e3f20b96-f2c0-4837-bfde-b84e4562de29",
-                            TwoFactorEnabled = false,
-                            UserName = "thongtran"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

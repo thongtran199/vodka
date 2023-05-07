@@ -70,33 +70,36 @@ namespace VodkaServices.Implementation
 
         public IEnumerable<Product> FilterProductByPrice(decimal minPrice, decimal maxPrice)
         {
-            var products = GetAll();
-            var filterProducts = new List<Product>();
+            //var products = GetAll();
+            //var filterProducts = new List<Product>();
 
-            if ( maxPrice == 0)
-            {
-                foreach (var p in products)
-                {
-                    if (minPrice.CompareTo(p.Price) <= 0)
-                    {
-                        filterProducts.Add(p);
-                    }
-                }
-            }
+            //if ( maxPrice == 0)
+            //{
+            //    foreach (var p in products)
+            //    {
+            //        if (minPrice.CompareTo(p.Price) <= 0)
+            //        {
+            //            filterProducts.Add(p);
+            //        }
+            //    }
+            //}
 
-            else
-            {
-                foreach (var p in products)
-                {
-                    if (maxPrice.CompareTo(p.Price) >= 0)
-                    {
-                        filterProducts.Add(p);
-                    }
-                }
-            }
-            return filterProducts;
+            //else
+            //{
+            //    foreach (var p in products)
+            //    {
+            //        if (maxPrice.CompareTo(p.Price) >= 0)
+            //        {
+            //            filterProducts.Add(p);
+            //        }
+            //    }
+            //}
+            //return filterProducts;
 
-
+            return _context.Products
+                .Where(p => p.Price <= maxPrice && p.Price >= minPrice)
+                .OrderBy(p => p.Price)
+                .ToList();
 
         }
 
@@ -118,6 +121,33 @@ namespace VodkaServices.Implementation
                 .Skip(m - 1)
                 .Take(n - m + 1)
                 .ToList();
+        }
+
+        public int TotalFilterProductByName(string str)
+        {
+            return FilterProductByName(str).Count();
+        }
+
+        public int TotalProductFilterByPrice(decimal minPrice, decimal maxPrice)
+        {
+            return FilterProductByPrice(minPrice, maxPrice).Count();
+        }
+
+        public int TotalProductByCategoryId(string id)
+        {
+            return GetProductsByCategoryId(id).Count();
+        }
+
+        public int TotalProduct()
+        {
+            return GetAll().Count();
+        }
+
+        public IEnumerable<Product> GetProductByPage(int page)
+        {
+            var start = page == 1 ? 1 : (page - 1) * 13;
+            var end = start + 12;
+            return GetProductFromMToN(start, end);
         }
     }
 }

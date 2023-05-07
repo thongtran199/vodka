@@ -97,5 +97,49 @@ namespace VodkaServices.Implementation
             }
         }
 
+        public async Task InputMoney(string id, decimal money)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                user.TotalCash += money;
+                await _userManager.UpdateAsync(user);
+            }
+        }
+
+        public IEnumerable<VodkaUser> GetAll()
+        {
+            return _userManager.Users;
+        }
+
+        public async Task<VodkaUser> GetById(string id)
+        {
+            return await _userManager.FindByIdAsync(id);
+        }
+
+
+        public async Task UpdateById(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            await _userManager.UpdateAsync(user);
+
+        }
+
+        public async Task DeleteById(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            await _userManager.DeleteAsync(user);
+        }
+
+        public async Task UpdateAsSync(VodkaUser vodkaUser)
+        {
+            await _userManager.UpdateAsync(vodkaUser);
+        }
+
+        public async Task<VodkaUser> GetVodkaUserByUserName(string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+            return user;
+        }
     }
 }

@@ -19,5 +19,19 @@ namespace VodkaServices
 
         int GetLastId();
         Task UpdateTotalCash(Transactheader transactheader, decimal totalRate);
+        IEnumerable<Transactheader> GetTransactheadersByTimePayment(DateTime start, DateTime end);
+
+        decimal? GetTotalRevenueByTimePayment(DateTime start, DateTime end);
+
+        decimal? GetTotalRevenueLastMonth();
+        decimal? GetTotalRevenueLastYear();
+        decimal? GetTotalRevenueLastWeek();
+
+        public Transactheader GetGioHangHienTaiByUserId(string userid);
+
+        Task XacNhanMuaHang(string id);
+
+
+
     }
 }

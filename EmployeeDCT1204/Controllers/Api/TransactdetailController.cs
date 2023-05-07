@@ -60,24 +60,20 @@ namespace Vodka.Controllers.Api
             {
                 var transactdetail = _transactdetailService.GetById(id);
                 var transactheader = _transactheaderService.GetById(transactdetail.TransactHeaderId);
+
+                var product = _productService.GetById(transactdetail.ProductId);
+                if (product == null)
+                    return BadRequest();
+
+                product.Quan += transactdetail.Quan;
+                
                 var total = transactdetail.Total;
                 await _transactdetailService.DeleteById(id);
 
                 transactheader.Net = transactheader.Net - total;
 
-                decimal totalRate = 0;
-
-                var tax1 = _taxinfoService.GetById("T01");
-                var tax2 = _taxinfoService.GetById("T02");
-                var tax3 = _taxinfoService.GetById("T03");
-                if (tax1 != null && transactheader.Tax1 == 1)
-                    totalRate = totalRate + tax1.Rate;
-                if (tax2 != null && transactheader.Tax2 == 1)
-                    totalRate += tax2.Rate;
-                if (tax3 != null && transactheader.Tax3 == 1)
-                    totalRate += tax3.Rate;
-
-                _transactheaderService.UpdateTotalCash(transactheader, totalRate);
+                await _transactheaderService.UpdateTotalCash(transactheader, 30);
+                await _productService.UpdateAsSync(product);
 
             }
             catch (Exception ex)
@@ -99,30 +95,28 @@ namespace Vodka.Controllers.Api
             if (transactdetail == null)
                 return NotFound();
 
+            var product = _productService.GetById(transactdetail.ProductId);
+            if (product == null)
+                return BadRequest();
+
+            product.Quan += transactdetail.Quan;
+            product.Quan -= model.Quan;
+
             transactdetail.CostEach = model.CostEach;
+            transactdetail.Quan = model.Quan;
 
 
             var transactheader = _transactheaderService.GetById(transactdetail.TransactHeaderId);
             transactheader.Net = transactheader.Net - transactdetail.Total;
+
             transactdetail.Total = model.Total;
+
             transactheader.Net = transactheader.Net + transactdetail.Total;
-            transactdetail.Quan = model.Quan;
 
-            decimal totalRate = 0;
-
-            var tax1 = _taxinfoService.GetById("T01");
-            var tax2 = _taxinfoService.GetById("T02");
-            var tax3 = _taxinfoService.GetById("T03");
-            if (tax1 != null && transactheader.Tax1 == 1)
-                totalRate = totalRate + tax1.Rate;
-            if (tax2 != null && transactheader.Tax2 == 1)
-                totalRate += tax2.Rate;
-            if (tax3 != null && transactheader.Tax3 == 1)
-                totalRate += tax3.Rate;
-
-            _transactheaderService.UpdateTotalCash(transactheader, totalRate);
+            _transactheaderService.UpdateTotalCash(transactheader, 30);
 
             await _transactdetailService.UpdateAsSync(transactdetail);
+            await _productService.UpdateAsSync(product);
             return Ok();
         }
         [HttpPost("CreateTransactdetail")]
@@ -139,6 +133,8 @@ namespace Vodka.Controllers.Api
             var product = _productService.GetById(model.ProductId);
             if (product == null)
                 return BadRequest();
+            
+            product.Quan = product.Quan - model.Quan;
 
             string new_str_id = "";
             int new_int_id = _transactdetailService.GetLastId() + 1;
@@ -161,23 +157,55 @@ namespace Vodka.Controllers.Api
 
             transactheader.Net = transactheader.Total + model.Total;
 
+            Console.WriteLine("SO LUONG SAN PHAM: ", product.Quan.ToString());
+            Console.WriteLine("NET HEADER: ", transactheader.Net.ToString());
 
-            decimal totalRate = 0;
 
-            var tax1 = _taxinfoService.GetById("T01");
-            var tax2 = _taxinfoService.GetById("T02");
-            var tax3 = _taxinfoService.GetById("T03");
-            if (tax1 != null && transactheader.Tax1 == 1)
-                totalRate = totalRate + tax1.Rate;
-            if (tax2 != null && transactheader.Tax2 == 1)
-                totalRate += tax2.Rate;
-            if (tax3 != null && transactheader.Tax3 == 1)
-                totalRate += tax3.Rate;
 
-            _transactheaderService.UpdateTotalCash(transactheader, totalRate);
-
+            await _transactheaderService.UpdateTotalCash(transactheader, 30);
+            await _productService.UpdateAsSync(product);
             await _transactdetailService.CreateAsSync(transactdetail);
             return Ok();
+        }
+
+        [HttpPost("UpdateQuantity")]
+        public async Task<IActionResult> UpdateQuantity(string id, int newQuantity)
+        {
+            
+            var transactdetail = _transactdetailService.GetById(id);
+            if (transactdetail == null)
+                return NotFound();
+
+            var transactheader = _transactheaderService.GetById(transactdetail.TransactHeaderId);
+            if (transactheader == null)
+                return NotFound();
+
+            var product = _productService.GetById(transactdetail.ProductId);
+            if (product == null)
+                return NotFound();
+
+            product.Quan += transactdetail.Quan;
+            product.Quan -= newQuantity;
+
+            transactheader.Net = transactheader.Net - transactdetail.Total;
+            transactdetail.Total = transactdetail.CostEach * newQuantity;
+            transactheader.Net = transactheader.Net + transactdetail.Total;
+
+            await _transactdetailService.UpdateQuantity(id, newQuantity);
+            await _transactheaderService.UpdateTotalCash(transactheader, 30);
+            await _productService.UpdateAsSync(product);
+
+            return Ok();
+
+        }
+
+        [HttpGet("GetTransactdetailsByTransactheaderId/{id}")]
+        public IActionResult GetTransactdetailByTransactheaderId(string id)
+        {
+            var transactdetails = _transactdetailService.GetTransactdetailsByTransactheaderId(id);
+            if (transactdetails == null)
+                return NotFound();
+            return Ok(transactdetails);
         }
     }
 }

@@ -63,8 +63,26 @@ namespace VodkaServices.Implementation
         public int GetLastId()
         {
             var td = _context.Transactdetails.OrderByDescending(i => i.TransactDetailId).FirstOrDefault();
+            if (td == null) 
+                return 1;
             return int.Parse(td.TransactDetailId.Replace("TD", ""));
         }
-        
+
+        public async Task UpdateQuantity(string id, int newQuantity)
+        {
+            var transactdetail = GetById(id);
+            transactdetail.Quan = newQuantity;
+            transactdetail.Total = transactdetail.CostEach * newQuantity;
+            _context.Transactdetails.Update(transactdetail);
+            await _context.SaveChangesAsync();
+        }
+
+        public IEnumerable<Transactdetail> AnalyzeSalesProduct()
+        {
+            var model = _context.Transactdetails
+                .GroupBy(t => t.ProductId)
+                .ToList();
+            return (IEnumerable<Transactdetail>)model;
+        }
     }
 }

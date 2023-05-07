@@ -17,6 +17,12 @@ namespace VodkaServices
         Task UpdateAsSync(Transactdetail transactdetail);
         int GetLastId();
 
+        Task UpdateQuantity(string id, int newQuantity);
         IEnumerable<Transactdetail> GetTransactdetailsByTransactheaderId(string id);
+
+        IEnumerable<Transactdetail> AnalyzeSalesProduct();
+
+
+
     }
 }

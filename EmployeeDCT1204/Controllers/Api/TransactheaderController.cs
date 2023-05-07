@@ -154,24 +154,52 @@ namespace Vodka.Controllers.Api
             return Ok();
         }
         [HttpGet("XacNhanMuaHang/{id}")]
-        [Authorize]
-        public async Task<IActionResult> XacNhanMuaHang(string id)
+        public async Task<IActionResult> XacNhanMuaHang(string userid, string id)
         {
-            var transactheader = _transactheaderService.GetById(id);
-            if (transactheader != null && transactheader.Status.Equals("0"))
+            //var transactheader = _transactheaderService.GetById(id);
+            //if (transactheader != null && transactheader.Status.Equals("0"))
+            //{
+            //    transactheader.Status = 1;
+            //    await _transactheaderService.UpdateAsSync(transactheader);
+            //    return Ok();
+            //}
+            //return BadRequest("Don hang khong tim thay hoặc Status != 0 !");
+
+       
+            string new_str_id = "";
+            int new_int_id = _transactheaderService.GetLastId() + 1;
+            if (new_int_id >= 100 && new_int_id < 1000)
+                new_str_id = "TS00" + new_int_id.ToString();
+            else if (new_int_id < 10 && new_int_id >= 0)
+                new_str_id = "TS0000" + new_int_id.ToString();
+            else if (new_int_id < 100 && new_int_id >= 10)
+                new_str_id = "TS000" + new_int_id.ToString();
+
+            var transactheader = new Transactheader
             {
-                transactheader.Status = 1;
-                await _transactheaderService.UpdateAsSync(transactheader);
-                return Ok();
-            }
-            return BadRequest("Don hang khong tim thay hoặc Status != 0 !");
+                TransactHeaderId = new_str_id,
+                Net = 0,
+                Tax1 = 0,
+                Tax2 = 0,
+                Tax3 = 0,
+                Total = 0,
+                TimePayment = DateTime.Now,
+                UserId = userid,
+                Status = 0
+            };
+
+            await _transactheaderService.CreateAsSync(transactheader);
+            await _transactheaderService.XacNhanMuaHang(id);
+
+            return Ok();
+
         }
 
         [HttpGet("BanGiaoShipper/{id}")]
         public async Task<IActionResult> BanGiaoShipper(string id)
         {
             var transactheader = _transactheaderService.GetById(id);
-            if (transactheader != null && transactheader.Status.Equals("1"))
+            if (transactheader != null && transactheader.Status == 1)
             {
                 var transactdetails = _transactdetailService.GetTransactdetailsByTransactheaderId(transactheader.TransactHeaderId);
                 if (transactdetails != null)
@@ -201,5 +229,60 @@ namespace Vodka.Controllers.Api
             return BadRequest("Đơn hàng không tìm thấy hoặc chưa xác nhận mua hoặc đã giao cho shipper hoặc đã bị xóa !");
         }
 
+
+        [HttpGet("GetTransactheadersByTimePayment")]
+        public IActionResult GetTransactheadersByTimePayment(DateTime start, DateTime end)
+        {
+            var transactheaderList = _transactheaderService.GetTransactheadersByTimePayment(start, end).Select(x => new TransactheaderIndexViewModel
+            {
+                TransactHeaderId = x.TransactHeaderId,
+                Net = x.Net,
+                Tax1 = x.Tax1,
+                Tax2 = x.Tax2,
+                Tax3 = x.Tax3,
+                Total = x.Total,
+                TimePayment = x.TimePayment,
+                UserId = x.UserId,
+                Status = x.Status
+            }).ToList();
+            return Ok(transactheaderList);
+        }
+
+        [HttpGet("GetTotalRevenueByTimePayment")]
+        public IActionResult GetTotalRevenueByTimePayment(DateTime start, DateTime end)
+        {
+            var total = _transactheaderService.GetTotalRevenueByTimePayment(start, end);
+            if (total == null) return NotFound();
+            return Ok(total);
+        }
+        [HttpGet("GetTotalRevenueLastMonth")]
+        public IActionResult GetTotalRevenueLastMonth()
+        {
+            var total = _transactheaderService.GetTotalRevenueLastMonth();
+            if (total == null) return NotFound();
+            return Ok(total);
+        }
+        [HttpGet("GetTotalRevenueLastWeek")]
+        public IActionResult GetTotalRevenueLastWeek()
+        {
+            var total = _transactheaderService.GetTotalRevenueLastWeek();
+            if (total == null) return NotFound();
+            return Ok(total);
+        }
+        [HttpGet("GetTotalRevenueLastYear")]
+        public IActionResult GetTotalRevenueLastYear()
+        {
+            var total = _transactheaderService.GetTotalRevenueLastYear();
+            if (total == null) return NotFound();
+            return Ok(total); 
+        }
+        [HttpGet("GetGioHangHienTaiByUserId")]
+        public IActionResult GetGioHangHienTaiByUserId(string userid)
+        {
+            var giohang = _transactheaderService.GetGioHangHienTaiByUserId(userid);
+            if (giohang == null) return NotFound();
+            return Ok(giohang);
+        }
     }
 }
+
