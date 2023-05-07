@@ -9,6 +9,9 @@ using System.Text;
 using Vodka.Models.VodkaUser;
 using Vodka.Models.Taxinfo;
 using VodkaServices.Implementation;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using VodkaDataAccess;
+using System.Data;
 
 namespace Vodka.Controllers.Api
 {
@@ -39,9 +42,25 @@ namespace Vodka.Controllers.Api
                     TotalCash = model.TotalCash,
                     Address = model.Address,
                 };
+
                 var result = await _vodkaUserService.RegisterAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    foreach (var role in model.Roles)
+                    {
+                        string roleName = "";
+                        if (role == 0)
+                        {
+                            roleName = "Admin";
+                        }
+                        else if (role == 1)
+                        {
+                            roleName = "Client";
+                        }
+                        if (!String.IsNullOrEmpty(roleName))
+                            await _vodkaUserService.AddToRoleAsync(user, roleName);
+                    }
+
                     return Ok("Register Successfull !");
                 }
                 return Unauthorized();
@@ -60,7 +79,27 @@ namespace Vodka.Controllers.Api
                 {
                     return Unauthorized();
                 }
-                return Ok(result);
+
+                var user = await _vodkaUserService.FindByNameAsync(model.UserName);
+                var modelUser = new VodkaUserDetailViewModel
+                {
+                    Id = user.Id,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    AccessLevel = user.AccessLevel,
+                    Address = user.Address,
+                    TotalCash = user.TotalCash
+                };
+                var roles = await _vodkaUserService.GetRolesAsync(user);
+
+                var response = new
+                {
+                    result = result,
+                    user = user,
+                    roles = roles,
+                };
+
+                return Ok(response);
             }
             return Unauthorized();
         }
@@ -97,7 +136,7 @@ namespace Vodka.Controllers.Api
         [HttpGet("GetVodkaUserByUserName/{username}")]
         public IActionResult GetVodkaUserByUserName(string username)
         {
-            var user = _vodkaUserService.GetVodkaUserByUserName(username);
+            var user = _vodkaUserService.FindByNameAsync(username);
             if (user == null)
                 return NotFound();
             return Ok(user);

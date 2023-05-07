@@ -5,7 +5,7 @@ namespace Vodka.Models.VodkaUser
 
     public class VodkaUserDetailViewModel : IdentityUser
     {
-        public int AccessLevel { get; set; }
+        public int? AccessLevel { get; set; }
 
         public decimal? TotalCash { get; set; }
 

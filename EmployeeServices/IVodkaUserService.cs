@@ -21,8 +21,12 @@ namespace VodkaServices
         Task DeleteById(string id);
         Task UpdateAsSync(VodkaUser vodkauser);
 
-        Task<VodkaUser> GetVodkaUserByUserName(string username);
+        Task<VodkaUser> FindByNameAsync(string userName);
 
+        Task<VodkaUser> FindByIdAsync(string userId);
 
+        Task<IList<string>> GetRolesAsync(VodkaUser user);
+
+        Task<IdentityResult> AddToRoleAsync(VodkaUser user, string roleName);
     }
 }
