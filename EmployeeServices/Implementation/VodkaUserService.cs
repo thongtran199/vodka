@@ -16,7 +16,6 @@ namespace VodkaServices.Implementation
         private SignInManager<VodkaUser> _signInManager;
         private IConfiguration _configuration;
 
-
         public VodkaUserService(UserManager<VodkaUser> userManager, SignInManager<VodkaUser> signInManager, IConfiguration configuration)
         {
             _userManager = userManager;

@@ -41,6 +41,48 @@ namespace Vodka.Controllers.Api
             return Ok(model);
         }
 
+        [HttpGet("GetAllProductsIncreaseByPrice")]
+        public IActionResult GetAllProductsIncreaseByPrice()
+        {
+            var model = _productService.GetAll()
+                .OrderBy(p => p.Price)
+                .Select(product => new ProductIndexViewModel
+            {
+                ProductId = product.ProductId,
+                Name = product.Name,
+                Descript = product.Descript,
+                Price = product.Price,
+                Quan = product.Quan,
+                IsActive = product.IsActive,
+                ImageSource = product.ImageSource,
+                CategoryId = product.CategoryId,
+                Category = null,
+                TransactDetails = null
+            }).ToList();
+            return Ok(model);
+        }
+        [HttpGet("GetAllProductsDecreaseByPrice")]
+        public IActionResult GetAllProductsDecreaseByPrice()
+        {
+            var model = _productService.GetAll()
+                .OrderByDescending(p => p.Price)
+                .Select(product => new ProductIndexViewModel
+                {
+                    ProductId = product.ProductId,
+                    Name = product.Name,
+                    Descript = product.Descript,
+                    Price = product.Price,
+                    Quan = product.Quan,
+                    IsActive = product.IsActive,
+                    ImageSource = product.ImageSource,
+                    CategoryId = product.CategoryId,
+                    Category = null,
+                    TransactDetails = null
+                }).ToList();
+            return Ok(model);
+        }
+
+
         [HttpGet("GetProductById/{id}")]
         //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult GetProductById(string id)
@@ -127,26 +169,26 @@ namespace Vodka.Controllers.Api
             return Ok(model);
         }
 
-        //[HttpGet("GetProductByName/{name}")]
-        //public IActionResult GetProductByName(string name)
-        //{
-        //    var product = _productService.GetProductByName(name);
-        //    if (product == null) return NotFound();
-        //    var model = new ProductDetailViewModel
-        //    {
-        //        ProductId = product.ProductId,
-        //        Name = product.Name,
-        //        Descript = product.Descript,
-        //        Price = product.Price,
-        //        Quan = product.Quan,
-        //        IsActive = product.IsActive,
-        //        ImageSource = product.ImageSource,
-        //        CategoryId = product.CategoryId,
-        //        Category = null,
-        //        TransactDetails = null
-        //    };
-        //    return Ok(model);
-        //}
+        [HttpGet("GetProductByName/{name}")]
+        public IActionResult GetProductByName(string name)
+        {
+            var product = _productService.GetProductByName(name);
+            if (product == null) return NotFound();
+            var model = new ProductDetailViewModel
+            {
+                ProductId = product.ProductId,
+                Name = product.Name,
+                Descript = product.Descript,
+                Price = product.Price,
+                Quan = product.Quan,
+                IsActive = product.IsActive,
+                ImageSource = product.ImageSource,
+                CategoryId = product.CategoryId,
+                Category = null,
+                TransactDetails = null
+            };
+            return Ok(model);
+        }
 
         [HttpGet("TotalFilterProductByName/{str}")]
         public IActionResult TotalFilterProductByName(string str)
@@ -203,29 +245,29 @@ namespace Vodka.Controllers.Api
             return Ok(products);
         }
 
-        //[HttpGet("GetProductFromMToN")]
-        //public IActionResult GetProductFromMToN(int m, int n)
-        //{
-        //    if (m <= 0 || n <= 0)
-        //        return NotFound("m hoac n khong duoc nho hon hoac bang 0");
-        //    if (m > n)
-        //        return NotFound("m khong duoc lon hon n");
-        //    var model = _productService.GetProductFromMToN(m, n).Select(product => new ProductDetailViewModel
-        //    {
-        //        ProductId = product.ProductId,
-        //        Name = product.Name,
-        //        Descript = product.Descript,
-        //        Price = product.Price,
-        //        Quan = product.Quan,
-        //        IsActive = product.IsActive,
-        //        ImageSource = product.ImageSource,
-        //        CategoryId = product.CategoryId,
-        //        Category = null,
-        //        TransactDetails = null
-        //    }).ToList();
+        [HttpGet("GetProductFromMToN")]
+        public IActionResult GetProductFromMToN(int m, int n)
+        {
+            if (m <= 0 || n <= 0)
+                return NotFound("m hoac n khong duoc nho hon hoac bang 0");
+            if (m > n)
+                return NotFound("m khong duoc lon hon n");
+            var model = _productService.GetProductFromMToN(m, n).Select(product => new ProductDetailViewModel
+            {
+                ProductId = product.ProductId,
+                Name = product.Name,
+                Descript = product.Descript,
+                Price = product.Price,
+                Quan = product.Quan,
+                IsActive = product.IsActive,
+                ImageSource = product.ImageSource,
+                CategoryId = product.CategoryId,
+                Category = null,
+                TransactDetails = null
+            }).ToList();
 
-        //    return Ok(model);
-        //}
+            return Ok(model);
+        }
 
         [HttpGet("GetProductByPage")]
         public IActionResult GetProductByPage(int page)
