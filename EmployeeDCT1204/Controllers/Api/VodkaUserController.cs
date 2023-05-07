@@ -49,11 +49,11 @@ namespace Vodka.Controllers.Api
                     foreach (var role in model.Roles)
                     {
                         string roleName = "";
-                        if (role == 0)
+                        if (role == 50)
                         {
                             roleName = "Admin";
                         }
-                        else if (role == 1)
+                        else if (role == 100)
                         {
                             roleName = "Client";
                         }
