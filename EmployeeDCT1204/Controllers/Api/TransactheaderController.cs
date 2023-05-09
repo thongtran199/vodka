@@ -18,7 +18,6 @@ namespace Vodka.Controllers.Api
         private IVodkaUserService _vodkaUserService;
         private IProductService _productService;
 
-        private UserManager<VodkaUser> _userManager;
         public TransactheaderController(ITransactdetailService transactdetailService, ITransactheaderService transactheaderService, IProductService productService, IVodkaUserService vodkaUserService)
         {
             _transactheaderService = transactheaderService;
@@ -124,9 +123,12 @@ namespace Vodka.Controllers.Api
             if (model.Total < 0)
                 return BadRequest();
 
-            var user = await _userManager.FindByIdAsync(model.UserId);
-            if (user == null)
+            var user = await _vodkaUserService.FindByIdAsync(model.UserId);
+            if (user == null){
+                Console.WriteLine("Khong tim thay nguoi dung");
                 return NotFound();
+            }
+                
 
             string new_str_id = "";
             int new_int_id = _transactheaderService.GetLastId() + 1;
@@ -217,10 +219,10 @@ namespace Vodka.Controllers.Api
                         await _productService.UpdateAsSync(product);
                     }
                 }
-                var user = await _userManager.FindByIdAsync(transactheader.UserId);
+                var user = await _vodkaUserService.FindByIdAsync(transactheader.UserId);
                 user.TotalCash = user.TotalCash + transactheader.Total;
 
-                await _userManager.UpdateAsync(user);
+                await _vodkaUserService.UpdateAsSync(user);
 
                 transactheader.Status = 2;
                 await _transactheaderService.UpdateAsSync(transactheader);

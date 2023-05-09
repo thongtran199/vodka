@@ -21,7 +21,7 @@ namespace VodkaServices.Implementation
             await _context.Transactheaders.AddAsync(transactheader);
             await _context.SaveChangesAsync();
         }
-
+        
         public IEnumerable<Transactheader> GetAll()
         {
             return _context.Transactheaders.ToList();

@@ -142,7 +142,7 @@ namespace VodkaServices.Implementation
         }
         public async Task<VodkaUser> FindByIdAsync(string id)
         {
-            var user = await _userManager.FindByNameAsync(id);
+            var user = await _userManager.FindByIdAsync(id);
             return user;
         }
         public async Task<IList<string>> GetRolesAsync(VodkaUser user)
