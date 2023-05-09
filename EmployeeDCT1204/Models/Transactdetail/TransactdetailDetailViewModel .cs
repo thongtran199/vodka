@@ -17,5 +17,7 @@ namespace Vodka.Models.Transactdetail
         public string? TransactHeaderId { get; set; }
 
         public string? ProductId { get; set; }
+
+        public string? ProductName { get; set; }
     }
 }

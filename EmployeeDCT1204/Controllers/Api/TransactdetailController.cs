@@ -203,9 +203,27 @@ namespace Vodka.Controllers.Api
         public IActionResult GetTransactdetailByTransactheaderId(string id)
         {
             var transactdetails = _transactdetailService.GetTransactdetailsByTransactheaderId(id);
-            if (transactdetails == null)
+                        if (transactdetails == null)
                 return NotFound();
-            return Ok(transactdetails);
+            var listmodel = new List<TransactdetailDetailViewModel>();
+            foreach(var transactdetail in transactdetails)
+            {
+                var product = _productService.GetById(transactdetail.ProductId);
+
+                var model = new TransactdetailDetailViewModel
+                {
+                    TransactDetailId = transactdetail.TransactDetailId,
+                    CostEach = transactdetail.CostEach,
+                    Total = transactdetail.Total,
+                    Quan = transactdetail.Quan,
+                    TransactHeaderId = transactdetail.TransactHeaderId,
+                    ProductId = transactdetail.ProductId,
+                    ProductName = product != null ? product.Name : "No Name"
+                };
+                listmodel.Add(model);
+            }
+
+            return Ok(listmodel);
         }
     }
 }

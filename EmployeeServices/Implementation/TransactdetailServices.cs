@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace VodkaServices.Implementation
 {
@@ -27,7 +28,9 @@ namespace VodkaServices.Implementation
         }
         public IEnumerable<Transactdetail> GetTransactdetailsByTransactheaderId(string id)
         {
-            return _context.Transactdetails.Where(x => x.TransactHeaderId.Equals(id)).ToList();
+            return _context.Transactdetails
+                .Where(x => x.TransactHeaderId.Equals(id))
+                .ToList();
         }
 
         public Transactdetail GetById(string id)
