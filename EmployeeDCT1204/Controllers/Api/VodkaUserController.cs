@@ -42,7 +42,6 @@ namespace Vodka.Controllers.Api
                     TotalCash = model.TotalCash,
                     Address = model.Address,
                 };
-
                 var result = await _vodkaUserService.RegisterAsync(user, model.Password);
                 if (result.Succeeded)
                 {
