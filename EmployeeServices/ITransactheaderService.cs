@@ -31,6 +31,7 @@ namespace VodkaServices
 
         Task XacNhanMuaHang(string id);
 
+        Task CreateNewEmptyTransactheader(string userId);
 
 
     }

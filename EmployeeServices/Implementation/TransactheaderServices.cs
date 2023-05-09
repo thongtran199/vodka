@@ -48,10 +48,14 @@ namespace VodkaServices.Implementation
         public async Task DeleteById(string id)
         {
             var transactheader = GetById(id);
+            var userId = transactheader.UserId;
             if (transactheader != null)
             {
                 transactheader.Status = 3;
                 _context.Transactheaders.Update(transactheader);
+
+                await CreateNewEmptyTransactheader(userId);
+
                 await _context.SaveChangesAsync();
             }
         }
@@ -136,11 +140,42 @@ namespace VodkaServices.Implementation
         public async Task XacNhanMuaHang(string id)
         {
             var transactheader = GetById(id);
+            var userId = transactheader.UserId;
             if (transactheader != null && transactheader.Status == 0)
             {
                 transactheader.Status = 1;
+
+                await CreateNewEmptyTransactheader(userId);
+
                 await UpdateAsSync(transactheader);
             }
+        }
+
+        public async Task CreateNewEmptyTransactheader(string userId)
+        {
+            string new_str_id = "";
+            int new_int_id = GetLastId() + 1;
+            if (new_int_id >= 100 && new_int_id < 1000)
+                new_str_id = "TS00" + new_int_id.ToString();
+            else if (new_int_id < 10 && new_int_id >= 0)
+                new_str_id = "TS0000" + new_int_id.ToString();
+            else if (new_int_id < 100 && new_int_id >= 10)
+                new_str_id = "TS000" + new_int_id.ToString();
+
+            var transactheader = new Transactheader
+            {
+                TransactHeaderId = new_str_id,
+                Net = 0,
+                Tax1 = 0,
+                Tax2 = 0,
+                Tax3 = 0,
+                Total = 0,
+                TimePayment = DateTime.Now,
+                UserId = userId,
+                Status = 0
+            };
+
+            await CreateAsSync(transactheader);
         }
     }
 }

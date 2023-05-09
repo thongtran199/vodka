@@ -20,9 +20,11 @@ namespace Vodka.Controllers.Api
     public class VodkaUserController : ControllerBase
     {
         private readonly IVodkaUserService _vodkaUserService;
-        public VodkaUserController(IVodkaUserService vodkaUserService)
+        private readonly ITransactheaderService _transactheaderService;
+        public VodkaUserController(IVodkaUserService vodkaUserService, ITransactheaderService transactheaderService)
         {
             _vodkaUserService = vodkaUserService;
+            _transactheaderService = transactheaderService;
         }
         [HttpPost("Register")]
         public async Task<IActionResult> Register(SignUpViewModel model)
@@ -59,7 +61,7 @@ namespace Vodka.Controllers.Api
                         if (!String.IsNullOrEmpty(roleName))
                             await _vodkaUserService.AddToRoleAsync(user, roleName);
                     }
-
+                    await _transactheaderService.CreateNewEmptyTransactheader(user.Id);
                     return Ok("Register Successfull !");
                 }
                 return Unauthorized();
