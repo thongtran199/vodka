@@ -96,7 +96,7 @@ namespace Vodka.Controllers.Api
                 var response = new
                 {
                     result = result,
-                    user = user,
+                    user = modelUser,
                     roles = roles,
                 };
 

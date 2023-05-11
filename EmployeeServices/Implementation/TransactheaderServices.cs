@@ -12,8 +12,15 @@ namespace VodkaServices.Implementation
     public class TransactheaderServices : ITransactheaderService
     {
         private ApplicationDbContext _context;
-        public TransactheaderServices(ApplicationDbContext context){
+        private ITransactdetailService _transactdetailService;
+        private IVodkaUserService _vodkaUserService;
+        private IProductService _productService;
+        public TransactheaderServices(ApplicationDbContext context, ITransactdetailService transactdetailService, IProductService productService, IVodkaUserService vodkaUserService)
+        {
             _context = context;
+            _productService = productService;
+            _transactdetailService = transactdetailService;
+            _vodkaUserService = vodkaUserService;
         }
 
         public async Task CreateAsSync(Transactheader transactheader)
@@ -176,6 +183,42 @@ namespace VodkaServices.Implementation
             };
 
             await CreateAsSync(transactheader);
+        }
+
+        public async Task<string> BanGiaoShipper(string transactHeaderId)
+        {
+            var transactheader = GetById(transactHeaderId);
+            if (transactheader != null && transactheader.Status == 1)
+            {
+                var transactdetails = _transactdetailService.GetTransactdetailsByTransactheaderId(transactheader.TransactHeaderId);
+                if (transactdetails != null)
+                {
+                    foreach (Transactdetail detail in transactdetails)
+                    {
+                        var product = _productService.GetById(detail.ProductId);
+                        var sl_conlai = product.Quan - detail.Quan;
+                        if (sl_conlai >= 0)
+                        {
+                            product.Quan = sl_conlai;
+                        }
+                        else
+                            return "Số lượng sản phẩm " + product.ProductId + " không đủ";
+                        await _productService.UpdateAsSync(product);
+                    }
+                }
+                var user = await _vodkaUserService.FindByIdAsync(transactheader.UserId);
+                user.TotalCash = user.TotalCash + transactheader.Total;
+
+                await _vodkaUserService.UpdateAsSync(user);
+
+                transactheader.Status = 2;
+
+                await CreateNewEmptyTransactheader(user.Id);
+
+                await UpdateAsSync(transactheader);
+                return "";
+            }
+            return "Đơn hàng không tìm thấy hoặc chưa xác nhận mua hoặc đã giao cho shipper hoặc đã bị xóa !";
         }
     }
 }

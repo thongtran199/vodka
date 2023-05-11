@@ -13,16 +13,12 @@ namespace Vodka.Controllers.Api
     [Route("api/[controller]")]
     public class TransactheaderController : ControllerBase
     {
-        private ITransactdetailService _transactdetailService;
         private ITransactheaderService _transactheaderService;
         private IVodkaUserService _vodkaUserService;
-        private IProductService _productService;
 
-        public TransactheaderController(ITransactdetailService transactdetailService, ITransactheaderService transactheaderService, IProductService productService, IVodkaUserService vodkaUserService)
+        public TransactheaderController(ITransactheaderService transactheaderService, IVodkaUserService vodkaUserService)
         {
             _transactheaderService = transactheaderService;
-            _productService = productService;
-            _transactdetailService = transactdetailService;
             _vodkaUserService = vodkaUserService;
         }
 
@@ -163,40 +159,14 @@ namespace Vodka.Controllers.Api
         }
 
         [HttpGet("BanGiaoShipper/{id}")]
-        public async Task<IActionResult> BanGiaoShipper(string id)
+        public async Task<IActionResult> BanGiaoShipper(string transactHeaderId)
         {
-            var transactheader = _transactheaderService.GetById(id);
-            if (transactheader != null && transactheader.Status == 1)
+            var result = await _transactheaderService.BanGiaoShipper(transactHeaderId);
+            if (result != "")
             {
-                var transactdetails = _transactdetailService.GetTransactdetailsByTransactheaderId(transactheader.TransactHeaderId);
-                if (transactdetails != null)
-                {
-                    foreach (Transactdetail detail in transactdetails)
-                    {
-                        var product = _productService.GetById(detail.ProductId);
-                        var sl_conlai = product.Quan - detail.Quan;
-                        if (sl_conlai >= 0)
-                        {
-                            product.Quan = sl_conlai;
-                        }
-                        else
-                            return BadRequest("Số lượng sản phẩm " + product.ProductId + " không đủ");
-                        await _productService.UpdateAsSync(product);
-                    }
-                }
-                var user = await _vodkaUserService.FindByIdAsync(transactheader.UserId);
-                user.TotalCash = user.TotalCash + transactheader.Total;
-
-                await _vodkaUserService.UpdateAsSync(user);
-
-                transactheader.Status = 2;
-
-                await _transactheaderService.CreateNewEmptyTransactheader(user.Id);
-
-                await _transactheaderService.UpdateAsSync(transactheader);
-                return Ok();
+                return BadRequest(result);
             }
-            return BadRequest("Đơn hàng không tìm thấy hoặc chưa xác nhận mua hoặc đã giao cho shipper hoặc đã bị xóa !");
+            return Ok();
         }
 
 

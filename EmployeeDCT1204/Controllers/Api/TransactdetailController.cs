@@ -155,7 +155,7 @@ namespace Vodka.Controllers.Api
                 ProductId = model.ProductId
             };
 
-            transactheader.Net = transactheader.Total + model.Total;
+            transactheader.Net = transactheader.Net + model.Total;
 
             Console.WriteLine("SO LUONG SAN PHAM: ", product.Quan.ToString());
             Console.WriteLine("NET HEADER: ", transactheader.Net.ToString());

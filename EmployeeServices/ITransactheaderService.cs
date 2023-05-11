@@ -34,5 +34,7 @@ namespace VodkaServices
         Task CreateNewEmptyTransactheader(string userId);
 
 
+        Task<string> BanGiaoShipper(string transactHeaderId);
+
     }
 }
