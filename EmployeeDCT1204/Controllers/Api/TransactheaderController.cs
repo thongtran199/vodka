@@ -76,7 +76,7 @@ namespace Vodka.Controllers.Api
                                         UserId = x.UserId,
                                         Status = x.Status
                                     }).ToList();
-            return Ok(transactheaders); 
+            return Ok(transactheaders);
         }
         [HttpDelete("DeleteTransactheaderById")]
         public async Task<IActionResult> DeleteTransactheaderById(string id)
@@ -120,11 +120,11 @@ namespace Vodka.Controllers.Api
                 return BadRequest();
 
             var user = await _vodkaUserService.FindByIdAsync(model.UserId);
-            if (user == null){
+            if (user == null) {
                 Console.WriteLine("Khong tim thay nguoi dung");
                 return NotFound();
             }
-                
+
 
             string new_str_id = "";
             int new_int_id = _transactheaderService.GetLastId() + 1;
@@ -214,7 +214,7 @@ namespace Vodka.Controllers.Api
         {
             var total = _transactheaderService.GetTotalRevenueLastYear();
             if (total == null) return NotFound();
-            return Ok(total); 
+            return Ok(total);
         }
         [HttpGet("GetGioHangHienTaiByUserId")]
         public IActionResult GetGioHangHienTaiByUserId(string userid)
@@ -222,6 +222,17 @@ namespace Vodka.Controllers.Api
             var giohang = _transactheaderService.GetGioHangHienTaiByUserId(userid);
             if (giohang == null) return NotFound();
             return Ok(giohang);
+        }
+        [HttpPut("UpdateStatusAsync")]
+        public async Task<IActionResult> UpdateStatusAsync(string transactHeaderId, int status)
+        {
+            if (status < 0)
+                return BadRequest("status khong hop le");
+            var result = await _transactheaderService.UpdateStatusAsync(transactHeaderId, status);
+            if (result.Succeeded)
+                return Ok();
+            else
+                return BadRequest(result.Errors);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,8 @@ namespace VodkaServices
 
 
         Task<string> BanGiaoShipper(string transactHeaderId);
+
+        Task<IdentityResult> UpdateStatusAsync(string transactHeaderId, int status);
 
     }
 }

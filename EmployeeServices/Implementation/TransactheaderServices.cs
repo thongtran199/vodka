@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using Microsoft.AspNetCore.Identity;
 
 namespace VodkaServices.Implementation
 {
@@ -213,12 +214,22 @@ namespace VodkaServices.Implementation
 
                 transactheader.Status = 2;
 
-                await CreateNewEmptyTransactheader(user.Id);
-
                 await UpdateAsSync(transactheader);
                 return "";
             }
             return "Đơn hàng không tìm thấy hoặc chưa xác nhận mua hoặc đã giao cho shipper hoặc đã bị xóa !";
+        }
+
+        public async Task<IdentityResult> UpdateStatusAsync(string transactHeaderId, int status)
+        {
+            var transactheader = GetById(transactHeaderId);
+            if (transactheader != null)
+            {
+                transactheader.Status = status;
+                await UpdateAsSync(transactheader);
+                return IdentityResult.Success;
+            }
+            return IdentityResult.Failed(new IdentityError { Description = "Khong tim thay transactHeader" });
         }
     }
 }
