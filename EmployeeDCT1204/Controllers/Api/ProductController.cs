@@ -330,15 +330,17 @@ namespace Vodka.Controllers.Api
         }
 
         [HttpPost("CreateProduct")]
-        public async Task<IActionResult> CreateProduct([FromBody]ProductCreateViewModel model)
+        public async Task<IActionResult> CreateProduct([FromBody] ProductCreateViewModel model)
         {
             if (model == null)
             {
                 return BadRequest();
             }
-            //Kiểm tra CategoryId có hợp lệ hay không
+            if (String.IsNullOrEmpty(model.CategoryId))
+                return BadRequest("Khong co CategoryId");
+
             var category = _categoryService.GetById(model.CategoryId);
-            if(category == null)
+            if (category == null)
             {
                 return BadRequest("Category id khong hop le !");
             }
@@ -350,7 +352,6 @@ namespace Vodka.Controllers.Api
                 new_str_id = "P0000" + new_int_id.ToString();
             else if (new_int_id < 100 && new_int_id >= 10)
                 new_str_id = "P000" + new_int_id.ToString();
-
             var newProduct = new Product
             {
                 ProductId = new_str_id,
@@ -362,7 +363,7 @@ namespace Vodka.Controllers.Api
                 ImageSource = model.ImageSource,
                 TransactDetails = null,
                 CategoryId = model.CategoryId,
-                Category = category
+                Category = null
             };
             try
             {
