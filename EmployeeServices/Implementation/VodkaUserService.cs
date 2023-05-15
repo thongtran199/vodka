@@ -157,5 +157,30 @@ namespace VodkaServices.Implementation
             var result = await _userManager.AddToRoleAsync(user, roleName);
             return result;
         }
+
+        public async Task<IdentityResult> ChangePasswordAsync(string userName, string oldPassword, string newPassword)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user == null)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Khong tim thay User" });
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(userName, oldPassword, false, false);
+            if (!result.Succeeded)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Mat khau khong dung" });
+            }
+
+            var changePasswordResult = await _userManager.ChangePasswordAsync(user, oldPassword, newPassword);
+            if (!changePasswordResult.Succeeded)
+            {
+                return changePasswordResult;
+            }
+
+            await _signInManager.SignOutAsync();
+
+            return changePasswordResult;
+        }
     }
 }

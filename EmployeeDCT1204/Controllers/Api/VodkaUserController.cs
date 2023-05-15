@@ -204,5 +204,22 @@ namespace Vodka.Controllers.Api
             await _vodkaUserService.UpdateAsSync(user);
             return Ok();
         }
+
+        [HttpPut("ChangePasswordASync")]
+        public async Task<IActionResult> ChangePasswordASync([FromBody] ChangePasswordViewModel model)
+        {
+            if (String.IsNullOrEmpty(model.userName) || String.IsNullOrEmpty(model.oldPassword) || String.IsNullOrEmpty(model.newPassword))
+            {
+                return BadRequest();
+            }
+            var result = await _vodkaUserService.ChangePasswordAsync(model.userName, model.oldPassword, model.newPassword);
+            if (result.Succeeded)
+                return Ok();
+            else
+            {
+                return BadRequest(result.Errors);
+            }
+
+        }
     }
 }

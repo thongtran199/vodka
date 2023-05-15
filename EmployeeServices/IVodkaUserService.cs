@@ -29,5 +29,8 @@ namespace VodkaServices
         Task<IList<string>> GetRolesAsync(VodkaUser user);
 
         Task<IdentityResult> AddToRoleAsync(VodkaUser user, string roleName);
+
+
+        Task<IdentityResult> ChangePasswordAsync(string userName, string oldPassword, string newPassword);
     }
 }
