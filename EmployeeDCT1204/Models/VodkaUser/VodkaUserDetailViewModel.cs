@@ -10,5 +10,6 @@ namespace Vodka.Models.VodkaUser
         public decimal? TotalCash { get; set; }
 
         public string? Address { get; set; }
+        public IList<string>? Roles { get; set; }
     }
 }

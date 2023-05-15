@@ -12,6 +12,7 @@ using VodkaServices.Implementation;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using VodkaDataAccess;
 using System.Data;
+using MySqlX.XDevAPI.Common;
 
 namespace Vodka.Controllers.Api
 {
@@ -75,12 +76,10 @@ namespace Vodka.Controllers.Api
             if (ModelState.IsValid)
             {
                 var result = await _vodkaUserService.SignInAsync(model.UserName, model.Password);
-
                 if (string.IsNullOrEmpty(result))
                 {
                     return Unauthorized();
                 }
-
                 var user = await _vodkaUserService.FindByNameAsync(model.UserName);
                 var modelUser = new VodkaUserDetailViewModel
                 {
@@ -92,14 +91,12 @@ namespace Vodka.Controllers.Api
                     TotalCash = user.TotalCash
                 };
                 var roles = await _vodkaUserService.GetRolesAsync(user);
-
                 var response = new
                 {
                     result = result,
                     user = modelUser,
                     roles = roles,
                 };
-
                 return Ok(response);
             }
             return Unauthorized();
@@ -119,28 +116,76 @@ namespace Vodka.Controllers.Api
 
 
         [HttpGet("GetAllVodkaUsers")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var list = _vodkaUserService.GetAll();
-            return Ok(list);
+            var listUser = new List<VodkaUserIndexViewModel>();
+            var list = await _vodkaUserService.GetAll(); //await the GetAll() method
+            foreach (var user in list)
+            {
+                var roles = await _vodkaUserService.GetRolesAsync(user);
+                var indexUser = new VodkaUserIndexViewModel()
+                {
+                    Id = user.Id,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    NormalizedEmail = user.NormalizedEmail,
+                    NormalizedUserName = user.NormalizedUserName,
+                    Address = user.Address,
+                    AccessLevel = user.AccessLevel,
+                    TotalCash = user.TotalCash,
+                    Roles = roles,
+                };
+                listUser.Add(indexUser);
+            }
+            return Ok(listUser);
         }
 
         [HttpGet("GetVodkaUserById/{id}")]
-        public IActionResult GetVodkaUserById(string id)
+        public async Task<IActionResult> GetVodkaUserById(string id)
         {
-            var user = _vodkaUserService.GetById(id);
+            var user = await _vodkaUserService.GetById(id);
             if (user == null)
                 return NotFound();
-            return Ok(user);
+            var roles = await _vodkaUserService.GetRolesAsync(user);
+            var detailUser = new VodkaUserDetailViewModel()
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                NormalizedEmail = user.NormalizedEmail,
+                NormalizedUserName = user.NormalizedUserName,
+                Address = user.Address,
+                ConcurrencyStamp = user.ConcurrencyStamp,
+                SecurityStamp = user.SecurityStamp,
+                AccessLevel = user.AccessLevel,
+                TotalCash = user.TotalCash,
+                Roles = roles,
+            };
+            return Ok(detailUser);
         }
 
         [HttpGet("GetVodkaUserByUserName/{username}")]
-        public IActionResult GetVodkaUserByUserName(string username)
+        public async Task<IActionResult> GetVodkaUserByUserName(string username)
         {
-            var user = _vodkaUserService.FindByNameAsync(username);
+            var user = await _vodkaUserService.FindByNameAsync(username);
             if (user == null)
                 return NotFound();
-            return Ok(user);
+            var roles = await _vodkaUserService.GetRolesAsync(user);
+            var detailUser = new VodkaUserDetailViewModel()
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                NormalizedEmail = user.NormalizedEmail,
+                NormalizedUserName = user.NormalizedUserName,
+                ConcurrencyStamp = user.ConcurrencyStamp,
+                SecurityStamp = user.SecurityStamp,
+                Address = user.Address,
+                AccessLevel = user.AccessLevel,
+                TotalCash = user.TotalCash,
+                Roles = roles,
+            };
+            return Ok(detailUser);
         }
 
         [HttpPut("UpdateAsSync")]

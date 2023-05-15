@@ -19,10 +19,6 @@ builder.Services.AddControllers();
 //    (options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 //);
 
-//builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//    options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnectiondb4free2"))
-//);
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnectiondb4free2"))
 );
@@ -52,7 +48,6 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
-    // Set password requirements if needed
     options.Password.RequiredLength = 8;
     options.Password.RequireDigit = false;
     options.Password.RequireNonAlphanumeric = false;
@@ -62,7 +57,6 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireDigit = false;
     
 
-    // Disable email confirmation requirement
     options.SignIn.RequireConfirmedEmail = false;
 });
 

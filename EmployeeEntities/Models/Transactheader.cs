@@ -7,9 +7,7 @@ public class Transactheader
 {
     [Key]
     public string? TransactHeaderId { get; set; }
-
     public decimal? Net { get; set; }
-
     public int? Tax1 { get; set; }
 
     public int? Tax2 { get; set; }
@@ -23,6 +21,5 @@ public class Transactheader
     public string? UserId { get; set; }
 
     public int? Status { get; set; }
-
     public ICollection<Transactdetail>? TransactDetails { get; set; }
 }

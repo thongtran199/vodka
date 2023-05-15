@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -106,9 +107,9 @@ namespace VodkaServices.Implementation
             }
         }
 
-        public IEnumerable<VodkaUser> GetAll()
+        public async Task<IEnumerable<VodkaUser>> GetAll()
         {
-            return _userManager.Users;
+            return await _userManager.Users.ToListAsync();
         }
 
         public async Task<VodkaUser> GetById(string id)
