@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using VodkaDataAccess;
 using System.Data;
 using MySqlX.XDevAPI.Common;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Vodka.Controllers.Api
 {
@@ -275,6 +276,19 @@ namespace Vodka.Controllers.Api
         {
             var result = await _vodkaUserService.GetTotalClientInActive();
             return Ok(result);
+        }
+        [HttpGet("OnlyAdminCanAccessTo")]
+        [Authorize]
+        public async Task<IActionResult> OnlyAdminCanAccessTo()
+        {
+            string jwtToken = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            var result = await _vodkaUserService.TestXacThucVoiJwt(jwtToken);
+            if (result.Succeeded)
+            {
+                return Ok("Test thanh cong \n Ban la admin");
+            }
+            else
+                return Unauthorized(result.Errors);
         }
     }
 

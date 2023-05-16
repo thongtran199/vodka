@@ -39,7 +39,7 @@ namespace VodkaServices
         Task<int?> GetTotalClientActive();
         Task<int?> GetTotalClientInActive();
 
-        Task<IdentityResult> XacThucVoiJwt();
+        Task<IdentityResult> TestXacThucVoiJwt(string jwt);
 
 
     }

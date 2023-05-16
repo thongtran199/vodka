@@ -242,9 +242,14 @@ namespace VodkaServices.Implementation
             return users.Count(u => _userManager.IsInRoleAsync(u, "Client").Result);
         }
 
-        public Task<IdentityResult> XacThucVoiJwt()
+        public async Task<IdentityResult> TestXacThucVoiJwt(string jwt)
         {
-            throw new NotImplementedException();
+            var user = await GetUserByJwt(jwt);
+            if (user == null)
+                return IdentityResult.Failed(new IdentityError { Description = "Khong tim thay user" });
+            if(_userManager.IsInRoleAsync(user, "Admin").Result)
+                return IdentityResult.Success;
+            return IdentityResult.Failed(new IdentityError { Description = "Ban khong phai la Admin" });
         }
     }
 }
