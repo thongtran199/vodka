@@ -33,13 +33,12 @@ namespace VodkaServices.Implementation
         public IEnumerable<Product> GetAll()
         {
             return _context.Products
-                .Where(x => x.IsActive == 1)
                 .ToList();
         }
 
         public Product? GetById(string id)
         {
-            return _context.Products.Where(x => x.ProductId.Equals(id) && x.IsActive == 1)
+            return _context.Products.Where(x => x.ProductId.Equals(id))
                                     .Include(x => x.TransactDetails)
                                     .FirstOrDefault();
         }

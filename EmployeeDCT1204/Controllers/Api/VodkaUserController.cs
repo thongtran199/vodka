@@ -44,6 +44,7 @@ namespace Vodka.Controllers.Api
                     AccessLevel = model.AccessLevel,
                     TotalCash = model.TotalCash,
                     Address = model.Address,
+                    isActive = 1
                 };
                 var result = await _vodkaUserService.RegisterAsync(user, model.Password);
                 if (result.Succeeded)
@@ -140,6 +141,8 @@ namespace Vodka.Controllers.Api
                     TotalCash = user.TotalCash,
                     LockoutEnabled = user.LockoutEnabled,
                     Roles = roles,
+                    isActive = user.isActive
+                    
                 };
                 listUser.Add(indexUser);
             }
@@ -167,6 +170,7 @@ namespace Vodka.Controllers.Api
                 TotalCash = user.TotalCash,
                 LockoutEnabled = user.LockoutEnabled,
                 Roles = roles,
+                isActive = user.isActive
             };
             return Ok(detailUser);
         }
@@ -192,6 +196,7 @@ namespace Vodka.Controllers.Api
                 TotalCash = user.TotalCash,
                 LockoutEnabled = user.LockoutEnabled,
                 Roles = roles,
+                isActive = user.isActive
             };
             return Ok(detailUser);
         }
