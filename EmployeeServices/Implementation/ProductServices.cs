@@ -150,5 +150,10 @@ namespace VodkaServices.Implementation
             await UpdateAsSync(product);
             return IdentityResult.Success;
         }
+
+        public int? GetTotalQuantityOfAllProduct()
+        {
+            return _context.Products.Sum(p => p.Quan);
+        }
     }
 }

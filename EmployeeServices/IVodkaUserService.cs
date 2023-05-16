@@ -33,5 +33,12 @@ namespace VodkaServices
 
         Task<IdentityResult> ChangePasswordAsync(string userName, string oldPassword, string newPassword);
 
+
+        Task<int?> GetTotalAdminActive();
+        Task<int?> GetTotalAdminInActive();
+        Task<int?> GetTotalClientActive();
+        Task<int?> GetTotalClientInActive();
+
+
     }
 }

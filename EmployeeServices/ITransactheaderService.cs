@@ -23,6 +23,8 @@ namespace VodkaServices
         IEnumerable<Transactheader> GetTransactheadersByTimePayment(DateTime start, DateTime end);
 
         decimal? GetTotalRevenueByTimePayment(DateTime start, DateTime end);
+        int? GetTotalCancelOrderByTimePayment(DateTime start, DateTime end);
+        int? GetTotalConfirmOrderByTimePayment(DateTime start, DateTime end);
 
         decimal? GetTotalRevenueLastMonth();
         decimal? GetTotalRevenueLastYear();

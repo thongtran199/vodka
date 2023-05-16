@@ -252,5 +252,31 @@ namespace Vodka.Controllers.Api
             }
 
         }
+        [HttpGet("GetTotalAdminActive")]
+        public async Task<IActionResult> GetTotalAdminActive()
+        {
+            var result = await _vodkaUserService.GetTotalAdminActive();
+            return Ok(result);
+        }
+        [HttpGet("GetTotalAdminInActive")]
+        public async Task<IActionResult> GetTotalAdminInActive()
+        {
+            var result = await _vodkaUserService.GetTotalAdminInActive();
+            return Ok(result);
+        }
+        [HttpGet("GetTotalClientActive")]
+        public async Task<IActionResult> GetTotalClientActive()
+        {
+            var result = await _vodkaUserService.GetTotalClientActive();
+            return Ok(result);
+        }
+        [HttpGet("GetTotalClientInActive")]
+        public async Task<IActionResult> GetTotalClientInActive()
+        {
+            var result = await _vodkaUserService.GetTotalClientInActive();
+            return Ok(result);
+        }
     }
+
+
 }

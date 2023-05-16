@@ -28,9 +28,9 @@ namespace VodkaServices
 
         int GetLastId();
 
-        
+        int? GetTotalQuantityOfAllProduct();
 
-        
+
         //IEnumerable<SelectListItem> GetAllProductsForPayroll();
     }
 }

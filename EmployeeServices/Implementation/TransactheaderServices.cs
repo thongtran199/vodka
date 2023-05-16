@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Microsoft.AspNetCore.Identity;
 
 namespace VodkaServices.Implementation
@@ -100,8 +99,8 @@ namespace VodkaServices.Implementation
         public decimal? GetTotalRevenueByTimePayment(DateTime start, DateTime end)
         {
            return _context.Transactheaders
-                        .Where(ts => ts.TimePayment >= start && ts.TimePayment <= end)
-                        .ToList()
+                        .Where(ts => ts.Status == 2 && ts.TimePayment >= start && ts.TimePayment <= end)
+                        //.ToList()
                         .Sum(ts => ts.Total);
             
         }
@@ -113,7 +112,7 @@ namespace VodkaServices.Implementation
             DateTime end = now;
 
             return _context.Transactheaders
-                .Where(ts => ts.TimePayment >= start && ts.TimePayment <= end)
+                .Where(ts => ts.Status == 2 && ts.TimePayment >= start && ts.TimePayment <= end)
                 .Sum(ts => ts.Total);
         }
 
@@ -123,9 +122,8 @@ namespace VodkaServices.Implementation
             DateTime start = new DateTime(now.Year, 1, 1);
             DateTime end = now;
 
-            // Filter the transaction headers for the previous year and calculate the total
             return _context.Transactheaders
-                .Where(ts => ts.TimePayment >= start && ts.TimePayment <= end)
+                .Where(ts => ts.Status == 2 && ts.TimePayment >= start && ts.TimePayment <= end)
                 .Sum(ts => ts.Total);
         }
 
@@ -135,9 +133,8 @@ namespace VodkaServices.Implementation
             DateTime start = now.Date.AddDays(-(int)now.DayOfWeek - 6);
             DateTime end = start.AddDays(6);
 
-            // Filter the transaction headers for the previous week and calculate the total
             return _context.Transactheaders
-                .Where(ts => ts.TimePayment >= start && ts.TimePayment <= end)
+                .Where(ts => ts.Status == 2 && ts.TimePayment >= start && ts.TimePayment <= end)
                 .Sum(ts => ts.Total);
         }
         public Transactheader GetGioHangHienTaiByUserId(string userid)
@@ -232,6 +229,20 @@ namespace VodkaServices.Implementation
                 return IdentityResult.Success;
             }
             return IdentityResult.Failed(new IdentityError { Description = "Khong tim thay transactHeader" });
+        }
+
+        public int? GetTotalCancelOrderByTimePayment(DateTime start, DateTime end)
+        {
+            return _context.Transactheaders
+                         .Where(ts => ts.Status == 4 && ts.TimePayment >= start && ts.TimePayment <= end)
+                         .Count();
+        }
+
+        public int? GetTotalConfirmOrderByTimePayment(DateTime start, DateTime end)
+        {
+            return _context.Transactheaders
+                         .Where(ts => ts.Status == 1 && ts.TimePayment >= start && ts.TimePayment <= end)
+                         .Count();
         }
     }
 }

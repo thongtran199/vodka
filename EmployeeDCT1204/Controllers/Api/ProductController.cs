@@ -411,6 +411,15 @@ namespace Vodka.Controllers.Api
                 return BadRequest(result.Errors);
             }
         }
+
+        [HttpGet("GetTotalQuantityOfAllProduct")]
+        public IActionResult GetTotalQuantityOfAllProduct()
+        {
+            var result = _productService.GetTotalQuantityOfAllProduct();
+            if (result == null)
+                return NotFound();
+            return Ok(result);
+        }
     }
 }
 

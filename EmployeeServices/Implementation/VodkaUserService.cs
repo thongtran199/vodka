@@ -204,5 +204,40 @@ namespace VodkaServices.Implementation
             return changePasswordResult;
         }
 
+        public async Task<int?> GetTotalAdminActive()
+        {
+            var users = await _userManager.Users
+                .Where(u => u.isActive == 1)
+                .ToListAsync();
+
+            return users.Count(u => !_userManager.IsInRoleAsync(u, "Admin").Result);
+        }
+
+        public async Task<int?> GetTotalAdminInActive()
+        {
+            var users = await _userManager.Users
+                .Where(u => u.isActive == 0)
+                .ToListAsync();
+
+            return users.Count(u => !_userManager.IsInRoleAsync(u, "Admin").Result);
+        }
+
+        public async Task<int?> GetTotalClientActive()
+        {
+            var users = await _userManager.Users
+                .Where(u => u.isActive == 1)
+                .ToListAsync();
+
+            return users.Count(u => !_userManager.IsInRoleAsync(u, "Client").Result);
+        }
+
+        public async Task<int?> GetTotalClientInActive()
+        {
+            var users = await _userManager.Users
+                .Where(u => u.isActive == 0)
+                .ToListAsync();
+
+            return users.Count(u => !_userManager.IsInRoleAsync(u, "Client").Result);
+        }
     }
 }

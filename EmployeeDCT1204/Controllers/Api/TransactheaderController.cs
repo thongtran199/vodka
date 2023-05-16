@@ -195,6 +195,23 @@ namespace Vodka.Controllers.Api
             if (total == null) return NotFound();
             return Ok(total);
         }
+
+        [HttpGet("GetTotalCancelOrderByTimePayment")]
+        public IActionResult GetTotalCancelOrderByTimePayment(DateTime start, DateTime end)
+        {
+            var total = _transactheaderService.GetTotalCancelOrderByTimePayment(start, end);
+            if (total == null)
+                return NotFound();
+            return Ok(total);
+        }
+        [HttpGet("GetTotalConfirmOrderByTimePayment")]
+        public IActionResult GetTotalConfirmOrderByTimePayment(DateTime start, DateTime end)
+        {
+            var total = _transactheaderService.GetTotalConfirmOrderByTimePayment(start, end);
+            if (total == null)
+                return NotFound();
+            return Ok(total);
+        }
         [HttpGet("GetTotalRevenueLastMonth")]
         public IActionResult GetTotalRevenueLastMonth()
         {
