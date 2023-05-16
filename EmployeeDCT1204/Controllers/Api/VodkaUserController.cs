@@ -73,6 +73,10 @@ namespace Vodka.Controllers.Api
         [HttpPost("SignIn")]
         public async Task<IActionResult> SignIn(SignInViewModel model)
         {
+            if (String.IsNullOrEmpty(model.UserName) || String.IsNullOrEmpty(model.Password))
+            {
+                return Unauthorized("Input bi sai !");
+            }
             if (ModelState.IsValid)
             {
                 var result = await _vodkaUserService.SignInAsync(model.UserName, model.Password);
@@ -81,6 +85,7 @@ namespace Vodka.Controllers.Api
                     return Unauthorized();
                 }
                 var user = await _vodkaUserService.FindByNameAsync(model.UserName);
+
                 var modelUser = new VodkaUserDetailViewModel
                 {
                     Id = user.Id,
@@ -133,6 +138,7 @@ namespace Vodka.Controllers.Api
                     Address = user.Address,
                     AccessLevel = user.AccessLevel,
                     TotalCash = user.TotalCash,
+                    LockoutEnabled = user.LockoutEnabled,
                     Roles = roles,
                 };
                 listUser.Add(indexUser);
@@ -159,6 +165,7 @@ namespace Vodka.Controllers.Api
                 SecurityStamp = user.SecurityStamp,
                 AccessLevel = user.AccessLevel,
                 TotalCash = user.TotalCash,
+                LockoutEnabled = user.LockoutEnabled,
                 Roles = roles,
             };
             return Ok(detailUser);
@@ -183,6 +190,7 @@ namespace Vodka.Controllers.Api
                 Address = user.Address,
                 AccessLevel = user.AccessLevel,
                 TotalCash = user.TotalCash,
+                LockoutEnabled = user.LockoutEnabled,
                 Roles = roles,
             };
             return Ok(detailUser);
@@ -230,7 +238,7 @@ namespace Vodka.Controllers.Api
             {
                 return BadRequest("Chua dien thong tin !");
             }
-            var result = await _vodkaUserService.DeleteVodkaUserAsync(userId);
+            var result = await _vodkaUserService.DeleteByIdAsync(userId);
             if (result.Succeeded)
                 return Ok();
             else

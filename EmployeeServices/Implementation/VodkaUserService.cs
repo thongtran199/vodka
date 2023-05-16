@@ -100,7 +100,7 @@ namespace VodkaServices.Implementation
         public async Task InputMoney(string id, decimal money)
         {
             var user = await _userManager.FindByIdAsync(id);
-            if (user != null)
+            if (user != null && user.isActive == 1)
             {
                 user.TotalCash += money;
                 await _userManager.UpdateAsync(user);
@@ -109,26 +109,43 @@ namespace VodkaServices.Implementation
 
         public async Task<IEnumerable<VodkaUser>> GetAll()
         {
-            return await _userManager.Users.ToListAsync();
+            return await _userManager.Users.Where(u => u.isActive == 1)
+                .ToListAsync();
         }
 
-        public async Task<VodkaUser> GetById(string id)
+        public async Task<VodkaUser?> GetById(string id)
         {
-            return await _userManager.FindByIdAsync(id);
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null && user.isActive == 1)
+                return user;
+            return null;
         }
 
 
         public async Task UpdateById(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
-            await _userManager.UpdateAsync(user);
+            if(user != null && user.isActive == 1)
+                await _userManager.UpdateAsync(user);
 
         }
 
-        public async Task DeleteById(string id)
+        public async Task<IdentityResult> DeleteByIdAsync(string userId)
         {
-            var user = await _userManager.FindByIdAsync(id);
-            await _userManager.DeleteAsync(user);
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null || user.isActive == 0)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Khong tim thay User" });
+            }
+
+            user.isActive = 0;
+
+            var updateResult = await _userManager.UpdateAsync(user);
+            if (!updateResult.Succeeded)
+            {
+                return IdentityResult.Failed(updateResult.Errors.ToArray());
+            }
+            return IdentityResult.Success;
         }
 
         public async Task UpdateAsSync(VodkaUser vodkaUser)
@@ -136,15 +153,19 @@ namespace VodkaServices.Implementation
             await _userManager.UpdateAsync(vodkaUser);
         }
 
-        public async Task<VodkaUser> FindByNameAsync(string username)
+        public async Task<VodkaUser?> FindByNameAsync(string username)
         {
             var user = await _userManager.FindByNameAsync(username);
-            return user;
+            if(user !=null  && user.isActive == 1)
+                return user;
+            return null;
         }
-        public async Task<VodkaUser> FindByIdAsync(string id)
+        public async Task<VodkaUser?> FindByIdAsync(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
-            return user;
+            if (user != null && user.isActive == 1)
+                return user;
+            return null;
         }
         public async Task<IList<string>> GetRolesAsync(VodkaUser user)
         {
@@ -161,7 +182,7 @@ namespace VodkaServices.Implementation
         public async Task<IdentityResult> ChangePasswordAsync(string userName, string oldPassword, string newPassword)
         {
             var user = await _userManager.FindByNameAsync(userName);
-            if (user == null)
+            if (user == null || user.isActive == 0)
             {
                 return IdentityResult.Failed(new IdentityError { Description = "Khong tim thay User" });
             }
@@ -183,29 +204,5 @@ namespace VodkaServices.Implementation
             return changePasswordResult;
         }
 
-        public async Task<IdentityResult> DeleteVodkaUserAsync(string userId)
-        {
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
-            {
-                return IdentityResult.Failed(new IdentityError { Description = "Khong tim thay User" });
-            }
-
-            user.LockoutEnabled = true;
-
-            var updateResult = await _userManager.UpdateAsync(user);
-            if (!updateResult.Succeeded)
-            {
-                return IdentityResult.Failed(updateResult.Errors.ToArray());
-            }
-
-            var deleteResult = await _userManager.DeleteAsync(user);
-            if (!deleteResult.Succeeded)
-            {
-                return IdentityResult.Failed(deleteResult.Errors.ToArray());
-            }
-
-            return IdentityResult.Success;
-        }
     }
 }

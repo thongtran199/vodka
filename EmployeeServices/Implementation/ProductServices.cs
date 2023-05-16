@@ -72,31 +72,6 @@ namespace VodkaServices.Implementation
 
         public IEnumerable<Product> FilterProductByPrice(decimal minPrice, decimal maxPrice)
         {
-            //var products = GetAll();
-            //var filterProducts = new List<Product>();
-
-            //if ( maxPrice == 0)
-            //{
-            //    foreach (var p in products)
-            //    {
-            //        if (minPrice.CompareTo(p.Price) <= 0)
-            //        {
-            //            filterProducts.Add(p);
-            //        }
-            //    }
-            //}
-
-            //else
-            //{
-            //    foreach (var p in products)
-            //    {
-            //        if (maxPrice.CompareTo(p.Price) >= 0)
-            //        {
-            //            filterProducts.Add(p);
-            //        }
-            //    }
-            //}
-            //return filterProducts;
 
             return _context.Products
                 .Where(p => p.Price <= maxPrice && p.Price >= minPrice)
@@ -161,6 +136,18 @@ namespace VodkaServices.Implementation
 
             }
             product.Quan = quantity;
+            await UpdateAsSync(product);
+            return IdentityResult.Success;
+        }
+
+        public async Task<IdentityResult> UpdateIsActiveAsync(string productId, int isActive)
+        {
+            var product = GetById(productId);
+            if (product == null)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Khong tim thay Product" });
+            }
+            product.IsActive = isActive;
             await UpdateAsSync(product);
             return IdentityResult.Success;
         }

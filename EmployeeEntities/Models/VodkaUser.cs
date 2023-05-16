@@ -12,4 +12,6 @@ public class VodkaUser : IdentityUser
     public decimal? TotalCash { get; set; }
 
     public string? Address { get; set; }
+
+    public int? isActive { get; set; }
 }

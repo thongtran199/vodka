@@ -5,6 +5,7 @@ namespace VodkaServices
 {
     public interface IProductService
     {
+        Task<IdentityResult> UpdateIsActiveAsync(string productId, int isActive);
         Task<IdentityResult> UpdateQuantityAsync(string productId, int quantity);
         Task CreateAsSync(Product newProduct);
         Task UpdateById(string id);

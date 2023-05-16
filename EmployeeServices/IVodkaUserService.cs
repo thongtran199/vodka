@@ -17,14 +17,14 @@ namespace VodkaServices
 
 
         Task<IEnumerable<VodkaUser>> GetAll();
-        Task<VodkaUser> GetById(string id);
+        Task<VodkaUser?> GetById(string id);
         Task UpdateById(string id);
-        Task DeleteById(string id);
+        Task<IdentityResult> DeleteByIdAsync(string id);
         Task UpdateAsSync(VodkaUser vodkauser);
 
-        Task<VodkaUser> FindByNameAsync(string userName);
+        Task<VodkaUser?> FindByNameAsync(string userName);
 
-        Task<VodkaUser> FindByIdAsync(string userId);
+        Task<VodkaUser?> FindByIdAsync(string userId);
 
         Task<IList<string>> GetRolesAsync(VodkaUser user);
 
@@ -33,6 +33,5 @@ namespace VodkaServices
 
         Task<IdentityResult> ChangePasswordAsync(string userName, string oldPassword, string newPassword);
 
-        Task<IdentityResult> DeleteVodkaUserAsync(string userId);
     }
 }

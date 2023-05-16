@@ -385,10 +385,23 @@ namespace Vodka.Controllers.Api
             var model = _productService.GetAll().Count();
             return Ok(model/12);
         }
-        [HttpPost("UpdateQuantityAsync")]
+        [HttpPut("UpdateQuantityAsync")]
         public async Task<ActionResult> UpdateQuantityAsync(string productId, int quantity)
         {
             var result = await _productService.UpdateQuantityAsync(productId, quantity);
+            if (result.Succeeded)
+            {
+                return Ok("Cap nhat thanh cong !");
+            }
+            else
+            {
+                return BadRequest(result.Errors);
+            }
+        }
+        [HttpPut("UpdateIsActiveAsync")]
+        public async Task<ActionResult> UpdateIsActiveAsync(string productId, int isActive)
+        {
+            var result = await _productService.UpdateIsActiveAsync(productId, isActive);
             if (result.Succeeded)
             {
                 return Ok("Cap nhat thanh cong !");
