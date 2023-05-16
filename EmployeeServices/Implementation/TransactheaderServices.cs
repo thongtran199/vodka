@@ -208,7 +208,7 @@ namespace VodkaServices.Implementation
                     }
                 }
                 var user = await _vodkaUserService.FindByIdAsync(transactheader.UserId);
-                user.TotalCash = user.TotalCash + transactheader.Total;
+                user.TotalCash = user.TotalCash - transactheader.Total;
 
                 await _vodkaUserService.UpdateAsSync(user);
 

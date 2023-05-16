@@ -1,9 +1,11 @@
-﻿using VodkaEntities;
+﻿using Microsoft.AspNetCore.Identity;
+using VodkaEntities;
 
 namespace VodkaServices
 {
     public interface IProductService
     {
+        Task<IdentityResult> UpdateQuantityAsync(string productId, int quantity);
         Task CreateAsSync(Product newProduct);
         Task UpdateById(string id);
         Task UpdateAsSync(Product newProduct);

@@ -191,15 +191,17 @@ namespace Vodka.Controllers.Api
         [HttpPut("UpdateAsSync")]
         public async Task<IActionResult> UpdateAsSync([FromBody] VodkaUserEditViewModel model)
         {
-            if (model == null)
+            if (model == null || model.Id == null)
                 return BadRequest();
-
+            
             var user = await _vodkaUserService.GetById(model.Id);
             if (user == null)
                 return NotFound();
 
             user.Address = model.Address;
             user.TotalCash = model.TotalCash;
+            user.Email = model.Email;
+            user.NormalizedEmail = model.Email?.ToUpper();
 
             await _vodkaUserService.UpdateAsSync(user);
             return Ok();
@@ -213,6 +215,22 @@ namespace Vodka.Controllers.Api
                 return BadRequest();
             }
             var result = await _vodkaUserService.ChangePasswordAsync(model.userName, model.oldPassword, model.newPassword);
+            if (result.Succeeded)
+                return Ok();
+            else
+            {
+                return BadRequest(result.Errors);
+            }
+
+        }
+        [HttpPut("DeleteVodkaUserASync")]
+        public async Task<IActionResult> DeleteVodkaUserASync(string userId)
+        {
+            if (String.IsNullOrEmpty(userId.Trim()))
+            {
+                return BadRequest("Chua dien thong tin !");
+            }
+            var result = await _vodkaUserService.DeleteVodkaUserAsync(userId);
             if (result.Succeeded)
                 return Ok();
             else

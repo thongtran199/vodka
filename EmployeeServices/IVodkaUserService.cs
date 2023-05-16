@@ -32,5 +32,7 @@ namespace VodkaServices
 
 
         Task<IdentityResult> ChangePasswordAsync(string userName, string oldPassword, string newPassword);
+
+        Task<IdentityResult> DeleteVodkaUserAsync(string userId);
     }
 }

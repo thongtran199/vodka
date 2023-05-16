@@ -3,6 +3,7 @@ using VodkaDataAccess;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System;
+using Microsoft.AspNetCore.Identity;
 
 namespace VodkaServices.Implementation
 {
@@ -23,6 +24,7 @@ namespace VodkaServices.Implementation
         {
             var product = GetById(id);
             product.IsActive = 0;
+            _context.Products.Update(product);
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
         }
@@ -148,6 +150,19 @@ namespace VodkaServices.Implementation
             var start = page == 1 ? 1 : (page - 1) * 13;
             var end = start + 12;
             return GetProductFromMToN(start, end);
+        }
+
+        public async Task<IdentityResult> UpdateQuantityAsync(string productId, int quantity)
+        {
+            var product = GetById(productId);
+            if(product == null)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Khong tim thay Product" });
+
+            }
+            product.Quan = quantity;
+            await UpdateAsSync(product);
+            return IdentityResult.Success;
         }
     }
 }

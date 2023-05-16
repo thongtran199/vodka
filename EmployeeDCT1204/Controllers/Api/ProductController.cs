@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.Language.Extensions;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -384,8 +385,19 @@ namespace Vodka.Controllers.Api
             var model = _productService.GetAll().Count();
             return Ok(model/12);
         }
-
-
+        [HttpPost("UpdateQuantityAsync")]
+        public async Task<ActionResult> UpdateQuantityAsync(string productId, int quantity)
+        {
+            var result = await _productService.UpdateQuantityAsync(productId, quantity);
+            if (result.Succeeded)
+            {
+                return Ok("Cap nhat thanh cong !");
+            }
+            else
+            {
+                return BadRequest(result.Errors);
+            }
+        }
     }
 }
 

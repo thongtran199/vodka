@@ -182,5 +182,30 @@ namespace VodkaServices.Implementation
 
             return changePasswordResult;
         }
+
+        public async Task<IdentityResult> DeleteVodkaUserAsync(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Khong tim thay User" });
+            }
+
+            user.LockoutEnabled = true;
+
+            var updateResult = await _userManager.UpdateAsync(user);
+            if (!updateResult.Succeeded)
+            {
+                return IdentityResult.Failed(updateResult.Errors.ToArray());
+            }
+
+            var deleteResult = await _userManager.DeleteAsync(user);
+            if (!deleteResult.Succeeded)
+            {
+                return IdentityResult.Failed(deleteResult.Errors.ToArray());
+            }
+
+            return IdentityResult.Success;
+        }
     }
 }
