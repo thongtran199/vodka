@@ -8,7 +8,7 @@ namespace VodkaServices
     {
 
         Task<string> SignInAsync(string userName, string password);
-        Task<VodkaUser> GetUserByJwt(string jwtString);
+        Task<VodkaUser?> GetUserByJwt(string jwtString);
 
         Task<IdentityResult> RegisterAsync(VodkaUser user, string password);
         
@@ -38,6 +38,8 @@ namespace VodkaServices
         Task<int?> GetTotalAdminInActive();
         Task<int?> GetTotalClientActive();
         Task<int?> GetTotalClientInActive();
+
+        Task<IdentityResult> XacThucVoiJwt();
 
 
     }

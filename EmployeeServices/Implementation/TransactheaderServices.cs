@@ -241,7 +241,7 @@ namespace VodkaServices.Implementation
         public int? GetTotalConfirmOrderByTimePayment(DateTime start, DateTime end)
         {
             return _context.Transactheaders
-                         .Where(ts => ts.Status == 1 && ts.TimePayment >= start && ts.TimePayment <= end)
+                         .Where(ts => ts.Status == 2 && ts.TimePayment >= start && ts.TimePayment <= end)
                          .Count();
         }
     }

@@ -61,40 +61,42 @@ namespace VodkaServices.Implementation
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public async Task<VodkaUser> GetUserByJwt(string jwt)
+        //Lấy người dùng từ jwt
+        public async Task<VodkaUser?> GetUserByJwt(string jwt)
         {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var symmetricKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:SecretKey"]));
-            var validationParameters = new TokenValidationParameters
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = symmetricKey,
-                ValidateIssuer = false,
-                ValidateAudience = false
-            };
             try
             {
-                SecurityToken validatedToken;
-                var claimsPrincipal = tokenHandler.ValidateToken(jwt, validationParameters, out validatedToken);
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.UTF8.GetBytes(_configuration["JWT:SecretKey"]);
 
-                // Extract claims from the JWT token
-                var jwtToken = (JwtSecurityToken)validatedToken;
-                var claims = jwtToken.Claims;
-                foreach (Claim claim in claims)
+                var tokenValidationParameters = new TokenValidationParameters
                 {
-                    Console.WriteLine($"Claim Type: {claim.Type}, Claim Value: {claim.Value}");
-                }
-                var userName = claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value;
-                if (userName == null)
-                    return null;
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = _configuration["JWT:ValidIssuer"],
+                    ValidAudience = _configuration["JWT:ValidAudience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
+                };
 
-                var user = await _userManager.FindByNameAsync(userName);
-                return user != null ? user : null;
+                var claimsPrincipal = tokenHandler.ValidateToken(jwt, tokenValidationParameters, out SecurityToken validatedToken);
+
+                var usernameClaim = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name);
+                if (usernameClaim != null)
+                {
+                    var username = usernameClaim.Value;
+
+                    var user = await FindByNameAsync(username);
+                    return user;
+                }
             }
-            catch (Exception ex)
+            catch (SecurityTokenException ex)
             {
-                return null;
+                // Xử lý lỗi
             }
+
+            return null;
         }
 
         public async Task InputMoney(string id, decimal money)
@@ -210,7 +212,7 @@ namespace VodkaServices.Implementation
                 .Where(u => u.isActive == 1)
                 .ToListAsync();
 
-            return users.Count(u => !_userManager.IsInRoleAsync(u, "Admin").Result);
+            return users.Count(u => _userManager.IsInRoleAsync(u, "Admin").Result);
         }
 
         public async Task<int?> GetTotalAdminInActive()
@@ -219,7 +221,7 @@ namespace VodkaServices.Implementation
                 .Where(u => u.isActive == 0)
                 .ToListAsync();
 
-            return users.Count(u => !_userManager.IsInRoleAsync(u, "Admin").Result);
+            return users.Count(u => _userManager.IsInRoleAsync(u, "Admin").Result);
         }
 
         public async Task<int?> GetTotalClientActive()
@@ -228,7 +230,7 @@ namespace VodkaServices.Implementation
                 .Where(u => u.isActive == 1)
                 .ToListAsync();
 
-            return users.Count(u => !_userManager.IsInRoleAsync(u, "Client").Result);
+            return users.Count(u => _userManager.IsInRoleAsync(u, "Client").Result);
         }
 
         public async Task<int?> GetTotalClientInActive()
@@ -237,7 +239,12 @@ namespace VodkaServices.Implementation
                 .Where(u => u.isActive == 0)
                 .ToListAsync();
 
-            return users.Count(u => !_userManager.IsInRoleAsync(u, "Client").Result);
+            return users.Count(u => _userManager.IsInRoleAsync(u, "Client").Result);
+        }
+
+        public Task<IdentityResult> XacThucVoiJwt()
+        {
+            throw new NotImplementedException();
         }
     }
 }
