@@ -92,7 +92,9 @@ namespace VodkaServices.Implementation
 
         public IEnumerable<Transactheader> GetTransactheadersByTimePayment(DateTime start, DateTime end)
         {
-            throw new NotImplementedException();
+            return _context.Transactheaders
+                         .Where(ts => ts.TimePayment >= start && ts.TimePayment <= end)
+                         .ToList();
         }
 
         public decimal? GetTotalRevenueByTimePayment(DateTime start, DateTime end)
